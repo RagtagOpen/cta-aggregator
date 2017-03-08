@@ -1,3 +1,6 @@
 class CallToAction < ApplicationRecord
-  { onsite: 1, phone: 2 }
+  CTA_TYPES = { onsite: 1, phone: 2 }
+
+  has_many :call_to_action_contacts
+  has_many :contacts, through: :call_to_action_contacts
 end
