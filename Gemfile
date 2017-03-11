@@ -10,10 +10,7 @@ end
 gem 'rails', '5.0.2'
 gem 'pg', '0.19.0'
 gem 'puma', '3.7.1'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-# gem 'jbuilder', '~> 2.5'
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'jsonapi-resources'
 
 group :development, :test do
   gem 'pry', '0.10.4', require: true
@@ -29,7 +26,7 @@ end
 
 group :test do
   gem 'rspec-rails', '3.5.2'
-  gem 'cucumber-rails', '1.4.5'
+  gem 'cucumber-rails', '1.4.5', require: false
   gem 'database_cleaner', '1.5.3'
 end
 
