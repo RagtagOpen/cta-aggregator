@@ -1,3 +1,5 @@
+# 01_ in filename ensures tihs file will be loaded before all other step files
+
 ############# Helpers
 CAPTURE_INT = Transform(/^(?:-?\d+|zero|one|two|three|four|five|six|seven|eight|nine|ten)$/) do |v|
     %w(zero one two three four five six seven eight nine ten).index(v) || v.to_i
@@ -44,20 +46,7 @@ Then(/^the response contains (#{CAPTURE_INT}) (.*?)s?$/) do |count, resource_typ
   if count == 1
     validate_element(response_body["data"], of: resource_type, count: count)
   else
-    validate_list(response_body["data"], of: resource_type, count: count)
+    validate_list(response_body["data"], of: resource_type)
   end
 end
 
-
-
-
-
-Then(/^the response contains (#{CAPTURE_INT}) (.*?)s?$/) do |count, resource_type|
-  response_body  = MultiJson.load(last_response.body)
-
-  if count == 1
-    validate_element(response_body["data"], of: resource_type, count: count)
-  else
-    validate_list(response_body["data"], of: resource_type, count: count)
-  end
-end

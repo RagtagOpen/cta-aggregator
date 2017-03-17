@@ -1,5 +1,3 @@
-require "#{File.dirname(__FILE__)}/common_steps.rb"
-
 ############# Helpers
 
 def validate_call_to_action(attrs)
