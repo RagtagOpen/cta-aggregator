@@ -53,7 +53,7 @@ Then(/^the response contains one call to action$/) do
   validate_call_to_action(response_body["data"])
 end
 
-Then(/^the response contains (#{CAPTURE_INT}) calls to action$/) do |count|
+Then(/^the response will contain (#{CAPTURE_INT}) calls? to action$/) do |count|
   response_body  = MultiJson.load(last_response.body)
 
   if count == 1
