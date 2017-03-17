@@ -1,4 +1,4 @@
-# 01_ in filename ensures tihs file will be loaded before all other step files
+# 01_ in filename ensures this file will be loaded before all other step files
 
 ############# Helpers
 CAPTURE_INT = Transform(/^(?:-?\d+|zero|one|two|three|four|five|six|seven|eight|nine|ten)$/) do |v|
@@ -6,6 +6,7 @@ CAPTURE_INT = Transform(/^(?:-?\d+|zero|one|two|three|four|five|six|seven|eight|
 end
 
 def value_to_type(input, expected_type)
+  return nil if input.blank?
   case 
   when expected_type.constantize == DateTime
     DateTime.parse(input)
@@ -38,6 +39,12 @@ end
 
 ########### given
 
+########### when
+
+When(/^the client requests a list of ([^"]*)$/) do |endpoint|
+  get("/#{endpoint}")
+end
+
 ############ then
 
 Then(/^the response contains (#{CAPTURE_INT}) (.*?)s?$/) do |count, resource_type|
@@ -50,3 +57,33 @@ Then(/^the response contains (#{CAPTURE_INT}) (.*?)s?$/) do |count, resource_typ
   end
 end
 
+Then(/^the response contains an? "([^"]*)" attribute of "([^"]*)"$/) do | attr, expected_attr |
+
+  data = MultiJson.load(last_response.body)["data"]
+
+  matched_item = data.select { |datum| datum["attributes"][attr.dasherize] == expected_attr }
+
+  expect(matched_item).to_not be_empty
+end
+
+Then(/^the response contains the following attributes:$/) do |table|
+  expected_attrs = table.hashes.each_with_object({}) do |row, hash|
+    name, value, type = row["attribute"], row["value"], row["type"]
+    hash[name.tr(" ", "_").camelize(:lower)] = value_to_type(value, type)
+  end
+
+  data = MultiJson.load(last_response.body)["data"]
+  # binding.pry
+
+  expect(data["attributes"]).to eq expected_attrs
+end
+
+Then(/^the response contains an array with (#{CAPTURE_INT}) (.*?)s?$/) do |count, resource_type|
+  response_body  = MultiJson.load(last_response.body)
+  expect(response_body["data"].count).to eq count
+  validate_element(response_body["data"].first, of: resource_type)
+end
+
+Then(/^the response status should be "([^"]*)"$/) do |status|
+  expect(last_response.status).to eq status
+end

@@ -12,9 +12,9 @@ Feature: Locations
 
     When the client requests a list of locations
     Then the response contains three locations
-    Then one location has a "address_line1" attribute of "123 Fake Street" 
-    Then one location has a "address_line1" attribute of "456 Fake Street" 
-    Then one location has a "address_line1" attribute of "789 Fake Street" 
+    Then the response contains an "address_line1" attribute of "123 Fake Street"
+    Then the response contains an "address_line1" attribute of "456 Fake Street"
+    Then the response contains an "address_line1" attribute of "789 Fake Street"
 
   Scenario: Search for Location that already exists
     Given the system contains the following locations:
@@ -25,7 +25,7 @@ Feature: Locations
     When I send a GET request to "/locations?filter[state]=CA&filter[postal_code]=91666"
     Then the response status should be "200"
     Then the response contains an array with one location
-    Then one location has a "address_line1" attribute of "123 Fake Street" 
+    Then the response contains an "address_line1" attribute of "123 Fake Street"
 
   Scenario: Search for Location that does not exist
     Given I send and accept JSON
@@ -51,10 +51,9 @@ Feature: Locations
               }
      }
     """
-
     When I send a POST request to "/locations"
     Then the response status should be "201"
-    Then one location has the following attributes: 
+    Then the response contains the following attributes:
       | attribute 	    | type      | value             |
       | address-line1   | String    | 123 Fake Street   |
       | address-line2   | String    | Suite 1500        |
@@ -62,6 +61,33 @@ Feature: Locations
       | state           | String    | CA                |
       | postal-code     | String    | 12345             |
       | notes           | String    | Head to front desk|
+
+  Scenario: Create a Location with minimal data
+    Given I send and accept JSON
+    And   I set JSON request body to:
+    """
+     {
+      "data": {
+                "type": "locations",
+                "attributes": {
+                                  "address-line1": "123 Fake Street",
+                                  "city": "San Francisco",
+                                  "state": "CA",
+                                  "postal-code": "12345"
+                                }
+              }
+     }
+    """
+    When I send a POST request to "/locations"
+    Then the response status should be "201"
+    Then the response contains the following attributes:
+      | attribute 	    | type      | value             |
+      | address-line1   | String    | 123 Fake Street   |
+      | address-line2   | String    |                   |
+      | city            | String    | San Francisco     |
+      | state           | String    | CA                |
+      | postal-code     | String    | 12345             |
+      | notes           | String    |                   |
 
 
   Scenario: Create a Location with insufficient data
@@ -81,7 +107,7 @@ Feature: Locations
     When I send a POST request to "/locations"
     Then the response status should be "422"
 
-  Scenario: Attempt to create duplicate location
+  Scenario: Attempt to create duplicate Location
     Given the system contains the following locations:
       | address_line1     |  city     | state | postal_code |
       | 123 Fake Street   | Fakeville | CA    | 91666 			|
@@ -93,10 +119,10 @@ Feature: Locations
       "data": {
                 "type": "locations",
                         "attributes": {
-                                       "address-line1": "123 Fake Street",
-																			 "city": "Fakeville",
-																			 "state": "CA",
-																			 "postal-code": "91666"
+                                      "address-line1": "123 Fake Street",
+                                      "city": "Fakeville",
+                                      "state": "CA",
+                                      "postal-code": "91666"
                                       }
               }
      }

@@ -39,7 +39,7 @@ When(/^the client requestes the call to action containing the title "([^"]*)"$/)
   get("/call_to_actions/#{cta.id}")
 end
 
-When(/^the client requests a list of calls to action$/) do
+When(/^the client requests the list of calls to action$/) do
   get("/call_to_actions")
 end
 

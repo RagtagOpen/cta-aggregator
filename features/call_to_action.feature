@@ -10,7 +10,7 @@ Feature: Calls to Action
       | CTA Two   |
       | CTA Three |
 
-    When the client requests a list of calls to action
+    When the client requests the list of calls to action
     Then the response will contain three calls to action
     Then one call to action has a the a "title" attributes of "CTA One" 
     Then one call to action has a the a "title" attributes of "CTA Two" 
