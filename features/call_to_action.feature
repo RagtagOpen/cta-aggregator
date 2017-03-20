@@ -117,7 +117,6 @@ Feature: Calls to Action
     When I send a POST request to "/call_to_actions"
     Then the response status should be "422"
 
-    @active
   Scenario: Attempt to create duplicate Call to Action
     Given the system contains the following calls to action:
       | title   | description | free| start_at             | end_at              | event_type  | website         |

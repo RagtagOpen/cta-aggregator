@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170310142856) do
+ActiveRecord::Schema.define(version: 20170320132944) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,13 +21,13 @@ ActiveRecord::Schema.define(version: 20170310142856) do
     t.text     "description"
     t.boolean  "free",        default: true
     t.string   "website"
-    t.datetime "start_at"
-    t.datetime "end_at"
     t.string   "user_uuid"
     t.integer  "action_type"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.uuid     "location_id"
+    t.datetime "start_at"
+    t.datetime "end_at"
   end
 
   create_table "call_to_actions_contacts", id: false, force: :cascade do |t|
@@ -45,14 +45,14 @@ ActiveRecord::Schema.define(version: 20170310142856) do
   end
 
   create_table "locations", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
-    t.string   "address_line1", limit: 1000
-    t.string   "address_line2", limit: 1000
+    t.string   "address_line_1", limit: 1000
+    t.string   "address_line_2", limit: 1000
     t.string   "city"
     t.string   "state"
-    t.string   "postal_code"
+    t.string   "zipcode"
     t.text     "notes"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
 end

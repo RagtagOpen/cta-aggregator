@@ -1,5 +1,5 @@
 class LocationResource < JSONAPI::Resource
-  attributes :address_line1, :address_line2, :city, :state, :postal_code, :notes
+  attributes :address_line_1, :address_line_2, :city, :state, :zipcode, :notes
 
-  filters :address_line1, :address_line2, :city, :state, :postal_code
+  filters :address_line_1, :address_line_2, :city, :state, :zipcode
 end
