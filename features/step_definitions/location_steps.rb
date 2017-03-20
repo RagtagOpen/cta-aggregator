@@ -10,11 +10,6 @@ def validate_location(attrs)
 end
 
 ############# given
-
-Given(/^I send and accept JSON$/) do
-  @headers = { 'ACCEPT' => "application/vnd.api+json", 'CONTENT_TYPE' => 'application/vnd.api+json'}
-end
-
 Given(/^the system contains the following locations:$/) do |table|
   table.hashes.each do |hsh|
 		Location.where(
@@ -28,19 +23,13 @@ Given(/^the system contains the following locations:$/) do |table|
   end
 end
 
-############# when
-
-When(/^I set JSON request body to:$/) do |body|
-   #@body = JSON.dump(JSON.parse(body))
-  #@body = JSON.parse body
-   @body = body
+Given(/^the system contains a location with uuid "([^"]*)"$/) do |uuid|
+  location = Location.where(
+    address_line1: "123 Fake St.",
+    city: "Fakeville",
+    state: "OR",
+    postal_code: "12345"
+  ).first_or_create
+  location.update_attributes(id: uuid)
 end
 
-When(/^I send a POST request to "([^"]*)"$/) do |endpoint|
-  post endpoint, @body,  @headers
-end
-
-When(/^I send a GET request to "([^"]*)"$/) do |endpoint|
- 	# FIXME: remove duplicatation with post method
-  get endpoint, @body,  @headers
-end

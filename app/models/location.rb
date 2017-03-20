@@ -15,7 +15,6 @@ class Location < ApplicationRecord
 			postal_code: self.postal_code,
 		).first
 
-    errors.add(:id, 'already exists') if preexisting_location
-    # is there a better attribute to add this error to?
+    errors.add(:location, 'already exists') if preexisting_location
   end
 end

@@ -39,7 +39,28 @@ end
 
 ########### given
 
+Given(/^I send and accept JSON$/) do
+  @headers = { 'ACCEPT' => "application/vnd.api+json", 'CONTENT_TYPE' => 'application/vnd.api+json'}
+end
+
 ########### when
+
+When(/^I set JSON request body to:$/) do |body|
+   @body = body
+end
+
+When(/^I send a POST request to "([^"]*)"$/) do |endpoint|
+  post(endpoint, @body,  @headers)
+end
+
+When(/^I send a GET request to "([^"]*)"$/) do |endpoint|
+ 	# FIXME: remove duplicatation with post method
+  get(endpoint, @body,  @headers)
+end
+
+When(/^I send a PUT request to "([^"]*)"$/) do |endpoint|
+  put(endpoint, @body,  @headers)
+end
 
 When(/^the client requests a list of ([^"]*)$/) do |endpoint|
   get("/#{endpoint}")
@@ -73,7 +94,6 @@ Then(/^the response contains the following attributes:$/) do |table|
   end
 
   data = MultiJson.load(last_response.body)["data"]
-  # binding.pry
 
   expect(data["attributes"]).to eq expected_attrs
 end
@@ -87,3 +107,4 @@ end
 Then(/^the response status should be "([^"]*)"$/) do |status|
   expect(last_response.status).to eq status
 end
+

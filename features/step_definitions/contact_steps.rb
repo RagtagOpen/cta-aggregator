@@ -8,6 +8,8 @@ def validate_contact(attrs)
   expect(attrs["website"]).to be_a_kind_of(String) if attrs["website"]
 end
 
+########### given
+
 Given(/^the system contains the following contacts:$/) do |table|
   table.hashes.each do |hsh|
 		Contact.where(
@@ -19,3 +21,10 @@ Given(/^the system contains the following contacts:$/) do |table|
   end
 end
 
+Given(/^the system contains a contact with uuid "([^"]*)"$/) do |uuid|
+  contact = Contact.create!(
+    name: "John Doe",
+    email: "#{SecureRandom.base64}@example.com"
+  )
+  contact.update_attributes(id: uuid)
+end

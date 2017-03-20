@@ -3,8 +3,8 @@
 def validate_call_to_action(attrs)
   expect(attrs["title"]).to be_a_kind_of(String) if attrs["title"]
   expect(attrs["description"]).to be_a_kind_of(String) if attrs["description"]
-
-  expect(attrs["free"]).to be_a_kind_of(Boolean) if attrs["free"]
+  expect(attrs["website"]).to be_a_kind_of(String) if attrs["website"]
+  expect(attrs["event_type"]).to be_a_kind_of(String) if attrs["event_type"]
   expect(attrs["start_at"]).to be_a_kind_of(DataTime) if attrs["start_at"]
   expect(attrs["end_at"]).to be_a_kind_of(String) if attrs["end_at"]
 end
@@ -19,16 +19,29 @@ end
 
 Given(/^the system contains the following calls to action:$/) do |table|
   table.hashes.each do |hsh|
-
     CallToAction.where(
       title: hsh["title"],
       description: hsh["description"],
       free: hsh["free"],
       start_at: hsh["start_at"],
       end_at: hsh["end_at"],
-      action_type: CallToAction::CTA_TYPES[hsh["action_type"].try(:to_sym)]
+      website: hsh["website"],
+      action_type: CallToAction::CTA_TYPES[hsh["event_type"].to_sym],
+      location_id: hsh["location_id"]
     ).first_or_create
   end
+end
+
+Given(/^the system contains a call to action with uuid "([^"]*)"$/) do |uuid|
+  cta = CallToAction.where(
+    title: :foobar,
+    description: :desc,
+    website: "www.example.com",
+    action_type: 2,
+    start_at: DateTime.strptime('17524896000', '%s'),
+    end_at:  DateTime.strptime('17524910400', '%s')
+  ).first_or_create
+  cta.update_attributes(id: uuid)
 end
 
 ############# when

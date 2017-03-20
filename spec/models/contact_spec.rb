@@ -2,10 +2,10 @@ require 'rails_helper'
 
 RSpec.describe Contact, type: :model do
 
-  it "contians all necessary data attributes" do
+  it "requires certain data attributes" do
     contact = described_class.new()
     contact.valid?
-    expect((contact.errors[:name]).size).to eq(1)
+    expect(contact.errors[:name]).to_not be_empty
   end
 
   it "validates format of email" do
