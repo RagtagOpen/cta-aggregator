@@ -9,6 +9,7 @@ Feature: Locations
       | 123 Fake Street   | Fakeville | CA    | 91666		|
       | 456 Fake Street   | Gotham    | NY    | 91133		|
       | 789 Fake Street   | Dallas    | TX    | 60612		|
+    And I send and accept JSON
     When the client requests a list of locations
     Then the response contains three locations
     Then the response contains an "address_line_1" attribute of "123 Fake Street"

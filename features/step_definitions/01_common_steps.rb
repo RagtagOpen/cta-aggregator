@@ -50,16 +50,16 @@ When(/^I set JSON request body to:$/) do |body|
 end
 
 When(/^I send a POST request to "([^"]*)"$/) do |endpoint|
-  post(endpoint, @body,  @headers)
+  post(endpoint, @body, @headers)
 end
 
 When(/^I send a GET request to "([^"]*)"$/) do |endpoint|
  	# FIXME: remove duplicatation with post method
-  get(endpoint, @body,  @headers)
+  get(endpoint, @body, @headers)
 end
 
 When(/^I send a PUT request to "([^"]*)"$/) do |endpoint|
-  put(endpoint, @body,  @headers)
+  put(endpoint, @body, @headers)
 end
 
 When(/^the client requests a list of ([^"]*)$/) do |endpoint|
@@ -72,9 +72,9 @@ Then(/^the response contains (#{CAPTURE_INT}) (.*?)s?$/) do |count, resource_typ
   response_body  = MultiJson.load(last_response.body)
 
   if count == 1
-    validate_element(response_body["data"], of: resource_type, count: count)
+    validate_element(response_body["data"], of: resource_type)
   else
-    validate_list(response_body["data"], of: resource_type)
+    validate_list(response_body["data"], of: resource_type, count: count)
   end
 end
 

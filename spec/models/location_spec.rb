@@ -11,13 +11,11 @@ RSpec.describe Location, type: :model do
   end
 
   it "validates uniqueness of location" do
-    location = described_class.new(
-        address_line_1: "123 Fake St.",
-        city: "Bannock",
-        state: "ID",
-        zipcode: "83234"
-    )
-    location.save!
-    expect { location.save! }.to raise_error(ActiveRecord::RecordInvalid)
+    location_attrs = {address_line_1: "123 Fake St.",
+                      city: "Bannock",
+                      state: "ID",
+                      zipcode: "83234" }
+    described_class.create!(location_attrs)
+    expect { described_class.create!(location_attrs) }.to raise_error(ActiveRecord::RecordInvalid)
   end
 end
