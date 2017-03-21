@@ -50,17 +50,18 @@ When(/^the client sets the JSON request body to:$/) do |body|
 end
 
 When(/^the client sends a (GET|POST|PATCH|PUT|DELETE) request to "(.*?)"$/) do |method, path|
+  # automatically prepending v1 here to keep code DRY.  Not sure if this is the best approach.
   case method
   when 'GET'
-    get(path, @body)
+    get("v1/#{path}", @body)
   when 'POST'
-    post(path, @body, @headers)
+    post("v1/#{path}", @body, @headers)
   when 'PATCH'
-    patch(path, @body, @headers)
+    patch("v1/#{path}", @body, @headers)
   when 'PUT'
-    put(path, @body, @headers)
+    put("v1/#{path}", @body, @headers)
   when 'DELETE'
-    delete(path, @headers)
+    delete("v1/#{path}", @headers)
   end
 end
 
