@@ -11,6 +11,7 @@ Feature: Contacts
       | Barney Rubble     |  777-888-9999 | barney@compuserve.com | www.BarneyRub.com |
     Given the client sends and accepts JSON
     When the client sends a GET request to "/contacts"
+    Then the response status should be "200"
     Then the response contains three contacts
     And the response contains a "name" attribute of "Fred Flintstone" 
     And the response contains a "name" attribute of "Wilma Flintstone" 

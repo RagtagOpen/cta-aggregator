@@ -11,6 +11,7 @@ Feature: Locations
       | 789 Fake Street   | Dallas    | TX    | 60612		|
     Given the client sends and accepts JSON
     When the client sends a GET request to "/locations"
+    Then the response status should be "200"
     Then the response contains three locations
     And the response contains an "address_line_1" attribute of "123 Fake Street"
     And the response contains an "address_line_1" attribute of "456 Fake Street"

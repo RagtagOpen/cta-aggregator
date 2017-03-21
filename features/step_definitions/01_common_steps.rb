@@ -73,6 +73,7 @@ Then(/^the response contains (#{CAPTURE_INT}) (.*?)s?$/) do |count, resource_typ
   response_body  = MultiJson.load(last_response.body)
 
   if count == 1
+    # FIXME: will throw false positive if response has only 1 object in is meant to.
     validate_element(response_body["data"], of: resource_type)
   else
     validate_list(response_body["data"], of: resource_type, count: count)

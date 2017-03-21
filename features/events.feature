@@ -10,12 +10,38 @@ Feature: Events
       | CTA Two  | Lorem ipsum | true| 2018-05-19 10:30:14  | 2018-05-19 14:30:14 | phone        | www.example.com |
       | CTA Three| Lorem ipsum | true| 2018-05-19 10:30:14  | 2018-05-19 14:30:14 | phone        | www.example.com |
     When the client sends a GET request to "/events"
+    Then the response status should be "200"
     Then the response contains three events
     And the response contains a "title" attribute of "CTA One" 
     And the response contains a "title" attribute of "CTA Two" 
     And the response contains a "title" attribute of "CTA Three" 
 
-  Scenario: Retrieve a event
+    @active
+  Scenario: Retrieve a list of events filtered by phone event type
+    Given the system contains the following events:
+      | title    | description | free| start_at             | end_at              | event_type   | website         |
+      | CTA One  | Lorem ipsum | true| 2018-05-19 10:30:14  | 2018-05-19 14:30:14 | onsite       | www.example.com |
+      | CTA Two  | Lorem ipsum | true| 2018-05-19 10:30:14  | 2018-05-19 14:30:14 | onsite       | www.example.com |
+      | CTA Three| Lorem ipsum | true| 2018-05-19 10:30:14  | 2018-05-19 14:30:14 | phone        | www.example.com |
+    When the client sends a GET request to "/events?filter[event-type]=onsite"
+    Then the response status should be "200"
+    Then the response contains two events
+    And the response contains a "title" attribute of "CTA One"
+    And the response contains a "title" attribute of "CTA Two"
+
+  Scenario: Retrieve a list of events filtered by phone event type
+    Given the system contains the following events:
+      | title    | description | free| start_at             | end_at              | event_type   | website         |
+      | CTA One  | Lorem ipsum | true| 2018-05-19 10:30:14  | 2018-05-19 14:30:14 | onsite       | www.example.com |
+      | CTA Two  | Lorem ipsum | true| 2018-05-19 10:30:14  | 2018-05-19 14:30:14 | phone        | www.example.com |
+      | CTA Three| Lorem ipsum | true| 2018-05-19 10:30:14  | 2018-05-19 14:30:14 | phone        | www.example.com |
+    When the client sends a GET request to "/events?filter[event-type]=phone"
+    Then the response status should be "200"
+    Then the response contains two events
+    And the response contains a "title" attribute of "CTA Two"
+    And the response contains a "title" attribute of "CTA Three"
+
+  Scenario: Retrieve an event
     Given the system contains the following events:
       | title   | description | free| start_at           | end_at               | event_type | website         | uuid                                 |
       | foobar  | Lorem ipsum | true| 2018-05-19 10:30:14|  2018-05-19 14:30:14 | onsite     | www.example.com | aaaaaaaa-1111-2222-3333-666666666666 |
@@ -33,7 +59,7 @@ Feature: Events
       | start-time      | Integer   | 1526725814        |
       | end-time        | Integer   | 1526740214        |
 
-   Scenario: Creates a event
+   Scenario: Create an event
     Given the client sends and accepts JSON
     And the client sets the JSON request body to:
     """
