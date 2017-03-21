@@ -63,6 +63,8 @@ When(/^the client sends a (GET|POST|PATCH|PUT|DELETE) request to "(.*?)"$/) do |
   when 'DELETE'
     delete("v1/#{path}", @headers)
   end
+  @body = nil
+  @header = nil
 end
 
 ############ then
