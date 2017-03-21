@@ -43,7 +43,7 @@ Feature: Contacts
          "attributes": {
             "name": "Santa Claus",
             "phone": "123456789",
-            "email": "Santa@example.com",
+            "email": "santa@example.com",
             "website": "www.darpa.gov"
           }
        }
@@ -55,7 +55,7 @@ Feature: Contacts
       | attribute 	    | type      | value               |
       | name            | String    | Santa Claus         |
       | phone           | String    | 123456789           |
-      | email           | String    | Santa@example.com   |
+      | email           | String    | santa@example.com   |
       | website         | String    | www.darpa.gov       |
 
   Scenario: Create a Contact with the minimal data
@@ -67,7 +67,7 @@ Feature: Contacts
          "type": "contacts",
          "attributes": {
             "name": "Santa Claus",
-            "email": "Santa@example.com"
+            "email": "santa@example.com"
           }
        }
     }
@@ -77,7 +77,7 @@ Feature: Contacts
     Then the response contains the following attributes: 
       | attribute 	    | type      | value             |
       | name            | String    | Santa Claus       |
-      | email           | String    | Santa@example.com |
+      | email           | String    | santa@example.com |
       | phone           | String    |                   |
       | website         | String    |                   |
 
@@ -100,7 +100,7 @@ Feature: Contacts
   Scenario: Attempt to create duplicate Contact
     Given the system contains the following contacts:
       | name         |  phone     | email             | website       |
-      | Santa Claus  |  123456789 | Santa@example.com | www.darpa.gov |
+      | Santa Claus  |  123456789 | santa@example.com | www.darpa.gov |
     Given the client sends and accepts JSON
     And the client sets the JSON request body to:
     """
@@ -110,7 +110,7 @@ Feature: Contacts
          "attributes": {
             "name": "Santa Claus",
             "phone": "123456789",
-            "email": "Santa@example.com",
+            "email": "santa@example.com",
             "website": "www.darpa.gov"
           }
        }

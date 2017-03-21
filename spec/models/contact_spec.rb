@@ -29,4 +29,13 @@ RSpec.describe Contact, type: :model do
     contact.valid?
     expect((contact.errors[:phone_or_email]).size).to eq(1)
   end
+
+  it "stores email as lowercase" do
+    email = "FOO@BAR.COM"
+    contact = described_class.create!(
+      email: email,
+      name: "foobar"
+    )
+    expect(contact.email).to eq email.downcase
+  end
 end
