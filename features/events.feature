@@ -16,7 +16,18 @@ Feature: Events
     And the response contains a "title" attribute of "CTA Two" 
     And the response contains a "title" attribute of "CTA Three" 
 
-    @active
+  Scenario: Retrieve a list of upcoming events
+    Given the system contains the following events:
+      | title    | description | free| start_at             | end_at              | event_type   | website         |
+      | CTA One  | Lorem ipsum | true| 2012-05-19 10:30:14  | 2018-05-19 14:30:14 | onsite       | www.example.com |
+      | CTA Two  | Lorem ipsum | true| 2038-01-18 03:14:07  | 2038-01-18 03:14:07 | onsite       | www.example.com |
+      | CTA Three| Lorem ipsum | true| 2036-02-06 03:14:07  | 2036-02-06 03:14:07 | phone        | www.example.com |
+    When the client sends a GET request to "/events?filter[upcoming]=true"
+    Then the response status should be "200"
+    Then the response contains two events
+    And the response contains a "title" attribute of "CTA Two"
+    And the response contains a "title" attribute of "CTA Three"
+
   Scenario: Retrieve a list of events filtered by phone event type
     Given the system contains the following events:
       | title    | description | free| start_at             | end_at              | event_type   | website         |

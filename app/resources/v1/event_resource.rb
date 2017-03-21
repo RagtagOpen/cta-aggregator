@@ -5,6 +5,10 @@ module V1
     relationship :location, to: :one
     relationship :contact, to: :one
 
+    filter :upcoming, apply: -> (records, value, _options) {
+      records.upcoming if value[0] == "true"
+    }
+
     filter :event_type, apply: ->(records, value, _options) {
       records.where(action_type: Event::CTA_TYPES[value[0].to_sym])
     }

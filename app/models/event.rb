@@ -7,6 +7,8 @@ class Event < ApplicationRecord
   validates_presence_of :title, :description, :website, :start_at, :end_at, :event_type
   validate :validate_unique_event, on: :create
 
+  scope :upcoming, lambda { where("start_at >= ?", Date.today).order("start_at") }
+
   attr_accessor :event_type
 
   def event_type=(event)

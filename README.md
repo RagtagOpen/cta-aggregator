@@ -33,7 +33,7 @@ These are the attributes on the events model:
 
 Interested in the events endpoint? Here's how to interact with  it.
 
-* GET request to `/events: list of all events 
+* GET request to `/events`: list of all events
 * GET request to`/event/<UUID>`: show one event
 * POST request to `/events`: create an event
 * GET request to `/events/<UUID>/relationship/contact`: show contact
@@ -51,6 +51,11 @@ Get a list of Events. This will return a paginated list of events.
 Filtering: you can filter by the following attributes:
 * event_type: set filter to either `onsite` or `phone`
 * upcoming: view only upcoming events
+
+View upcoming events
+```
+
+```
 
 View only onsite events
 ```
@@ -163,8 +168,6 @@ This app uses Rspec and Cucumber for unit and integration tests.
  * Should Events endpoint reveal upcoming events by deafult?
 
 ### To Do
-* Events: filter by upcoming events
-* Events: filter by event_type
 * Provide contact and location in event payload?
 * Allow for creation of relationships when Event is created?
 
@@ -179,3 +182,4 @@ This app uses Rspec and Cucumber for unit and integration tests.
 * Versioning: in header rather than url
 * Contacts: get list of events associated with contact
 * Location: get list of events associated with location
+* Events: Change `upcoming` query to be flexible, allowing querying for upcoming and past events
