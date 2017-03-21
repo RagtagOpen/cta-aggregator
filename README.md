@@ -158,6 +158,10 @@ good example of how you'll need to structure requests to the API.
 
 This app uses Rspec and Cucumber for unit and integration tests.
 
+### Questions
+ * Do we really need a contact's physical location?
+ * Should Events endpoint reveal upcoming events by deafult?
+
 ### To Do
 * Events: filter by upcoming events
 * Events: filter by event_type
