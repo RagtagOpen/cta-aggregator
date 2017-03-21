@@ -45,11 +45,3 @@ Given(/^the system contains an? event with uuid "([^"]*)"$/) do |uuid|
   ).first_or_create
   event.update_attributes(id: uuid)
 end
-
-
-########### when
-When(/^the client requests the event with uuid "([^"]*)"$/) do |uuid|
-  get("events/#{uuid}", @body, @headers)
-end
-
-

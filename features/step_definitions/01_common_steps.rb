@@ -39,31 +39,29 @@ end
 
 ########### given
 
-Given(/^I send and accept JSON$/) do
+Given(/^the client sends and accepts JSON$/) do
   @headers = { 'ACCEPT' => "application/vnd.api+json", 'CONTENT_TYPE' => 'application/vnd.api+json'}
 end
 
 ########### when
 
-When(/^I set JSON request body to:$/) do |body|
+When(/^the client sets the JSON request body to:$/) do |body|
    @body = body
 end
 
-When(/^I send a POST request to "([^"]*)"$/) do |endpoint|
-  post(endpoint, @body, @headers)
-end
-
-When(/^I send a GET request to "([^"]*)"$/) do |endpoint|
- 	# FIXME: remove duplicatation with post method
-  get(endpoint, @body, @headers)
-end
-
-When(/^I send a PUT request to "([^"]*)"$/) do |endpoint|
-  put(endpoint, @body, @headers)
-end
-
-When(/^the client requests a list of ([^"]*)$/) do |endpoint|
-  get("/#{endpoint}")
+When(/^the client sends a (GET|POST|PATCH|PUT|DELETE) request to "(.*?)"$/) do |method, path|
+  case method
+  when 'GET'
+    get(path, @body)
+  when 'POST'
+    post(path, @body, @headers)
+  when 'PATCH'
+    patch(path, @body, @headers)
+  when 'PUT'
+    put(path, @body, @headers)
+  when 'DELETE'
+    delete(path, @headers)
+  end
 end
 
 ############ then

@@ -1,7 +1,6 @@
 ############ helpers
 
 def validate_contact(attrs)
-  # FIXME: are these really meaningful expectations?
   expect(attrs["email"]).to be_a_kind_of(String)
   expect(attrs["name"]).to be_a_kind_of(String) if attrs["name"]
   expect(attrs["phone"]).to be_a_kind_of(String) if attrs["phone"]
