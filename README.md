@@ -167,19 +167,15 @@ This app uses Rspec and Cucumber for unit and integration tests.
  * Do we really need a contact's physical location?
  * Should Events endpoint reveal upcoming events by deafult?
 
-### To Do
-* Provide contact and location in event payload?
-* Allow for creation of relationships when Event is created?
-
-
 ### Upcoming Features
 * Authentication
 * Events: endpoint for Event data in iCal format
-* Contact: Phone number validation
 * Events: validate that if event is onsite, that it also has an location associated with it
-* Location: consider location valid if it has either a zip or a city and state (don't require all three)
-* Contacts: case insensitive search for name
-* Versioning: in header rather than url
-* Contacts: get list of events associated with contact
-* Location: get list of events associated with location
 * Events: Change `upcoming` query to be flexible, allowing querying for upcoming and past events
+* Location: consider location valid if it has either a zip or a city and state (don't require all three)
+* Location: get list of events associated with location
+* Contact: Phone number validation
+* Contacts: case insensitive search for name
+* Contacts: get list of events associated with contact
+* Versioning: in header rather than url
+* Allow for creation of relationships when Event is created? Breaks JSON API spec, but would be convenient.
