@@ -1,5 +1,5 @@
 class EventResource < JSONAPI::Resource
-  attributes :id, :title, :description, :free, :start_time, :end_time, :event_type, :website
+  attributes :title, :description, :free, :start_time, :end_time, :event_type, :website
 
   relationship :location, to: :one
   relationship :contact, to: :one

@@ -12,7 +12,7 @@ end
 def validate_events(data, count: nil)
   expect(data).to be_a_kind_of(Array)
   expect(data.count).to eq(count) unless count.nil?
-  data.each { |item| validate_call_to_action(item["attributes"]) }
+  data.each { |item| validate_event(item["attributes"]) }
 end
 
 ############# given

@@ -1,3 +1,0 @@
-class CallToActionsController < ApplicationController
-
-end
