@@ -167,10 +167,6 @@ This app uses Rspec and Cucumber for unit and integration tests.
  * Do we really need a contact's physical location?
  * Should Events endpoint reveal upcoming events by default?
 
-### Github To Dos
- * Can we get repo name changed from `cta-aggregatgor` to `cta-aggregator`?
- * Set default branch to develop
-
 ### Upcoming Features
 * Authentication
 * Events: endpoint for Event data in iCal format
