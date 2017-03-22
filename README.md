@@ -166,6 +166,7 @@ This app uses Rspec and Cucumber for unit and integration tests.
 ### Questions
  * Do we really need a contact's physical location?
  * Should Events endpoint reveal upcoming events by deafult?
+ * Can we get repo name changed from `cta-aggregatgor` to `cta-aggregator`?
 
 ### Upcoming Features
 * Authentication
