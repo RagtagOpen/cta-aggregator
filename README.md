@@ -153,10 +153,10 @@ good example of how you'll need to structure requests to the API.
 ## Setup
 
 * Install PostrgreSQL
+* Install Ruby (Consult `Gemfile` for version)
 * Clone this repo
-* Install dependencies: `bundle install`
-* Run `rake db:create:all`
-* Run test suite: `rake`
+* Run `bin/setup` (This will install dependencies, create db's, etc.)
+* Run test suite: `rake` (To ensure the app is in a good state)
 * Start server: `rails s`
 
 ## Tests
@@ -165,8 +165,7 @@ This app uses Rspec and Cucumber for unit and integration tests.
 
 ### Questions
  * Do we really need a contact's physical location?
- * Should Events endpoint reveal upcoming events by deafult?
- * Can we get repo name changed from `cta-aggregatgor` to `cta-aggregator`?
+ * Should Events endpoint reveal upcoming events by default?
 
 ### Upcoming Features
 * Authentication
