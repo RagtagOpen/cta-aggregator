@@ -15,4 +15,16 @@
       "url": "https://github.com/heroku/heroku-buildpack-ruby"
     }
   ]
+  {
+    "environments": {
+      "test": {
+        "env": {
+        },
+        "scripts": {
+          "test-setup": "rake db:schema:load",
+          "test": "bundle exec rake"
+        }
+      }
+    }
+  }
 }
