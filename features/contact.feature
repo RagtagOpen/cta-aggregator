@@ -17,16 +17,27 @@ Feature: Contacts
     And the response contains a "name" attribute of "Wilma Flintstone" 
     And the response contains a "name" attribute of "Barney Rubble" 
 
-  Scenario: Search for Contact that already exists
+  Scenario: Search for Contact that already exists by email
+    Given the system contains the following contacts:
+      | name              |  phone        | email                 | website       |
+      | Fred Flintstone   |  111-222-3333 | fred@aol.com          | www.hb.com    |
+      | Wilma Flintstone  |  444-555-6666 | WilmaF@aol.com        | www.wilma.com |
+    Given the client sends and accepts JSON
+    When the client sends a GET request to "/contacts?filter[email]=WilmaF@aol.com"
+    Then the response status should be "200"
+    And the response contains an array with one contact
+    And the response contains an "email" attribute of "wilmaf@aol.com"
+
+  Scenario: Search for Contact by name
     Given the system contains the following contacts:
       | name              |  phone        | email                 | website       |
       | Fred Flintstone   |  111-222-3333 | fred@aol.com          | www.hb.com    |
       | Wilma Flintstone  |  444-555-6666 | wilma@aol.com         | www.wilma.com |
     Given the client sends and accepts JSON
-    When the client sends a GET request to "/contacts?filter[email]=wilma@aol.com"
+    When the client sends a GET request to "/contacts?filter[name]=WILMA FLINTSTONE"
     Then the response status should be "200"
     And the response contains an array with one contact
-    And the response contains an "email" attribute of "wilma@aol.com" 
+    And the response contains an "name" attribute of "Wilma Flintstone"
 
   Scenario: Search for Contact that does not exist
     Given the client sends and accepts JSON
