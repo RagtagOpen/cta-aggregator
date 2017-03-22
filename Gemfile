@@ -28,6 +28,7 @@ group :test do
   gem 'rspec-rails', '3.5.2'
   gem 'cucumber-rails', '1.4.5', require: false
   gem 'database_cleaner', '1.5.3'
+  gem 'simplecov', '0.14.1', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
