@@ -1,0 +1,27 @@
+{
+  "name": "cta-aggregator",
+  "scripts": {
+    "postdeploy": "rake db:migrate"
+  },
+  "env": {
+  },
+  "formation": {
+  },
+  "addons": [
+
+  ],
+  "buildpacks": [
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-ruby"
+    }
+  ],
+  "environments": {
+    "test": {
+      "env": {
+      },
+      "addons":[
+        "heroku-postgresql"
+        ]
+    }
+  }
+}
