@@ -70,6 +70,49 @@ Feature: Events
       | start-time      | Integer   | 1526725814        |
       | end-time        | Integer   | 1526740214        |
 
+   Scenario: Create an event with contact and location
+    Given the system contains a location with uuid "bbbbbbbb-1111-2222-3333-666666666666"
+    Given the system contains a contact with uuid "cccccccc-1111-2222-3333-666666666666"
+    Given the client sends and accepts JSON
+    And the client sets the JSON request body to:
+    """
+    {
+      "data": {
+         "type": "events",
+         "attributes": {
+            "title": "foobar",
+            "description": "Lorem ipsum",
+            "free": true,
+            "start-time": "1526725814",
+            "end-time": "1526740214",
+            "event-type": "phone",
+            "website": "www.example.com"
+          },
+          "relationships": {
+            "location": {
+              "data": { "type": "locations", "id": "bbbbbbbb-1111-2222-3333-666666666666" }
+            },
+            "contact": {
+              "data": { "type": "contacts", "id": "cccccccc-1111-2222-3333-666666666666" }
+            }
+          }
+       }
+    }
+    """
+    When the client sends a POST request to "/events"
+    Then the response status should be "201"
+    And the response contains the following attributes:
+      | attribute       | type      | value             |
+      | title           | String    | foobar            |
+      | description     | String    | Lorem ipsum       |
+      | free            | TrueClass | true              |
+      | start-time      | Integer   | 1526725814        |
+      | end-time        | Integer   | 1526740214        |
+      | website         | String    | www.example.com   |
+      | event-type      | String    | phone             |
+    And the event has a location_id of "bbbbbbbb-1111-2222-3333-666666666666"
+    And the event has a contact_id of "cccccccc-1111-2222-3333-666666666666"
+
    Scenario: Create an event
     Given the client sends and accepts JSON
     And the client sets the JSON request body to:
@@ -92,15 +135,14 @@ Feature: Events
     When the client sends a POST request to "/events"
     Then the response status should be "201"
     And the response contains the following attributes:
-      | attribute 	    | type      | value             |
-      | title	  	      | String    | foobar            |
+      | attribute       | type      | value             |
+      | title           | String    | foobar            |
       | description     | String    | Lorem ipsum       |
       | free            | TrueClass | true              |
       | start-time      | Integer   | 1526725814        |
       | end-time        | Integer   | 1526740214        |
-      | website  	      | String    | www.example.com   |
+      | website         | String    | www.example.com   |
       | event-type      | String    | phone             |
-
 
    Scenario: Add location for event
     Given the system contains a event with uuid "aaaaaaaa-1111-2222-3333-666666666666"

@@ -34,6 +34,7 @@ Given(/^the system contains the following events:$/) do |table|
     end
   end
 end
+
 Given(/^the system contains an? event with uuid "([^"]*)"$/) do |uuid|
   event = Event.where(
     title: :foobar,
@@ -44,4 +45,12 @@ Given(/^the system contains an? event with uuid "([^"]*)"$/) do |uuid|
     end_at:  DateTime.strptime('17524910400', '%s')
   ).first_or_create
   event.update_attributes(id: uuid)
+end
+
+########### then
+
+Then(/^the event has an? ([^"]*) of "([^"]*)"$/) do |attr_name, attr_value|
+  id = MultiJson.load(last_response.body)["data"]["id"]
+  event = Event.find(id)
+  expect(event.send(attr_name.to_sym)).to eq attr_value
 end
