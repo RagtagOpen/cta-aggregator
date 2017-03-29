@@ -2,12 +2,12 @@
 
 ############# Helpers
 CAPTURE_INT = Transform(/^(?:-?\d+|zero|one|two|three|four|five|six|seven|eight|nine|ten)$/) do |v|
-    %w(zero one two three four five six seven eight nine ten).index(v) || v.to_i
+  %w(zero one two three four five six seven eight nine ten).index(v) || v.to_i
 end
 
 def value_to_type(input, expected_type)
   return nil if input.blank?
-  case 
+  case
   when expected_type.constantize == DateTime
     DateTime.parse(input)
   when expected_type.constantize == String
@@ -46,7 +46,7 @@ end
 ########### when
 
 When(/^the client sets the JSON request body to:$/) do |body|
-   @body = body
+  @body = body
 end
 
 When(/^the client sends a (GET|POST|PATCH|PUT|DELETE) request to "(.*?)"$/) do |method, path|

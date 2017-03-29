@@ -17,5 +17,4 @@ class Contact < ApplicationRecord
   def downcase_email
     self.email = self.email.downcase
   end
-
 end

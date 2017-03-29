@@ -12,9 +12,9 @@ Feature: CTAs
     When the client sends a GET request to "/ctas"
     Then the response status should be "200"
     Then the response contains three ctas
-    And the response contains a "title" attribute of "CTA One" 
-    And the response contains a "title" attribute of "CTA Two" 
-    And the response contains a "title" attribute of "CTA Three" 
+    And the response contains a "title" attribute of "CTA One"
+    And the response contains a "title" attribute of "CTA Two"
+    And the response contains a "title" attribute of "CTA Three"
 
   Scenario: Retrieve a list of upcoming ctas
     Given the system contains the following ctas:
@@ -166,7 +166,7 @@ Feature: CTAs
     Then the response status should be "204"
 
    Scenario: Add contact for CTA
-    Given the system contains a cta with uuid "aaaaaaaa-1111-2222-3333-666666666666" 
+    Given the system contains a cta with uuid "aaaaaaaa-1111-2222-3333-666666666666"
     Given the system contains a contact with uuid "cccccccc-1111-2222-3333-666666666666"
     Given the client sends and accepts JSON
     And the client sets the JSON request body to:
@@ -182,7 +182,7 @@ Feature: CTAs
     Then the response status should be "204"
 
    Scenario: Add call script for CTA
-    Given the system contains a cta with uuid "aaaaaaaa-1111-2222-3333-666666666666" 
+    Given the system contains a cta with uuid "aaaaaaaa-1111-2222-3333-666666666666"
     Given the system contains a call script with uuid "dddddddd-1111-2222-3333-666666666666"
     Given the client sends and accepts JSON
     And the client sets the JSON request body to:
@@ -190,7 +190,7 @@ Feature: CTAs
      {
        "data": {
          "type": "call-scripts",
-         "id": "dddddddd-1111-2222-3333-666666666666" 
+         "id": "dddddddd-1111-2222-3333-666666666666"
        }
     }
     """

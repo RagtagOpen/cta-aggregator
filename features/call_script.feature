@@ -5,7 +5,7 @@ Feature: Call Scripts
 
   Scenario: Retrieve a list of call scripts
     Given the system contains the following call scripts:
-      | text                                        | 
+      | text                                        |
       | Lorem ipsum dolor sit amet                   |
       | consectetur adipiscing elit                  |
       | sed do eiusmod tempor incididunt ut labore   |
@@ -32,7 +32,7 @@ Feature: Call Scripts
     """
     When the client sends a POST request to "/call_scripts"
     Then the response status should be "201"
-    And the response contains the following attributes: 
+    And the response contains the following attributes:
       | attribute 	 | type      | value                        |
       | text         | String    | Lorem ipsum dolor sit amet   |
 
@@ -54,7 +54,7 @@ Feature: Call Scripts
 
   Scenario: Attempt to create duplicate Script
     Given the system contains the following call scripts:
-      | text                                        | 
+      | text                                        |
       | Lorem ipsum dolor sit amet                  |
     Given the client sends and accepts JSON
     And the client sets the JSON request body to:
