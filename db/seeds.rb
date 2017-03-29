@@ -19,8 +19,7 @@ end
 
 25.times do |i|
   Location.create!(
-    address_line_1: "#{Random.rand(250)} #{["W","E", "N", "S"].sample}. #{Random.rand(250)} #{["St", "Ave", "Blvd"].sample}.",
-    address_line_2: ["", "Suite #{Random.rand(3000)}"].sample,
+    address: "#{Random.rand(250)} #{["W","E", "N", "S"].sample}. #{Random.rand(250)} #{["St", "Ave", "Blvd"].sample}.",
     city: ["New York", "San Francisco", "Spokane", "Dallas", "Bannock", "Baltimore", "Los Angeles"].sample,
     state: ["NY", "CA", "WA", "TX", "ID", "MD"].sample,
     zipcode: rand.to_s[2..6]
