@@ -11,6 +11,8 @@ gem 'rails', '5.0.2'
 gem 'pg', '0.19.0'
 gem 'puma', '3.7.1'
 gem 'jsonapi-resources', '0.9.0'
+gem 'knock'
+gem 'bcrypt'
 
 group :development, :test do
   gem 'pry', '0.10.4', require: true
