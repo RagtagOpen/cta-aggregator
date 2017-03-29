@@ -17,27 +17,41 @@ contacts = []
   contacts << Contact.create!(name: name, email: "#{name.gsub('','')}_#{SecureRandom.hex}@example.com")
 end
 
+locations = []
+
 25.times do |i|
-  Location.create!(
+  location = Location.create!(
     address: "#{Random.rand(250)} #{["W","E", "N", "S"].sample}. #{Random.rand(250)} #{["St", "Ave", "Blvd"].sample}.",
     city: ["New York", "San Francisco", "Spokane", "Dallas", "Bannock", "Baltimore", "Los Angeles"].sample,
     state: ["NY", "CA", "WA", "TX", "ID", "MD"].sample,
     zipcode: rand.to_s[2..6]
   )
+  locations << location
 end
 
 Event::CTA_TYPES.each do |event_name, event_value|
   25.times do |i|
+
     start_at = DateTime.new([2017, 2018, 2019].sample, rand(1..12), rand(1..25), rand(1..22), rand(1..40))
-    Event.create!(
+    event = Event.new(
       title: lorem_ipsum.split(/\W+/).sample(5).join(' '),
       description: lorem_ipsum.split(/\W+/).sample(25).join(' '),
       website: "www.#{lorem_ipsum.split(/\W+/).sample}.com",
       free: [true, false].sample,
       start_at: start_at,
       end_at: start_at + ([1,2,3,4].sample).hours,
-      contact_id: (contacts.sample).id,
-      event_type: event_name
+      event_type: event_name,
+      contact_id: (contacts.sample).id
     )
+
+    if event_name == :phone
+      call_script = CallScript.create!(text: lorem_ipsum.split(/\W+/).sample(25).join(' '))
+      event.call_script_id = call_script.id
+    elsif event_name == :onsite
+      event.location_id = (locations.sample).id
+    end
+
+    event.save!
+
   end
 end

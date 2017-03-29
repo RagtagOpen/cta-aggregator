@@ -70,9 +70,10 @@ Feature: Events
       | start-time      | Integer   | 1526725814        |
       | end-time        | Integer   | 1526740214        |
 
-   Scenario: Create an event with contact and location
+   Scenario: Create an event with contact, location, and call script
     Given the system contains a location with uuid "bbbbbbbb-1111-2222-3333-666666666666"
     Given the system contains a contact with uuid "cccccccc-1111-2222-3333-666666666666"
+    Given the system contains a call script with uuid "dddddddd-1111-2222-3333-666666666666"
     Given the client sends and accepts JSON
     And the client sets the JSON request body to:
     """
@@ -94,6 +95,9 @@ Feature: Events
             },
             "contact": {
               "data": { "type": "contacts", "id": "cccccccc-1111-2222-3333-666666666666" }
+            },
+            "call-script": {
+              "data": { "type": "call-scripts", "id": "dddddddd-1111-2222-3333-666666666666" }
             }
           }
        }
@@ -112,6 +116,7 @@ Feature: Events
       | event-type      | String    | phone             |
     And the event has a location_id of "bbbbbbbb-1111-2222-3333-666666666666"
     And the event has a contact_id of "cccccccc-1111-2222-3333-666666666666"
+    And the event has a call_script_id of "dddddddd-1111-2222-3333-666666666666"
 
    Scenario: Create an event
     Given the client sends and accepts JSON
@@ -175,6 +180,23 @@ Feature: Events
     """
     When the client sends a PUT request to "/events/aaaaaaaa-1111-2222-3333-666666666666/relationships/contact"
     Then the response status should be "204"
+
+   Scenario: Add call_script for event
+    Given the system contains a event with uuid "aaaaaaaa-1111-2222-3333-666666666666" 
+    Given the system contains a call script with uuid "dddddddd-1111-2222-3333-666666666666"
+    Given the client sends and accepts JSON
+    And the client sets the JSON request body to:
+    """
+     {
+       "data": {
+         "type": "call_scripts",
+         "id": "dddddddd-1111-2222-3333-666666666666" 
+       }
+    }
+    """
+    When the client sends a PUT request to "/events/aaaaaaaa-1111-2222-3333-666666666666/relationships/call_script"
+    Then the response status should be "204"
+
 
   Scenario: Create a event with insufficient data
     Given the client sends and accepts JSON

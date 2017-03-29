@@ -81,11 +81,8 @@ Then(/^the response contains (#{CAPTURE_INT}) (.*?)s?$/) do |count, resource_typ
 end
 
 Then(/^the response contains an? "([^"]*)" attribute of "([^"]*)"$/) do | attr, expected_attr |
-
   data = MultiJson.load(last_response.body)["data"]
-
   matched_item = data.select { |datum| datum["attributes"][attr.dasherize] == expected_attr }
-
   expect(matched_item).to_not be_empty
 end
 

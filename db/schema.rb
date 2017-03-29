@@ -10,11 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170329040233) do
+ActiveRecord::Schema.define(version: 20170331024541) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
+
+  create_table "call_scripts", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.text     "text"
+    t.string   "checksum",   limit: 64
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.index ["checksum"], name: "index_call_scripts_on_checksum", using: :btree
+  end
 
   create_table "contacts", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.string   "name"
@@ -29,14 +37,15 @@ ActiveRecord::Schema.define(version: 20170329040233) do
     t.string   "title"
     t.text     "description"
     t.string   "website"
-    t.boolean  "free",        default: true
+    t.boolean  "free",           default: true
     t.datetime "start_at"
     t.datetime "end_at"
     t.integer  "action_type"
     t.uuid     "location_id"
     t.uuid     "contact_id"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.uuid     "call_script_id"
   end
 
   create_table "locations", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
