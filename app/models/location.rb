@@ -3,6 +3,7 @@ class Location < ApplicationRecord
 
   validates_presence_of :address
   validate :unique_location, :sufficient_location_data_present
+  validates_length_of :state, is: 2
 
   private
 
