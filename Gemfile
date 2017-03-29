@@ -15,6 +15,7 @@ gem 'jsonapi-resources', '0.9.0'
 group :development, :test do
   gem 'pry', '0.10.4', require: true
   gem 'dotenv-rails', '2.2.0'
+  gem "pry-byebug"
 end
 
 group :development do
