@@ -8,7 +8,6 @@ RSpec.describe Event, type: :model do
     expect(event.errors[:description]).to_not be_empty
     expect(event.errors[:website]).to_not be_empty
     expect(event.errors[:start_at]).to_not be_empty
-    expect(event.errors[:end_at]).to_not be_empty
     expect(event.errors[:event_type]).to_not be_empty
   end
 

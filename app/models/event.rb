@@ -4,7 +4,7 @@ class Event < ApplicationRecord
   belongs_to :contact, optional: true #maybe it shuldn't be opeiontal?
   belongs_to :location, optional: true
 
-  validates_presence_of :title, :description, :website, :start_at, :end_at, :event_type
+  validates_presence_of :title, :description, :website, :start_at, :event_type
   validate :validate_unique_event, on: :create
 
   scope :upcoming, -> { where("start_at >= ?", Date.today).order("start_at") }
