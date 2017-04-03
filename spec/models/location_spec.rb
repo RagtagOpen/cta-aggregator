@@ -56,4 +56,13 @@ RSpec.describe Location, type: :model do
     expect(loc.errors[:location]).to eq ['already exists']
   end
 
+  it "validates size of state abbreviation" do
+    location_attrs = { address: "123 Fake St.",
+                       city: "Bannock",
+                       state: "Idaho",
+                       zipcode: "83234" }
+    loc = described_class.new(location_attrs)
+    loc.valid?
+    expect(loc.errors[:state]).to be_present
+  end
 end

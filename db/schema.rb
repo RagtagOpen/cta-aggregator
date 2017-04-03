@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170329030918) do
+ActiveRecord::Schema.define(version: 20170329040233) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 20170329030918) do
   create_table "locations", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.string   "address",    limit: 1000
     t.string   "city"
-    t.string   "state"
+    t.string   "state",      limit: 2
     t.string   "zipcode"
     t.text     "notes"
     t.datetime "created_at",              null: false
