@@ -61,7 +61,8 @@ RSpec.describe Location, type: :model do
                        city: "Bannock",
                        state: "Idaho",
                        zipcode: "83234" }
-    location.valid?
-    expect(location.errors[:state]).to_not be_empty
+    loc = described_class.new(location_attrs)
+    loc.valid?
+    expect(loc.errors[:state]).to be_present
   end
 end
