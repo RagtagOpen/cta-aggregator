@@ -1,15 +1,14 @@
 class Location < ApplicationRecord
   has_many :call_to_actions
 
-  validates_presence_of :address_line_1, :city, :state, :zipcode
-  validate :unique_location
+  validates_presence_of :address
+  validate :unique_location, :sufficient_location_data_present
 
   private
 
   def unique_location
     preexisting_location = self.class.where(
-      address_line_1: self.address_line_1,
-      address_line_2: self.address_line_2,
+      address: self.address,
       city: self.city,
       state: self.state,
       zipcode: self.zipcode,
@@ -17,4 +16,11 @@ class Location < ApplicationRecord
 
     errors.add(:location, 'already exists') if preexisting_location
   end
+
+  def sufficient_location_data_present
+    unless (self.city && self.state) || self.zipcode
+      errors.add(:location, 'requires city and state or zipcode')
+    end
+  end
+
 end

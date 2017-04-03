@@ -5,7 +5,7 @@ Feature: Locations
 
   Scenario: Retrieve a list of locations
     Given the system contains the following locations:
-      | address_line_1    |  city     | state | zipcode |
+      | address    |  city     | state | zipcode |
       | 123 Fake Street   | Fakeville | CA    | 91666		|
       | 456 Fake Street   | Gotham    | NY    | 91133		|
       | 789 Fake Street   | Dallas    | TX    | 60612		|
@@ -13,24 +13,24 @@ Feature: Locations
     When the client sends a GET request to "/locations"
     Then the response status should be "200"
     Then the response contains three locations
-    And the response contains an "address_line_1" attribute of "123 Fake Street"
-    And the response contains an "address_line_1" attribute of "456 Fake Street"
-    And the response contains an "address_line_1" attribute of "789 Fake Street"
+    And the response contains an "address" attribute of "123 Fake Street"
+    And the response contains an "address" attribute of "456 Fake Street"
+    And the response contains an "address" attribute of "789 Fake Street"
 
   Scenario: Search for Location that already exists
     Given the system contains the following locations:
-      | address_line_1  |  city     | state | zipcode |
+      | address  |  city     | state | zipcode |
       | 123 Fake Street | Fakeville | CA    | 91666		|
       | 456 Fake Street | Gotham    | CA    | 91123		|
     Given the client sends and accepts JSON
     When the client sends a GET request to "/locations?filter[state]=CA&filter[zipcode]=91666"
     Then the response status should be "200"
     And the response contains an array with one location
-    And the response contains an "address_line_1" attribute of "123 Fake Street"
+    And the response contains an "address" attribute of "123 Fake Street"
 
   Scenario: Search for Location that does not exist
     Given the client sends and accepts JSON
-    When the client sends a GET request to "/locations?address-line-1=123fakestreet"
+    When the client sends a GET request to "/locations?address=123fakestreet"
     Then the response status should be "200"
     Then the response contains zero locations
 
@@ -42,8 +42,7 @@ Feature: Locations
        "data": {
           "type": "locations",
           "attributes": {
-             "address-line-1": "123 Fake Street",
-             "address-line-2": "Suite 1500",
+             "address": "123 Fake Street",
              "city": "San Francisco",
              "state": "CA",
              "zipcode": "12345",
@@ -55,13 +54,12 @@ Feature: Locations
     When the client sends a POST request to "/locations"
     Then the response status should be "201"
     And the response contains the following attributes:
-      | attribute 	    | type      | value             |
-      | address-line-1  | String    | 123 Fake Street   |
-      | address-line-2  | String    | Suite 1500        |
-      | city            | String    | San Francisco     |
-      | state           | String    | CA                |
-      | zipcode         | String    | 12345             |
-      | notes           | String    | Head to front desk|
+      | attribute   | type      | value             |
+      | address     | String    | 123 Fake Street   |
+      | city        | String    | San Francisco     |
+      | state       | String    | CA                |
+      | zipcode     | String    | 12345             |
+      | notes       | String    | Head to front desk|
 
   Scenario: Create a Location with minimal data
     Given the client sends and accepts JSON
@@ -71,7 +69,7 @@ Feature: Locations
       "data": {
          "type": "locations",
          "attributes": {
-            "address-line-1": "123 Fake Street",
+            "address": "123 Fake Street",
              "city": "San Francisco",
              "state": "CA",
              "zipcode": "12345"
@@ -83,8 +81,7 @@ Feature: Locations
     Then the response status should be "201"
     And the response contains the following attributes:
       | attribute 	    | type      | value             |
-      | address-line-1  | String    | 123 Fake Street   |
-      | address-line-2  | String    |                   |
+      | address         | String    | 123 Fake Street   |
       | city            | String    | San Francisco     |
       | state           | String    | CA                |
       | zipcode         | String    | 12345             |
@@ -99,7 +96,7 @@ Feature: Locations
       "data": {
          "type": "locations",
           "attributes": {
-          "address-line-1": "123 Fake Street"
+          "address": "123 Fake Street"
          }
        }
     }
@@ -109,7 +106,7 @@ Feature: Locations
 
   Scenario: Attempt to create duplicate Location
     Given the system contains the following locations:
-      | address_line_1     |  city     | state | zipcode |
+      | address     |  city     | state | zipcode |
       | 123 Fake Street    | Fakeville | CA    | 91666	 |
     Given the client sends and accepts JSON
     And the client sets the JSON request body to:
@@ -118,7 +115,7 @@ Feature: Locations
       "data": {
          "type": "locations",
           "attributes": {
-             "address-line-1": "123 Fake Street",
+             "address": "123 Fake Street",
              "city": "Fakeville",
              "state": "CA",
              "zipcode": "91666"
