@@ -4,6 +4,7 @@ module V1
 
     relationship :location, to: :one
     relationship :contact, to: :one
+    relationship :call_script, to: :one
 
     filter :upcoming, apply: -> (records, value, _options) {
       records.upcoming if value[0] == "true"

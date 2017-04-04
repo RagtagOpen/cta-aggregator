@@ -1,6 +1,5 @@
 class Contact < ApplicationRecord
-  has_many :call_to_action_contacts
-  has_many :call_to_actions, through: :call_to_action_contacts
+  has_many :call_to_actions
 
   validates_presence_of :name
   validates :email, uniqueness: true, format: /.+@.+\..+/i
