@@ -1,18 +1,18 @@
 ############# Helpers
 
-def validate_event(attrs)
-  expect(attrs["title"]).to be_a_kind_of(String) if attrs["title"]
-  expect(attrs["description"]).to be_a_kind_of(String) if attrs["description"]
-  expect(attrs["website"]).to be_a_kind_of(String) if attrs["website"]
-  expect(attrs["event_type"]).to be_a_kind_of(String) if attrs["event_type"]
-  expect(attrs["start_at"]).to be_a_kind_of(DataTime) if attrs["start_at"]
-  expect(attrs["end_at"]).to be_a_kind_of(String) if attrs["end_at"]
+def validate_cta(attrs)
+  expect(attrs["title"]).to be_a_kind_of(String)
+  expect(attrs["description"]).to be_a_kind_of(String)
+  expect(attrs["website"]).to be_a_kind_of(String)
+  expect(attrs["cta-type"]).to be_a_kind_of(String)
+  expect(attrs["start-time"]).to be_a_kind_of(Integer)
+  expect(attrs["end-time"]).to be_a_kind_of(Integer) if attrs["end_at"]
 end
 
-def validate_events(data, count: nil)
+def validate_ctas(data, count: nil)
   expect(data).to be_a_kind_of(Array)
   expect(data.count).to eq(count) unless count.nil?
-  data.each { |item| validate_event(item["attributes"]) }
+  data.each { |item| validate_cta(item["attributes"]) }
 end
 
 ############# given
@@ -26,7 +26,7 @@ Given(/^the system contains the following ctas:$/) do |table|
       start_at: hsh["start_at"],
       end_at: hsh["end_at"],
       website: hsh["website"],
-      action_type: Event::CTA_TYPES[hsh["cta_type"].to_sym],
+      action_type: CTA::CTA_TYPES[hsh["cta_type"].to_sym],
       location_id: hsh["location_id"]
     ).first_or_create
     if hsh["uuid"]

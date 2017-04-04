@@ -11,7 +11,7 @@ module V1
     }
 
     filter :cta_type, apply: ->(records, value, _options) {
-      records.where(action_type: Event::CTA_TYPES[value[0].to_sym])
+      records.where(action_type: CTA::CTA_TYPES[value[0].to_sym])
     }
 
     def start_time
