@@ -42,16 +42,14 @@ good example of how you'll need to structure requests to the API.
 
 
 ### Questions
- * Do we really need a contact's physical location?
- * Should Events endpoint reveal upcoming events by default?
+ * Should CTA endpoint reveal upcoming CTAs by default?
 
 ### Upcoming Features
+* How to run seed script on heroku review app?
 * Authentication
 * Events: endpoint for Event data in iCal format
 * Events: Change `upcoming` query to be flexible, allowing querying for upcoming and past events
-* Location: consider location valid if it has either a zip or a city and state (don't require all three)
 * Location: get list of events associated with location
 * Contacts: get list of events associated with contact
 * Contact: Phone number validation
 * Versioning: in header rather than url
-* Allow for creation of relationships when Event is created? Breaks JSON API spec, but would be convenient.
