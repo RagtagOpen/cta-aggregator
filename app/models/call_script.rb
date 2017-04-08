@@ -1,6 +1,6 @@
 class CallScript < ApplicationRecord
 
-  has_many :events
+  has_many :ctas
 before_validation :add_or_update_checksum
 
   validates_presence_of :text

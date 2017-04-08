@@ -10,8 +10,6 @@ class CTA < ApplicationRecord
 
   scope :upcoming, -> { where("start_at >= ?", Date.today).order("start_at") }
 
-  attr_accessor :cta_type
-
   def cta_type=(cta_name)
     self.action_type = CTA_TYPES[cta_name.to_sym]
   end

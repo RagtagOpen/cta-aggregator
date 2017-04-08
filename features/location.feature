@@ -1,6 +1,6 @@
 Feature: Locations
   As a concerned citizen
-  I want information where events take place
+  I want information where CTAs take place
   So that I can engage in causes I care about
 
   Scenario: Retrieve a list of locations

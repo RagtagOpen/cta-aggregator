@@ -214,7 +214,7 @@ Feature: CTAs
     When the client sends a POST request to "/ctas"
     Then the response status should be "422"
 
-  Scenario: Attempt to create duplicate Event
+  Scenario: Attempt to create duplicate CTAs
     Given the system contains the following ctas:
       | title   | description | free| start_at             | end_at              | cta_type  | website         |
       | foobar  | Lorem ipsum | true| 2018-05-19 10:30:14  | 2018-05-19 14:30:14 | phone       | www.example.com |

@@ -1,7 +1,7 @@
 # CTA Aggregator
 
 The CTA Aggregator is a project to provide a platform-neutral source of truth
-for activism actions ranging from attending an event to getting informed about
+for activism actions ranging from attending a CTA to getting informed about
 a piece of legislation.
 
 It serves as a backend to other sites that permits them access to a broader 
@@ -20,9 +20,9 @@ for more information on the JSON API spec.
 ## Usage
 
 There are three resources that are essential to this API:
-* Event: a call to action
-* Contact: each event has one
-* Location: an event will have a location if it's an `onsite` event
+* CTA: a call to action
+* Contact: each CTA has one
+* Location: a CTA will have a location if it's an `onsite` CTA
 
 ## Setup
 
@@ -47,9 +47,9 @@ good example of how you'll need to structure requests to the API.
 ### Upcoming Features
 * How to run seed script on heroku review app?
 * Authentication
-* Events: endpoint for Event data in iCal format
-* Events: Change `upcoming` query to be flexible, allowing querying for upcoming and past events
-* Location: get list of events associated with location
-* Contacts: get list of events associated with contact
+* CTA: endpoint for CTA data in iCal format
+* CTAs: Change `upcoming` query to be flexible, allowing querying for upcoming and past CTAs
+* Location: get list of CTAs associated with location
+* Contacts: get list of CTAs associated with contact
 * Contact: Phone number validation
 * Versioning: in header rather than url
