@@ -23,11 +23,9 @@ class CTA < ApplicationRecord
   def validate_unique_cta
     preexisting_cta = self.class.where(
       title: self.title,
-      description: self.description,
       website: self.website,
       action_type: self.action_type,
-      start_at: self.start_at,
-      end_at: self.end_at
+      start_at: self.start_at
     ).first
     errors.add(:cta, 'already exists') if preexisting_cta
   end
