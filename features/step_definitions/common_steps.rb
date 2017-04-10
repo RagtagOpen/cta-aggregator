@@ -43,6 +43,10 @@ Given(/^the client sends and accepts JSON$/) do
   @headers = { 'ACCEPT' => "application/vnd.api+json", 'CONTENT_TYPE' => 'application/vnd.api+json'}
 end
 
+Given(/^the client sets an authentication header to "(.*?):(.*?)"$/) do |api_key, secret|
+  @headers['HTTP_AUTHORIZATION'] = "#{api_key}:#{secret}"
+end
+
 ########### when
 
 When(/^the client sets the JSON request body to:$/) do |body|
