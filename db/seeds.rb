@@ -29,29 +29,29 @@ locations = []
   locations << location
 end
 
-Event::CTA_TYPES.each do |event_name, event_value|
+CTA::CTA_TYPES.each do |cta_name, cta_value|
   25.times do |i|
 
     start_at = DateTime.new([2017, 2018, 2019].sample, rand(1..12), rand(1..25), rand(1..22), rand(1..40))
-    event = Event.new(
+    cta = CTA.new(
       title: lorem_ipsum.split(/\W+/).sample(5).join(' '),
       description: lorem_ipsum.split(/\W+/).sample(25).join(' '),
       website: "www.#{lorem_ipsum.split(/\W+/).sample}.com",
       free: [true, false].sample,
       start_at: start_at,
       end_at: start_at + ([1,2,3,4].sample).hours,
-      event_type: event_name,
+      cta_type: cta_name,
       contact_id: (contacts.sample).id
     )
 
-    if event_name == :phone
+    if cta_name == :phone
       call_script = CallScript.create!(text: lorem_ipsum.split(/\W+/).sample(25).join(' '))
-      event.call_script_id = call_script.id
-    elsif event_name == :onsite
-      event.location_id = (locations.sample).id
+      cta.call_script_id = call_script.id
+    elsif cta_name == :onsite
+      cta.location_id = (locations.sample).id
     end
 
-    event.save!
+    cta.save!
 
   end
 end

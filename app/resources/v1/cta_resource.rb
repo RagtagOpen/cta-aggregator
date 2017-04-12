@@ -1,6 +1,6 @@
 module V1
-  class EventResource < JSONAPI::Resource
-    attributes :title, :description, :free, :start_time, :end_time, :event_type, :website
+  class CTAResource < JSONAPI::Resource
+    attributes :title, :description, :free, :start_time, :end_time, :cta_type, :website
 
     relationship :location, to: :one
     relationship :contact, to: :one
@@ -10,8 +10,8 @@ module V1
       records.upcoming if value[0] == "true"
     }
 
-    filter :event_type, apply: ->(records, value, _options) {
-      records.where(action_type: Event::CTA_TYPES[value[0].to_sym])
+    filter :cta_type, apply: ->(records, value, _options) {
+      records.where(action_type: CTA::CTA_TYPES[value[0].to_sym])
     }
 
     def start_time

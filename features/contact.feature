@@ -1,6 +1,6 @@
 Feature: Contacts
   As a concerned citizen
-  I want information about people associated with events 
+  I want information about people associated with CTAs
   So that I can communicate with them
 
   Scenario: Retrieve a list of contacts

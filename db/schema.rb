@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170331024541) do
+ActiveRecord::Schema.define(version: 20170408183935) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20170331024541) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "events", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+  create_table "ctas", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.string   "title"
     t.text     "description"
     t.string   "website"
@@ -43,9 +43,11 @@ ActiveRecord::Schema.define(version: 20170331024541) do
     t.integer  "action_type"
     t.uuid     "location_id"
     t.uuid     "contact_id"
+    t.uuid     "call_script_id"
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
-    t.uuid     "call_script_id"
+    t.index ["start_at", "action_type", "website", "title"], name: "index_ctas_on_start_at_and_action_type_and_website_and_title", unique: true, using: :btree
+    t.index ["start_at"], name: "index_ctas_on_start_at", using: :btree
   end
 
   create_table "locations", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
