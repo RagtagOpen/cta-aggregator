@@ -1,7 +1,7 @@
 {
   "name": "cta-aggregator",
   "scripts": {
-    "postdeploy": "rake db:migrate",
+    "postdeploy": "bundle exec rake db:migrate db:seed",
     "test": "bundle exec rake"
   },
   "env": {
