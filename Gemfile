@@ -25,6 +25,7 @@ group :development do
 end
 
 group :test do
+  gem 'timecop'
   gem 'rspec-rails', '3.5.2'
   gem 'cucumber-rails', '1.4.5', require: false
   gem 'database_cleaner', '1.5.3'

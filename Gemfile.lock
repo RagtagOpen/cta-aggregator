@@ -178,6 +178,7 @@ GEM
       sprockets (>= 3.0.0)
     thor (0.19.4)
     thread_safe (0.3.6)
+    timecop (0.8.1)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     websocket-driver (0.6.5)
@@ -203,6 +204,7 @@ DEPENDENCIES
   simplecov (= 0.14.1)
   spring (= 2.0.1)
   spring-watcher-listen (= 2.0.1)
+  timecop
   tzinfo-data (= 1.2.2)
 
 RUBY VERSION
