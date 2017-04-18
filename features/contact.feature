@@ -47,6 +47,7 @@ Feature: Contacts
 
   Scenario: Create a Contact
     Given the client sends and accepts JSON
+    And the client sets a JWT in the authorization header
     And the client sets the JSON request body to:
     """
     {
@@ -72,6 +73,7 @@ Feature: Contacts
 
   Scenario: Create a Contact with the minimal data
     Given the client sends and accepts JSON
+    And the client sets a JWT in the authorization header
     And the client sets the JSON request body to:
     """
     {
@@ -95,6 +97,7 @@ Feature: Contacts
 
   Scenario: Create a Contact with insufficient data
     Given the client sends and accepts JSON
+    And the client sets a JWT in the authorization header
     And the client sets the JSON request body to:
     """
      {
@@ -114,6 +117,7 @@ Feature: Contacts
       | name         |  phone     | email             | website       |
       | Santa Claus  |  123456789 | santa@example.com | www.darpa.gov |
     Given the client sends and accepts JSON
+    And the client sets a JWT in the authorization header
     And the client sets the JSON request body to:
     """
     {

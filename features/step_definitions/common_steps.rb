@@ -47,6 +47,12 @@ Given(/^the client sets an authentication header to "(.*?):(.*?)"$/) do |api_key
   @headers['HTTP_AUTHORIZATION'] = "#{api_key}:#{secret}"
 end
 
+Given(/^the client sets a JWT in the authorization header$/) do
+  user = User.create!(email: "foo@example.com", password: "password", password_confirmation: "password")
+  token = Knock::AuthToken.new(payload: { sub: user.id }).token
+  @headers['HTTP_AUTHORIZATION'] = "Bearer #{token}"
+end
+
 ########### when
 
 When(/^the client sets the JSON request body to:$/) do |body|

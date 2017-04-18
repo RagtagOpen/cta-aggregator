@@ -19,6 +19,7 @@ Feature: Call Scripts
 
   Scenario: Create a Script
     Given the client sends and accepts JSON
+    And the client sets a JWT in the authorization header
     And the client sets the JSON request body to:
     """
     {
@@ -39,6 +40,7 @@ Feature: Call Scripts
 
   Scenario: Create a Script with insufficient data
     Given the client sends and accepts JSON
+    And the client sets a JWT in the authorization header
     And the client sets the JSON request body to:
     """
      {
@@ -57,6 +59,7 @@ Feature: Call Scripts
       | text                                        |
       | Lorem ipsum dolor sit amet                  |
     Given the client sends and accepts JSON
+    And the client sets a JWT in the authorization header
     And the client sets the JSON request body to:
     """
     {

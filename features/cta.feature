@@ -75,6 +75,7 @@ Feature: CTAs
     Given the system contains a contact with uuid "cccccccc-1111-2222-3333-666666666666"
     Given the system contains a call script with uuid "dddddddd-1111-2222-3333-666666666666"
     Given the client sends and accepts JSON
+    And the client sets a JWT in the authorization header
     And the client sets the JSON request body to:
     """
     {
@@ -120,6 +121,7 @@ Feature: CTAs
 
    Scenario: Create an CTA
     Given the client sends and accepts JSON
+    And the client sets a JWT in the authorization header
     And the client sets the JSON request body to:
     """
     {
@@ -153,6 +155,7 @@ Feature: CTAs
     Given the system contains a cta with uuid "aaaaaaaa-1111-2222-3333-666666666666"
     Given the system contains a location with uuid "bbbbbbbb-1111-2222-3333-666666666666"
     Given the client sends and accepts JSON
+    And the client sets a JWT in the authorization header
     And the client sets the JSON request body to:
     """
     {
@@ -169,6 +172,7 @@ Feature: CTAs
     Given the system contains a cta with uuid "aaaaaaaa-1111-2222-3333-666666666666"
     Given the system contains a contact with uuid "cccccccc-1111-2222-3333-666666666666"
     Given the client sends and accepts JSON
+    And the client sets a JWT in the authorization header
     And the client sets the JSON request body to:
     """
      {
@@ -185,6 +189,7 @@ Feature: CTAs
     Given the system contains a cta with uuid "aaaaaaaa-1111-2222-3333-666666666666"
     Given the system contains a call script with uuid "dddddddd-1111-2222-3333-666666666666"
     Given the client sends and accepts JSON
+    And the client sets a JWT in the authorization header
     And the client sets the JSON request body to:
     """
      {
@@ -200,6 +205,7 @@ Feature: CTAs
 
   Scenario: Create a CTA with insufficient data
     Given the client sends and accepts JSON
+    And the client sets a JWT in the authorization header
     And the client sets the JSON request body to:
     """
     {
@@ -219,6 +225,7 @@ Feature: CTAs
       | title   | description | free| start_at             | end_at              | cta_type  | website         |
       | foobar  | Lorem ipsum | true| 2018-05-19 10:30:14  | 2018-05-19 14:30:14 | phone       | www.example.com |
     Given the client sends and accepts JSON
+    And the client sets a JWT in the authorization header
     And the client sets the JSON request body to:
     """
     {
