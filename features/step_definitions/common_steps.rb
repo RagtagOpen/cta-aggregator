@@ -47,6 +47,13 @@ Given(/^the client sets an authentication header to "(.*?):(.*?)"$/) do |api_key
   @headers['HTTP_AUTHORIZATION'] = "#{api_key}:#{secret}"
 end
 
+Given(/^the client sets an authorization header with a JWT for a user with email: (.*?)$/) do |email|
+  user = User.find_by(email: email)
+  raise ActiveRecord::RecordNotFound, "cannot find user with email: #{email}" unless user
+  token = Knock::AuthToken.new(payload: { sub: user.id }).token
+  @headers['HTTP_AUTHORIZATION'] = "Bearer #{token}"
+end
+
 Given(/^the client sets a JWT in the authorization header$/) do
   user = User.create!(email: "foo@example.com", password: "password", password_confirmation: "password")
   token = Knock::AuthToken.new(payload: { sub: user.id }).token
@@ -117,3 +124,8 @@ Then(/^the response status should be "([^"]*)"$/) do |status|
   expect(last_response.status).to eq status
 end
 
+############### After
+
+After('@time_travel') do
+  Timecop.return
+end

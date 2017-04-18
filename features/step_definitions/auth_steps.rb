@@ -4,6 +4,15 @@ Given(/^the system contains the following users:$/) do |table|
   end
 end
 
+Given(/^the client sets a malformed JWT in the authorization header$/) do
+  token = "#{SecureRandom.uuid.gsub("-","_")}.#{SecureRandom.uuid.gsub("-","_")}"
+  @headers['HTTP_AUTHORIZATION'] = "Bearer #{token}"
+end
+
+When(/^the token expires$/) do
+  Timecop.freeze(DateTime.current + Knock.token_lifetime + 1.hour)
+end
+
 Then(/^the response contains a JWT for a user with email (.*?)$/) do |email|
   user = User.find_by(email: email)
   token = Knock::AuthToken.new(payload: { sub: user.id }).token
