@@ -120,8 +120,11 @@ Feature: CTAs
     And the cta has a call_script_id of "dddddddd-1111-2222-3333-666666666666"
 
    Scenario: Create an CTA
-    Given the client sends and accepts JSON
-    And the client sets a JWT in the authorization header
+    Given the system contains the following users:
+      | email           | password | password_confirmation | api_key |
+      | foo@example.com | secret   | secret                | 12345   |
+    And the client sends and accepts JSON
+    And the client sets an authorization header with a JWT for a user with email: foo@example.com
     And the client sets the JSON request body to:
     """
     {
@@ -150,6 +153,7 @@ Feature: CTAs
       | end-time        | Integer   | 1526740214        |
       | website         | String    | www.example.com   |
       | cta-type        | String    | phone             |
+    And the response contains the following user relationship: foo@example.com
 
    Scenario: Add location for CTA
     Given the system contains a cta with uuid "aaaaaaaa-1111-2222-3333-666666666666"

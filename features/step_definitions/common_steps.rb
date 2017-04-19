@@ -114,6 +114,13 @@ Then(/^the response contains the following attributes:$/) do |table|
   expect(data["attributes"]).to eq expected_attrs
 end
 
+Then(/^the response contains the following user relationship: (.*?)$/) do |email|
+  user = User.find_by!(email: email)
+
+  data = MultiJson.load(last_response.body)["data"]
+  expect(data.dig("relationships", "user", "data", "id")).to eq(user.id)
+end
+
 Then(/^the response contains an array with (#{CAPTURE_INT}) (.*?)s?$/) do |count, resource_type|
   response_body  = MultiJson.load(last_response.body)
   expect(response_body["data"].count).to eq count
