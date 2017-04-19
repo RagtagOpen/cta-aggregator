@@ -149,7 +149,7 @@ Feature: CTAs
       | start-time      | Integer   | 1526725814        |
       | end-time        | Integer   | 1526740214        |
       | website         | String    | www.example.com   |
-      | cta-type       | String    | phone             |
+      | cta-type        | String    | phone             |
 
    Scenario: Add location for CTA
     Given the system contains a cta with uuid "aaaaaaaa-1111-2222-3333-666666666666"
@@ -223,7 +223,7 @@ Feature: CTAs
   Scenario: Attempt to create duplicate CTAs
     Given the system contains the following ctas:
       | title   | description | free| start_at             | end_at              | cta_type  | website         |
-      | foobar  | Lorem ipsum | true| 2018-05-19 10:30:14  | 2018-05-19 14:30:14 | phone       | www.example.com |
+      | foobar  | Lorem ipsum | true| 2018-05-19 10:30:14  | 2018-05-19 14:30:14 | phone     | www.example.com |
     Given the client sends and accepts JSON
     And the client sets a JWT in the authorization header
     And the client sets the JSON request body to:
