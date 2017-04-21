@@ -55,3 +55,13 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 end
+
+RSpec::Matchers.define(:have_error_on) do |error|
+  match do |actual|
+    raise "Must be called on something that responds to errors" unless actual.respond_to?(:errors)
+    actual.errors.details[error].present? &&
+      values_match?(a_collection_including(a_hash_including(error: type)), actual.errors.details[error])
+  end
+
+  chain :of_type, :type
+end

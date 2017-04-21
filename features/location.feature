@@ -36,6 +36,7 @@ Feature: Locations
 
   Scenario: Create a Location
     Given the client sends and accepts JSON
+    And the client sets a JWT in the authorization header
     And the client sets the JSON request body to:
     """
     {
@@ -63,6 +64,7 @@ Feature: Locations
 
   Scenario: Create a Location with minimal data
     Given the client sends and accepts JSON
+    And the client sets a JWT in the authorization header
     And the client sets the JSON request body to:
     """
     {
@@ -90,6 +92,7 @@ Feature: Locations
 
   Scenario: Create a Location with insufficient data
     Given the client sends and accepts JSON
+    And the client sets a JWT in the authorization header
     And the client sets the JSON request body to:
     """
     {
@@ -109,6 +112,7 @@ Feature: Locations
       | address     |  city     | state | zipcode |
       | 123 Fake Street    | Fakeville | CA    | 91666	 |
     Given the client sends and accepts JSON
+    And the client sets a JWT in the authorization header
     And the client sets the JSON request body to:
     """
     {

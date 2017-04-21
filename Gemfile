@@ -11,10 +11,13 @@ gem 'rails', '5.0.2'
 gem 'pg', '0.19.0'
 gem 'puma', '3.7.1'
 gem 'jsonapi-resources', '0.9.0'
+gem 'knock'
+gem 'bcrypt'
 
 group :development, :test do
   gem 'pry', '0.10.4', require: true
   gem 'dotenv-rails', '2.2.0'
+  gem "pry-byebug"
 end
 
 group :development do
@@ -25,6 +28,7 @@ group :development do
 end
 
 group :test do
+  gem 'timecop'
   gem 'rspec-rails', '3.5.2'
   gem 'cucumber-rails', '1.4.5', require: false
   gem 'database_cleaner', '1.5.3'

@@ -5,6 +5,7 @@ module V1
     relationship :location, to: :one
     relationship :contact, to: :one
     relationship :call_script, to: :one
+    relationship :user, to: :one, always_include_linkage_data: true
 
     filter :upcoming, apply: -> (records, value, _options) {
       records.upcoming if value[0] == "true"
@@ -13,6 +14,10 @@ module V1
     filter :cta_type, apply: ->(records, value, _options) {
       records.where(action_type: CTA::CTA_TYPES[value[0].to_sym])
     }
+
+    before_save do
+      @model.user_id = context[:current_user].id if @model.new_record?
+    end
 
     def start_time
       @model.start_at.to_i

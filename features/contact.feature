@@ -13,9 +13,9 @@ Feature: Contacts
     When the client sends a GET request to "/contacts"
     Then the response status should be "200"
     Then the response contains three contacts
-    And the response contains a "name" attribute of "Fred Flintstone" 
-    And the response contains a "name" attribute of "Wilma Flintstone" 
-    And the response contains a "name" attribute of "Barney Rubble" 
+    And the response contains a "name" attribute of "Fred Flintstone"
+    And the response contains a "name" attribute of "Wilma Flintstone"
+    And the response contains a "name" attribute of "Barney Rubble"
 
   Scenario: Search for Contact that already exists by email
     Given the system contains the following contacts:
@@ -47,6 +47,7 @@ Feature: Contacts
 
   Scenario: Create a Contact
     Given the client sends and accepts JSON
+    And the client sets a JWT in the authorization header
     And the client sets the JSON request body to:
     """
     {
@@ -63,7 +64,7 @@ Feature: Contacts
     """
     When the client sends a POST request to "/contacts"
     Then the response status should be "201"
-    And the response contains the following attributes: 
+    And the response contains the following attributes:
       | attribute 	    | type      | value               |
       | name            | String    | Santa Claus         |
       | phone           | String    | 123456789           |
@@ -72,6 +73,7 @@ Feature: Contacts
 
   Scenario: Create a Contact with the minimal data
     Given the client sends and accepts JSON
+    And the client sets a JWT in the authorization header
     And the client sets the JSON request body to:
     """
     {
@@ -86,7 +88,7 @@ Feature: Contacts
     """
     When the client sends a POST request to "/contacts"
     Then the response status should be "201"
-    Then the response contains the following attributes: 
+    Then the response contains the following attributes:
       | attribute 	    | type      | value             |
       | name            | String    | Santa Claus       |
       | email           | String    | santa@example.com |
@@ -95,6 +97,7 @@ Feature: Contacts
 
   Scenario: Create a Contact with insufficient data
     Given the client sends and accepts JSON
+    And the client sets a JWT in the authorization header
     And the client sets the JSON request body to:
     """
      {
@@ -114,6 +117,7 @@ Feature: Contacts
       | name         |  phone     | email             | website       |
       | Santa Claus  |  123456789 | santa@example.com | www.darpa.gov |
     Given the client sends and accepts JSON
+    And the client sets a JWT in the authorization header
     And the client sets the JSON request body to:
     """
     {

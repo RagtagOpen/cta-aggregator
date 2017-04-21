@@ -4,6 +4,7 @@ class CTA < ApplicationRecord
   belongs_to :contact, optional: true
   belongs_to :location, optional: true
   belongs_to :call_script, optional: true
+  belongs_to :user, optional: true
 
   validates_presence_of :title, :description, :website, :start_at, :cta_type
   validate :validate_unique_cta, on: :create

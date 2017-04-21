@@ -12,9 +12,9 @@ Feature: CTAs
     When the client sends a GET request to "/ctas"
     Then the response status should be "200"
     Then the response contains three ctas
-    And the response contains a "title" attribute of "CTA One" 
-    And the response contains a "title" attribute of "CTA Two" 
-    And the response contains a "title" attribute of "CTA Three" 
+    And the response contains a "title" attribute of "CTA One"
+    And the response contains a "title" attribute of "CTA Two"
+    And the response contains a "title" attribute of "CTA Three"
 
   Scenario: Retrieve a list of upcoming ctas
     Given the system contains the following ctas:
@@ -75,6 +75,7 @@ Feature: CTAs
     Given the system contains a contact with uuid "cccccccc-1111-2222-3333-666666666666"
     Given the system contains a call script with uuid "dddddddd-1111-2222-3333-666666666666"
     Given the client sends and accepts JSON
+    And the client sets a JWT in the authorization header
     And the client sets the JSON request body to:
     """
     {
@@ -119,7 +120,11 @@ Feature: CTAs
     And the cta has a call_script_id of "dddddddd-1111-2222-3333-666666666666"
 
    Scenario: Create an CTA
-    Given the client sends and accepts JSON
+    Given the system contains the following users:
+      | email           | password | password_confirmation | api_key |
+      | foo@example.com | secret   | secret                | 12345   |
+    And the client sends and accepts JSON
+    And the client sets an authorization header with a JWT for a user with email: foo@example.com
     And the client sets the JSON request body to:
     """
     {
@@ -147,12 +152,14 @@ Feature: CTAs
       | start-time      | Integer   | 1526725814        |
       | end-time        | Integer   | 1526740214        |
       | website         | String    | www.example.com   |
-      | cta-type       | String    | phone             |
+      | cta-type        | String    | phone             |
+    And the response contains the following user relationship: foo@example.com
 
    Scenario: Add location for CTA
     Given the system contains a cta with uuid "aaaaaaaa-1111-2222-3333-666666666666"
     Given the system contains a location with uuid "bbbbbbbb-1111-2222-3333-666666666666"
     Given the client sends and accepts JSON
+    And the client sets a JWT in the authorization header
     And the client sets the JSON request body to:
     """
     {
@@ -166,9 +173,10 @@ Feature: CTAs
     Then the response status should be "204"
 
    Scenario: Add contact for CTA
-    Given the system contains a cta with uuid "aaaaaaaa-1111-2222-3333-666666666666" 
+    Given the system contains a cta with uuid "aaaaaaaa-1111-2222-3333-666666666666"
     Given the system contains a contact with uuid "cccccccc-1111-2222-3333-666666666666"
     Given the client sends and accepts JSON
+    And the client sets a JWT in the authorization header
     And the client sets the JSON request body to:
     """
      {
@@ -182,15 +190,16 @@ Feature: CTAs
     Then the response status should be "204"
 
    Scenario: Add call script for CTA
-    Given the system contains a cta with uuid "aaaaaaaa-1111-2222-3333-666666666666" 
+    Given the system contains a cta with uuid "aaaaaaaa-1111-2222-3333-666666666666"
     Given the system contains a call script with uuid "dddddddd-1111-2222-3333-666666666666"
     Given the client sends and accepts JSON
+    And the client sets a JWT in the authorization header
     And the client sets the JSON request body to:
     """
      {
        "data": {
          "type": "call-scripts",
-         "id": "dddddddd-1111-2222-3333-666666666666" 
+         "id": "dddddddd-1111-2222-3333-666666666666"
        }
     }
     """
@@ -200,6 +209,7 @@ Feature: CTAs
 
   Scenario: Create a CTA with insufficient data
     Given the client sends and accepts JSON
+    And the client sets a JWT in the authorization header
     And the client sets the JSON request body to:
     """
     {
@@ -217,8 +227,9 @@ Feature: CTAs
   Scenario: Attempt to create duplicate CTAs
     Given the system contains the following ctas:
       | title   | description | free| start_at             | end_at              | cta_type  | website         |
-      | foobar  | Lorem ipsum | true| 2018-05-19 10:30:14  | 2018-05-19 14:30:14 | phone       | www.example.com |
+      | foobar  | Lorem ipsum | true| 2018-05-19 10:30:14  | 2018-05-19 14:30:14 | phone     | www.example.com |
     Given the client sends and accepts JSON
+    And the client sets a JWT in the authorization header
     And the client sets the JSON request body to:
     """
     {
