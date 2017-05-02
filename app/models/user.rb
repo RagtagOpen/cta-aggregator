@@ -9,7 +9,7 @@ class User < ApplicationRecord
   before_save :normalize_email
 
   def self.from_token_request(request)
-    self.find_by(api_key: TokenRequest.new(request).key)
+    self.find_by(api_key: ::TokenRequest.new(request).key)
   end
 
   private

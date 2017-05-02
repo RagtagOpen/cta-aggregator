@@ -3,7 +3,7 @@ module V1
     private
 
     def auth_params
-      token = TokenRequest.new(request)
+      token = ::TokenRequest.new(request)
 
       # NOTE: Knock wants you to get your token using a username and password
       # from a post body. This is bad from a security standpoint, so instead we
