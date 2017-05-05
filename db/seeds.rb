@@ -14,7 +14,7 @@ contacts = []
 
 50.times do 
   name = names.sample
-  contacts << Contact.create!(name: name, email: "#{name.gsub('','')}_#{SecureRandom.hex}@example.com")
+  contacts << Contact.create!(name: name, email: "#{name.gsub(' ','')}_#{SecureRandom.hex}@example.com")
 end
 
 locations = []
