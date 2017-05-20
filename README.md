@@ -4,17 +4,17 @@ The CTA Aggregator is a project to provide a platform-neutral source of truth
 for activism actions ranging from attending a CTA to getting informed about
 a piece of legislation.
 
-It serves as a backend to other sites that permits them access to a broader 
-range of action data without competing for their clicks, eyeballs, likes, 
-follows, etc. 
+It serves as a backend to other sites that permits them access to a broader
+range of action data without competing for their clicks, eyeballs, likes,
+follows, etc.
 
 ## Technology
 
-This is an API-only Rails 5 app.  It uses Postrgres as the persistent data 
+This is an API-only Rails 5 app.  It uses Postgres as the persistent data
 store.
 
 The API is JSON API spec compliant.  API consumers can make requests without
-caring about the underlying technology.  Click [here](http://jsonapi.org/) 
+caring about the underlying technology.  Click [here](http://jsonapi.org/)
 for more information on the JSON API spec.
 
 ## Usage
@@ -24,14 +24,24 @@ There are three resources that are essential to this API:
 * Contact: each CTA has one
 * Location: a CTA will have a location if it's an `onsite` CTA
 
-## Setup
+## Setup (native)
 
-* Install PostrgreSQL
+* Install PostgreSQL
 * Install Ruby (Consult `Gemfile` for version)
 * Clone this repo
 * Run `bin/setup` (This will install dependencies, create db's, etc.)
 * Run test suite: `rake` (To ensure the app is in a good state)
 * Start server: `rails s`
+
+## Setup (Docker)
+
+Install [Docker](https://store.docker.com/search?type=edition&offering=community) for your platform.
+
+    docker-compose run web bin/setup
+    docker-compose run web rake
+    docker-compose up
+
+Open http://localhost:3000
 
 ## Tests
 
