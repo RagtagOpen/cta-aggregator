@@ -6,4 +6,4 @@ ADD Gemfile /cta-aggregator/Gemfile
 ADD Gemfile.lock /cta-aggregator/Gemfile.lock
 RUN gem install bundler
 RUN bundle install
-ADD . /cta-aggregator
+COPY . /cta-aggregator

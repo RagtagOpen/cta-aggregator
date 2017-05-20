@@ -2,6 +2,8 @@ version: '2'
 services:
   db:
     image: postgres
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
   web:
     environment:
       - DATABASE_USER=postgres
