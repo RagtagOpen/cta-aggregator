@@ -16,6 +16,8 @@ require "rails/test_unit/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+Dotenv.load(File.expand_path('/.env', __FILE__)) if File.exist?(File.expand_path('/.env', __FILE__))
+
 module CTAAggregator
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -29,5 +31,11 @@ module CTAAggregator
 
     config.autoload_paths << Rails.root.join('lib')
     config.eager_load_paths << Rails.root.join('lib')
+
+    config.generators do |g|
+      g.test_framework :rspec
+      g.factory_girl dir: 'spec/factories'
+    end
+
   end
 end

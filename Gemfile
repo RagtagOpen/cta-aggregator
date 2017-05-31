@@ -15,9 +15,11 @@ gem 'knock'
 gem 'bcrypt'
 
 group :development, :test do
-  gem 'pry', '0.10.4', require: true
+  gem 'factory_girl_rails'
+  gem 'faker'
+  gem 'pry-rails', '~> 0.3.6'
   gem 'dotenv-rails', '2.2.0'
-  gem "pry-byebug"
+  gem 'pry-byebug'
 end
 
 group :development do
@@ -30,7 +32,6 @@ end
 group :test do
   gem 'timecop'
   gem 'rspec-rails', '3.5.2'
-  gem 'cucumber-rails', '1.4.5', require: false
   gem 'database_cleaner', '1.5.3'
   gem 'simplecov', '0.14.1', require: false
 end
