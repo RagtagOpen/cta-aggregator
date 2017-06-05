@@ -16,6 +16,8 @@ require "rails/test_unit/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+Dotenv.load(File.expand_path('/.env', __FILE__)) if File.exist?(File.expand_path('/.env', __FILE__))
+
 module CTAAggregator
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
