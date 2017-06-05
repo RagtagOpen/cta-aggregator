@@ -33,6 +33,13 @@ There are three resources that are essential to this API:
 * Run test suite: `rake` (To ensure the app is in a good state)
 * Start server: `rails s`
 
+The setup script will create a `.env` file, which can be used to manage 
+environment variables.  The `.env` file is ingored by git.  Although the script
+will copy the `.env.sample` file, the sample file contains no sensitive data 
+(e.g. login credentials).  If codebase requires sensitive information for local
+development, then contact a contributor to get you set access to those additional
+environment variables.
+
 ## Tests
 
 This app uses Rspec and Cucumber for unit and integration tests.
