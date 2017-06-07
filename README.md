@@ -1,12 +1,23 @@
 # CTA Aggregator
 
 The CTA Aggregator is a project to provide a platform-neutral source of truth
-for activism actions ranging from attending a CTA to getting informed about
-a piece of legislation.
+for activism action.  Sometimes a CTA (call to action) might be an event
+at a set location or it might involve contacting a
+member of congress or local politician.
 
-It serves as a backend to other sites that permits them access to a broader 
-range of action data without competing for their clicks, eyeballs, likes, 
-follows, etc. 
+There are several related projects.
+* The API: A main app is a Rails app that facilitates CRUD-ing of calls to  
+action and their related resources.
+* [Documentation site](https://github.com/Ragtagteam/cta-aggregator-docs): a  
+small site that shows visitors how to interact with the API.
+* [Ruby Gem](https://github.com/Ragtagteam/cta-aggregator-client-ruby): A  
+lightweight gem that will take care of adding the appropriate headers and  
+coercing data into the appropriate JSON structure.
+* Web Scrapers: apps that import data from websites and API endpoints.
+
+The goal is for CTA Aggregator to serves as a backend to other sites,  
+permiting them access to a broader range of action data without competing for  
+their clicks, eyeballs, likes, follows, etc.
 
 ## Technology
 
