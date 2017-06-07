@@ -4,6 +4,8 @@ class Target < ApplicationRecord
   serialize :email_addresses, Array
   serialize :phone_numbers, Array
 
+  belongs_to :user, optional: true
+
   has_many :advocacy_campaign_targets
   has_many :advocacy_campaigns, through: :advocacy_campaign_targets
 

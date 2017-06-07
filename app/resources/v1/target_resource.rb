@@ -3,6 +3,12 @@ module V1
     attributes :organization, :given_name, :family_name, :ocdid,
       :postal_addresses, :email_addresses, :phone_numbers
 
+    has_one :user
+
+    before_create do
+      @model.user_id = context[:current_user].id if @model.new_record?
+    end
+
     before_save do
       @model.postal_addresses = Array(@model.postal_addresses).collect do |address|
         address[:address_lines] ||= []

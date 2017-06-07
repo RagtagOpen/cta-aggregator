@@ -2,7 +2,11 @@ class User < ApplicationRecord
   has_secure_password
   has_secure_token :api_key
 
-  has_many :ctas
+  has_many :advocacy_campaigns
+  has_many :targets
+  has_many :events
+  has_many :locations
+
   validates_presence_of :email
   validates_uniqueness_of :email
 

@@ -1,6 +1,7 @@
 class Event < ApplicationRecord
 
   belongs_to :location
+  belongs_to :user, optional: true
 
   validate :validate_uniqueness, on: [:create, :update]
 

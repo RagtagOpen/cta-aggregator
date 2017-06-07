@@ -22,7 +22,7 @@ RSpec.describe "Events", type: :request do
 
   describe "POST /v1/events" do
     it "creates an event" do
-      attributes = build(:event).attributes.except('id', 'location_id', 'created_at', 'updated_at')
+      attributes = build(:event).attributes.except('id', 'user_id', 'location_id', 'created_at', 'updated_at')
 
       location = create(:location)
 
