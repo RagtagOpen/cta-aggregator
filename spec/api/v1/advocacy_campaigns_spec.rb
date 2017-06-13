@@ -44,7 +44,7 @@ RSpec.describe "AdvocacyCampaigns", type: :request do
       post v1_advocacy_campaigns_path, params: params, headers: json_api_headers_with_auth
 
       expect(response).to have_http_status(201)
-      expect(attributes).to eq(json['data']['attributes'])
+      expect(attributes).to eq(json['data']['attributes'].except('target_list'))
 
     end
   end

@@ -12,17 +12,21 @@ class Target < ApplicationRecord
   validates :organization, :given_name, :family_name, :ocdid,
     presence: true
 
-  validate :unique_target
+  validate :unique_target, on: [:create, :update]
 
-  def unique_target
-    existing_target = Target.where(
-      organization: organization,
-      given_name:  given_name,
-      family_name:  family_name,
-      ocdid: ocdid
-    ).first
+  private
 
-    errors.add(:target, 'already exists') if existing_target
-  end
+    def unique_target
+      return if changes.empty?
+
+      existing_target = Target.where(
+        organization: organization,
+        given_name:  given_name,
+        family_name:  family_name,
+        ocdid: ocdid
+      ).first
+
+      errors.add(:target, 'already exists') if existing_target
+    end
 
 end

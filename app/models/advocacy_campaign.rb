@@ -17,6 +17,8 @@ class AdvocacyCampaign < ApplicationRecord
   private
 
     def validate_uniqueness
+      return if changes.empty?
+
       preexisting_advocacy_campaign = AdvocacyCampaign.where(
         title: title,
         description: description,
