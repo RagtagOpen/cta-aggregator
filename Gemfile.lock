@@ -122,6 +122,7 @@ GEM
     public_suffix (2.0.5)
     puma (3.7.1)
     rack (2.0.1)
+    rack-cors (0.4.1)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (5.0.2)
@@ -212,6 +213,7 @@ DEPENDENCIES
   pry (= 0.10.4)
   pry-byebug
   puma (= 3.7.1)
+  rack-cors
   rails (= 5.0.2)
   rspec-rails (= 3.5.2)
   simplecov (= 0.14.1)
@@ -224,4 +226,4 @@ RUBY VERSION
    ruby 2.3.1p112
 
 BUNDLED WITH
-   1.14.3
+   1.15.1
