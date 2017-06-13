@@ -45,7 +45,7 @@ RSpec.describe "AdvocacyCampaigns", type: :request do
 
       expect(response).to have_http_status(201)
       expect(attributes).to eq(json['data']['attributes'].except('target_list'))
-
+      expect(json['data']['attributes']['target_list']).to_not be_empty
     end
   end
 
