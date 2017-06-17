@@ -19,10 +19,5 @@ module V1
       @model.user_id = context[:current_user].id if @model.new_record?
     end
 
-    # before_save do
-    #   @model.save(validate: false)
-    #   binding.pry
-    # end
-
   end
 end
