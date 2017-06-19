@@ -57,8 +57,6 @@ Open http://localhost:3000
 
 This app uses Rspec for unit and integration tests.
 
-Cucumber tests are written from point of view of an API client.  They're a good example of how you'll need to structure requests to the API.
-
 ### Questions
  * Should AdvocacyCampaign endpoint reveal upcoming AdvocacyCampaigns by default?
 
