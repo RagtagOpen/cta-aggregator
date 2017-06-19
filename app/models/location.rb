@@ -1,26 +1,28 @@
 class Location < ApplicationRecord
-  has_many :call_to_actions
+  serialize :address_lines
 
-  validates_presence_of :address
+  belongs_to :user, optional: true
+
+  validates_presence_of :address_lines
   validate :unique_location, :sufficient_location_data_present
-  validates_length_of :state, is: 2, if: -> { self.state }
+  validates_length_of :region, is: 2, if: -> { self.region }
 
   private
 
   def unique_location
-    preexisting_location = self.class.where(
-      address: self.address,
-      city: self.city,
-      state: self.state,
-      zipcode: self.zipcode,
+    preexisting_location = Location.where(
+      address_lines: address_lines,
+      locality: locality,
+      region: region,
+      postal_code: postal_code,
     ).first
 
     errors.add(:location, 'already exists') if preexisting_location
   end
 
   def sufficient_location_data_present
-    unless (self.city && self.state) || self.zipcode
-      errors.add(:location, 'requires city and state or zipcode')
+    unless (locality && region) || postal_code
+      errors.add(:location, 'requires locality and region or postal_code')
     end
   end
 
