@@ -2,9 +2,13 @@
 
 The CTA Aggregator is a project to provide a platform-neutral source of truth for activism action.  Sometimes a CTA (call to action) might be an event at a set location or it might involve contacting a member of congress or local politician.
 
-It serves as a backend to other sites that permits them access to a broader
-range of action data without competing for their clicks, eyeballs, likes,
-follows, etc.
+There are several related projects.
+* The API: A main app is a Rails app that facilitates CRUD-ing of calls to action and their related resources.
+* [Documentation site](https://github.com/Ragtagteam/cta-aggregator-docs): a small site that shows visitors how to interact with the API.
+* [Ruby Gem](https://github.com/Ragtagteam/cta-aggregator-client-ruby): A lightweight gem that will take care of adding the appropriate headers and coercing data into the appropriate JSON structure.
+* Web Scrapers: apps that import data from websites and API endpoints.
+
+The goal is for CTA Aggregator to serves as a backend to other sites, permitting them access to a broader range of action data without competing for their clicks, eyeballs, likes, follows, etc.
 
 ## Technology
 
@@ -14,14 +18,6 @@ store.
 The API is JSON API spec compliant.  API consumers can make requests without
 caring about the underlying technology.  Click [here](http://jsonapi.org/)
 for more information on the JSON API spec.
-
-There are several related projects.
-* The API: A main app is a Rails app that facilitates CRUD-ing of calls to action and their related resources.
-* [Documentation site](https://github.com/Ragtagteam/cta-aggregator-docs): a small site that shows visitors how to interact with the API.
-* [Ruby Gem](https://github.com/Ragtagteam/cta-aggregator-client-ruby): A lightweight gem that will take care of adding the appropriate headers and coercing data into the appropriate JSON structure.
-* Web Scrapers: apps that import data from websites and API endpoints.
-
-The goal is for CTA Aggregator to serves as a backend to other sites, permitting them access to a broader range of action data without competing for their clicks, eyeballs, likes, follows, etc.
 
 ## Usage
 
@@ -60,6 +56,8 @@ Open http://localhost:3000
 ## Tests
 
 This app uses Rspec for unit and integration tests.
+
+Cucumber tests are written from point of view of an API client.  They're a good example of how you'll need to structure requests to the API.
 
 ### Questions
  * Should AdvocacyCampaign endpoint reveal upcoming AdvocacyCampaigns by default?
