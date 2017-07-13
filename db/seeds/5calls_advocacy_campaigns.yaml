@@ -41,9 +41,40 @@
     you for your time and hard work answering the phones. \n\n[IF VOICEMAIL: please
     leave your full street address to ensure your call is tallied.]"
   :action_type: phone
-  :targets: []
+  :target_list: []
+- :origin_system: 5calls:recV3pmdeScKoTMOD
+  :title: Reject the Cruz/Lee Amendment to Trumpcare
+  :description: "The nonpartisan Congressional Budget Office (CBO) has confirmed what
+    the vast majority of Americans already knew: The Senate's Affordable Care Act
+    (ACA) repeal bill, the Better Care Reconciliation Act (BCRA), is a cruel, ill-crafted
+    disaster. The CBO's analysis predicts that BCRA will leave 22 million additional
+    people uninsured by 2026, largely by slashing Medicaid funding by over a quarter
+    by that date (and by 36% by 2036). \n\nWhile Senate Majority Leader Mitch McConnell
+    delayed a June vote on the BCRA because of overwhelming opposition to the bill,
+    Republicans have failed to address the bill's disastrous impact on health insurance
+    access. In fact, a new amendment to the bill, proposed by Senators Ted Cruz (R-TX)
+    and Mike Lee (R-UT) would make the bill even worse for consumers with preexisting
+    conditions buying plans on the individual market. The so-called Cruz Amendment
+    would allow insurers to offer individual market plans that don't meet ACA standards
+    as long as they also offer at least one ACA-compliant plan. This plan will functionally
+    create high-risk pools, with sicker consumers buying the ACA-compliant plans at
+    exorbitant prices. Middle-class consumers, who would not qualify for cost-sharing
+    subsidies, would likely be unable to afford ACA-compliant plans. Cruz and Lee's
+    amendment only adds to the overwhelming evidence that Republicans' true focus
+    in the healthcare debate is achieving tax cuts for the wealthy, not maximizing
+    healthcare access for all Americans. "
+  :template: "Hi, my name is [NAME] and I’m a constituent from [CITY, ZIP].\n\nI’m
+    calling to urge [REP/SEN NAME] to vote against the Better Care Reconciliation
+    Act, especially if it includes the Cruz Amendment. This legislation will cause
+    millions of people to lose their insurance while doing nothing to resolve the
+    Affordable Care Act's shortcomings, and the Cruz amendment only worsens the insurance
+    market for those with pre-existing conditions. I hope the Senator will do the
+    right thing and reject this bill. \n\nThank you for all your hard work answering
+    the phones."
+  :action_type: phone
+  :target_list: []
 - :origin_system: 5calls:recXJyxhZ8DWuJzFd
-  :title: Demand the FCC Maintains Net Neutrality - Day of Action Weds
+  :title: Demand the FCC Maintains Net Neutrality
   :description: |-
     Internet users scored a significant victory in 2014 when the Federal Communications Commission (FCC) installed protections for net neutrality and the "open Internet." Net neutrality allows all users to have equal access to everything available on the Internet, and prevents Internet Service Providers (ISPs) from essentially turning the internet into cable television -- creating fast and slow speeds for sites of their choosing and charging consumers premium prices for upgraded access. Without net neutrality, small businesses, low-income individuals, and much of rural America would lose access to affordable, reasonably-fast internet service.
 
@@ -56,10 +87,12 @@
     to you or your work]\n\nThank you for your time and attention.\n\n[IF LEAVING
     A VOICEMAIL: please leave your full street address to ensure your call is tallied]"
   :action_type: phone
-  :targets:
+  :target_list:
   - :organization: Ajit Pai, FCC Chairman
     :phone_numbers:
-    - 202-418-1000
+    - :primary: true
+      :number: 202-418-1000
+      :number_type: work
 - :origin_system: 5calls:recJCyGymqArKQxz2
   :title: 'Revoke Jared Kushner''s Security Clearance '
   :description: "As a senior advisor the President, Kushner is required to report
@@ -92,16 +125,22 @@
 
     [IF LEAVING A VOICEMAIL: please leave your full street address to ensure your call is tallied]
   :action_type: phone
-  :targets:
+  :target_list:
   - :organization: Senate Select Committee on Intelligence
     :phone_numbers:
-    - 202-224-1700
+    - :primary: true
+      :number: 202-224-1700
+      :number_type: work
   - :organization: House Select Committee on Intelligence - Minority Staff
     :phone_numbers:
-    - 202-225-7690
+    - :primary: true
+      :number: 202-225-7690
+      :number_type: work
   - :organization: House Select Committee on Intelligence - Majority Staff
     :phone_numbers:
-    - 202-225-4121
+    - :primary: true
+      :number: 202-225-4121
+      :number_type: work
 - :origin_system: 5calls:recBmVjfaEO8uOcQo
   :title: Protect Funding for the Election Assistance Commission - Vote Thurs
   :description: "Despite the threat of Russian interference in more of our elections,
@@ -133,10 +172,12 @@
 
     [IF LEAVING A VOICEMAIL: please leave your full street address to ensure your call is tallied]
   :action_type: phone
-  :targets:
+  :target_list:
   - :organization: House Appropriations Committee
     :phone_numbers:
-    - 202-225-2771
+    - :primary: true
+      :number: 202-225-2771
+      :number_type: work
 - :origin_system: 5calls:recchHtFUvj5uzMtA
   :title: Demand Trump, Jr. Testify About His Dealings with Russians
   :description: "It is now clear that Donald Trump, Jr., Trump's campaign manager
@@ -183,19 +224,27 @@
     LEAVING A VOICEMAIL: please leave your full street address to ensure your call
     is tallied]"
   :action_type: phone
-  :targets:
+  :target_list:
   - :organization: Senate Select Committee on Intelligence
     :phone_numbers:
-    - 202-224-1700
+    - :primary: true
+      :number: 202-224-1700
+      :number_type: work
   - :organization: Senate Judiciary Committee
     :phone_numbers:
-    - 202-224-5225
+    - :primary: true
+      :number: 202-224-5225
+      :number_type: work
   - :organization: House Select Committee on Intelligence - Minority Staff
     :phone_numbers:
-    - 202-225-7690
+    - :primary: true
+      :number: 202-225-7690
+      :number_type: work
   - :organization: House Select Committee on Intelligence - Majority Staff
     :phone_numbers:
-    - 202-225-4121
+    - :primary: true
+      :number: 202-225-4121
+      :number_type: work
 - :origin_system: 5calls:recqt6iRWK3VyWkfH
   :title: Keep Religious Organizations Out of Politics - Vote Thurs
   :description: "Update (7/10): The House Appropriations Committee is scheduled to
@@ -230,10 +279,12 @@
 
     [IF LEAVING A VOICEMAIL: please leave your full street address to ensure your call is tallied]
   :action_type: phone
-  :targets:
+  :target_list:
   - :organization: House Appropriations Committee
     :phone_numbers:
-    - 202-225-2771
+    - :primary: true
+      :number: 202-225-2771
+      :number_type: work
 - :origin_system: 5calls:rec3q0qDDoP4c7yrH
   :title: Block Lifetime Appointment of John K Bush to US Court of Appeals  - Vote
     Thurs
@@ -258,10 +309,12 @@
 
     [IF LEAVING A VOICEMAIL: please leave your full street address to ensure your call is tallied]
   :action_type: phone
-  :targets:
+  :target_list:
   - :organization: Senate Judiciary Committee
     :phone_numbers:
-    - 202-224-5225
+    - :primary: true
+      :number: 202-224-5225
+      :number_type: work
 - :origin_system: 5calls:recgHtWhnP7P6tdTM
   :title: Preserve IRS Enforcement of the Insurance Mandate - Vote Thurs
   :description: "While Senate Republicans scramble to develop an Affordable Care Act
@@ -290,10 +343,12 @@
     rates in 2018. \n\nThank you for your time and attention.\n\n[IF LEAVING A VOICEMAIL:
     please leave your full street address to ensure your call is tallied]"
   :action_type: phone
-  :targets:
+  :target_list:
   - :organization: House Appropriations Committee
     :phone_numbers:
-    - 202-225-2771
+    - :primary: true
+      :number: 202-225-2771
+      :number_type: work
 - :origin_system: 5calls:recQw2GwWXarN99gs
   :title: Advocate for a Bipartisan Effort to Repair the ACA
   :description: |-
@@ -313,7 +368,7 @@
     phones. \n\n[IF LEAVING A VOICEMAIL: please leave your full street address to
     ensure your call is tallied] "
   :action_type: phone
-  :targets: []
+  :target_list: []
 - :origin_system: 5calls:recOy7I82l5NqBw8Y
   :title: Block Damien Schiff from the U.S. Court - Vote Thurs
   :description: "Update (7/10): The  Senate Judiciary Committee is scheduled to vote
@@ -344,10 +399,12 @@
 
     [IF LEAVING A VOICEMAIL: please leave your full street address to ensure your call is tallied]
   :action_type: phone
-  :targets:
+  :target_list:
   - :organization: Senate Judiciary Committee
     :phone_numbers:
-    - 202-224-5225
+    - :primary: true
+      :number: 202-224-5225
+      :number_type: work
 - :origin_system: 5calls:receePJu6MS30pEUP
   :title: Protect America’s Rivers, Lakes and Wetlands
   :description: "In June, the Environmental Protection Agency (EPA) published a proposal
@@ -378,43 +435,4 @@
     the phones. \n\n[IF LEAVING A VOICEMAIL: please leave your full street address
     to ensure your call is tallied] "
   :action_type: phone
-  :targets: []
-- :origin_system: 5calls:recgJ9hzeJ68f1unI
-  :title: Support Congressional Oversight for Any Lifting of Russian Sanctions
-  :description: "Update (6/29): The Senate has fast-tracked changes to S.722 so that
-    the \"blue slip\" issue is no longer in play. The bill has been handed back to
-    the House with no procedural issues in the way. It is now up to the House to swiftly
-    act on this bipartisan legislation. \n\nOn June 15th the Senate found common ground
-    and passed a new sanctions bill targeting Russia and Iran with an overwhelming
-    majority (98-2). The bill (S.722) codifies into law sanctions the Obama Administration
-    imposed by executive order at the end of last year, it extends sanctions to Russian
-    individuals engaged in malicious cyber activity or selling weapons to the Assad
-    regime in Syria, and it defines new sanctions to be enforced against Iran for
-    violations of human rights and continuing weapons program activities. Critically,
-    the bill gives Congress the ability to review and reject any proposed lifting
-    of sanctions against Russia by the Trump Administration.\n\nDespite the overwhelming
-    bipartisan support, President Trump opposes this bill and is rumored to be pressuring
-    House Republicans to “slow and block” the legislation. This is specifically concerning
-    given the ongoing investigations into the administration’s dealings with Russia
-    and the Russian interference in the US election.\n\nThe House is not yet considering
-    the bill as it has been flagged by the House parliamentarian for a “blue slip”
-    issue. Congressional Republicans say that this is simply an administrative issue,
-    but Democrats are concerned that this is the first in a series of blocking tactics
-    designed to appease President Trump and lose the momentum behind the legislation.
-    Your calls keep visibility and momentum on this critical check on the Administration’s
-    power in dealing with Russia."
-  :template: |-
-    Hi, my name is [NAME] and I’m a constituent from [CITY, ZIP].
-
-    [IF COMMITTEE, ADD: I'd like to leave a message for the Chairman and Committee Members.]
-
-    I’m calling to urge [COMMITTEE NAME/REP NAME] to support limiting the removal of Russian Sanctions as proposed in S.722. The ongoing investigations into the Trump administration's relationship with Russia make congressional oversight on any changes to the sanctions absolutely critical.
-
-    Thank you for all your hard work answering the phones.
-
-    [IF LEAVING A VOICEMAIL: please leave your full street address to ensure your call is tallied]
-  :action_type: phone
-  :targets:
-  - :organization: 'House Committee on Foreign Affairs '
-    :phone_numbers:
-    - 202-225-5021
+  :target_list: []

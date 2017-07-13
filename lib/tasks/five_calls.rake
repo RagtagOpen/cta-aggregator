@@ -3,7 +3,7 @@ require 'yaml'
 namespace :five_calls do
   desc "Generate a yaml file from 5calls.org"
   task scrape: :environment do
-    output_file = 'test/seeds/advocacy_campaigns.yaml'
+    output_file = 'db/seeds/5calls_advocacy_campaigns.yaml'
     puts "-- scraping 5calls.org --"
     five_calls = ::FiveCalls.new()
     calls = five_calls.calls
@@ -14,7 +14,11 @@ namespace :five_calls do
         targets = call['contacts'].map do |t|
           {
             organization: t['name'],
-            phone_numbers: [t['phone']]
+            phone_numbers: [{
+              primary: true,
+              number: t['phone'],
+              number_type: 'work'
+            }]
           }
         end
         cta = {
@@ -23,7 +27,7 @@ namespace :five_calls do
           description: call['reason'],
           template: call['script'],
           action_type: 'phone',
-          targets: targets
+          target_list: targets
         }
         osdi_ctas << cta
       end
