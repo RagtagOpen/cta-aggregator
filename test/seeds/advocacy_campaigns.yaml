@@ -1,0 +1,420 @@
+---
+- :origin_system: 5calls:rec2cBigI4Dl9vT4M
+  :title: Demand Senators Take a Position on Trumpcare
+  :description: "We're trying out a new feature at 5 Calls, and we can't think of
+    a more important issue to test it out on than Trumpcare. \n\n[Sorry mobile users!
+    The tracker is only available for the web interface at this time. Please go to
+    5calls.org to report your call result]\n\nSenate Republicans have been working
+    in secret to draft their new version of the American Health Care Act (AHCA), the
+    Affordable Care Act repeal plan passed by House Republicans in May. A draft version
+    of the bill, which was released on Thursday, June 22nd, contains provisions to
+    wind down Medicaid expansion, further curtail Medicaid funding by establishing
+    per capita federal funding limits, and allow states to exempt insurers from covering
+    essential health benefits like maternity care. \n\nThe nonpartisan Congressional
+    Budget Office analysis of the bill is out, and its findings are devastating. The
+    bill would leave 22 million additional people uninsured by 2026, cut Medicaid
+    funding by over a quarter by 2025, and increase healthcare spending by driving
+    up higher deductibles and reducing covered benefits, all while delivering tax
+    cuts to insurance executives and wealthy Americans. \n\nHelp us track who is voting
+    for or against this unacceptable bill by calling your senator, asking if they
+    support the AHCA, and *reporting their stance using the buttons below the script
+    \nSUPPORTS, OPPOSES, or UNDECIDED*. \n\nWe'll be updating the tracker in real-time
+    as the vote changes based on your responses, so keep calling to find out your
+    Senator's latest position, especially if your Senator is an undecided or swing
+    vote."
+  :template: "Hi, my name is [NAME] and I'm a constituent from [CITY, ZIP].\n\nI'm
+    calling about the Senate healthcare bill, the BCRA (AHCA in the House). Do know
+    how the Senator plans to vote on it? \n\n[IF SUPPORTS] I am appalled by [REP/SEN
+    NAME] support for a bill that was drafted in secrecy and is predicted to endanger
+    the health and economic stability of millions of Americans. The CBO found that
+    the bill will destablize insurance markets, leave millions uninsured, and raise
+    overall health costs by driving up deductibles and reducing benefits. Shame on
+    [REP/SEN NAME] for prioritizing a hollow partisan victory over their own constituents'
+    needs. I will be actively working against [his/her] re-election.\n\n\n[IF UNDECIDED
+    OR VOICEMAIL] It's time for the Senator to make a decision and tell their constituents
+    where they stand. The CBO has concluded that the bill will leave millions of Americans
+    uninsured, destabilize insurance markets, and lead to higher out-of-pocket costs.
+    I would like to call back, when will the Senator publically tell us [his/her]
+    position?\n\n[IF OPPOSED] Great! Please thank the Senator for standing up for
+    the rights of all Americans to access affordable health care. I hope the Senator
+    will do everything in their power to stop the passage of this cruel bill. \n\nThank
+    you for your time and hard work answering the phones. \n\n[IF VOICEMAIL: please
+    leave your full street address to ensure your call is tallied.]"
+  :action_type: phone
+  :targets: []
+- :origin_system: 5calls:recXJyxhZ8DWuJzFd
+  :title: Demand the FCC Maintains Net Neutrality - Day of Action Weds
+  :description: |-
+    Internet users scored a significant victory in 2014 when the Federal Communications Commission (FCC) installed protections for net neutrality and the "open Internet." Net neutrality allows all users to have equal access to everything available on the Internet, and prevents Internet Service Providers (ISPs) from essentially turning the internet into cable television -- creating fast and slow speeds for sites of their choosing and charging consumers premium prices for upgraded access. Without net neutrality, small businesses, low-income individuals, and much of rural America would lose access to affordable, reasonably-fast internet service.
+
+    The four major ISPs (Comcast, Time Warner Cable, Verizon, and AT&T) have been lobbying against the 2014 net neutrality regulations frustrated by the constraints placed on their ability to profit from those who need their services the most. They have specifically targeted the classification of ISPs as Title II services, a category that requires more strict federal oversight. In response to their lobbying efforts, the new FCC Chairman Ajit Pai has pledged to roll back these net neutrality protections with a softer Title I classification and will allow ISPs to instead make voluntary, unenforceable commitments that they will maintain the open Internet. These ISPs need to know that net neutrality is not up for debate and the open Internet must be preserved.
+  :template: "Hi, my name is [NAME] and I'm a concerned customer from [CITY, ZIP].
+    \n\nI'm calling to express my disapproval that the FCC is trying to kill net neutrality
+    and the strong Title II oversight of Internet Service Providers. Preserving an
+    open internet is crucial for fair and equal access to the resources and information
+    available on it.\n\n[Optional: Explain why net neutrality is personally important
+    to you or your work]\n\nThank you for your time and attention.\n\n[IF LEAVING
+    A VOICEMAIL: please leave your full street address to ensure your call is tallied]"
+  :action_type: phone
+  :targets:
+  - :organization: Ajit Pai, FCC Chairman
+    :phone_numbers:
+    - 202-418-1000
+- :origin_system: 5calls:recJCyGymqArKQxz2
+  :title: 'Revoke Jared Kushner''s Security Clearance '
+  :description: "As a senior advisor the President, Kushner is required to report
+    (via SF86 security clearance forms) any meetings he's had with foreign government
+    officials within the past 7 years. So far, he has withheld information about at
+    least the following encounters: \n\n\n* a meeting with Russian Ambassador Kislyak
+    to set up a communication backchannel\n* another with the head of Russia's VEB
+    bank Sergey Gorkov\n* and now the June 9th meeting with Russian lawyer Natalia
+    Veselnitskaya, Donald Trump, Jr. and Paul Manafort. \n\nKushner's omission of
+    these meetings from his disclosure forms raises serious concerns about his national
+    security clearance and the fact that he has access to top secret government information
+    in the White House. Despite Kushner's confirmed knowledge of the Russian government's
+    effort to help the Trump campaign on June 9th, 2016, and while Special Prosecutor
+    Mueller investigates Kushner's financial ties to Russia and other foreign governments,
+    Kushner continues to hold the highest level of security clearance and influence
+    over public policy. In this context, reports from media sources that Kushner's
+    recommended a hard line against Qatar means possible retribution for a failed
+    personal real estate deal are alarming. \n\nBecause of his repeated failures to
+    disclose suspicious information to government officials, Kushner's presence in
+    the White House continues to pose a threat to our national security and his high
+    level security clearance must be revoked."
+  :template: |-
+    Hi, my name is [NAME] and I’m a constituent from [CITY, ZIP]
+
+    I'd like to leave a message for the Chairman and committee members.
+
+    I'm calling to express my serious concern about Jared Kushner's failure to disclose meetings with foreign officials and his clear knowledge of the Russian government's effort to help the Trump campaign in June of 2016. Because of his repeated dishonesty, his national security clearance must be immediately revoked.
+
+    Thank you for your hard work answering the phones.
+
+    [IF LEAVING A VOICEMAIL: please leave your full street address to ensure your call is tallied]
+  :action_type: phone
+  :targets:
+  - :organization: Senate Select Committee on Intelligence
+    :phone_numbers:
+    - 202-224-1700
+  - :organization: House Select Committee on Intelligence - Minority Staff
+    :phone_numbers:
+    - 202-225-7690
+  - :organization: House Select Committee on Intelligence - Majority Staff
+    :phone_numbers:
+    - 202-225-4121
+- :origin_system: 5calls:recBmVjfaEO8uOcQo
+  :title: Protect Funding for the Election Assistance Commission - Vote Thurs
+  :description: "Despite the threat of Russian interference in more of our elections,
+    the House is now moving to defund the Election Assistance Commission (EAC), the
+    federal agency that is meant to serve as a critical point of defense against any
+    future election system hacking. The House Appropriations Subcommittee on Financial
+    Services voted to pass the FY 2018 Financial Services spending bill which includes
+    a provision to remove the $4 million budget of the EAC. \n\nThe EAC was Created
+    after the chaotic presidential election of 2000 as part of the Help America Vote
+    Act and secures our voting process and infrastructure, providing support that
+    local election officials rely on. In 2014, the commission was tasked with modernizing
+    our severely outdated voting machines with more efficient, secure technology,
+    and is working toward this goal. Terminating the EAC now will abruptly halt this
+    process, putting our democratic process at a higher risk for voting irregularities,
+    machine failures, and hacks. Pairing the demise of the EAC with the installment
+    of Trump's voter fraud Commission led by VP Pence and voting rights attacker Kris
+    Kobach sets the nation up for even more election problems and voter disenfranchisement.\n\nRep.
+    Mike Quigley (D-Ill.) has already introduced an amendment to fund the EAC with
+    $9.2 million. The full House Appropriations Committee will amend and vote on the
+    2018 Financial Services spending bill on July 13th."
+  :template: |-
+    Hi, my name is [NAME] and I'm a constituent from [CITY, ZIP].
+
+    [IF COMMITTEE, ADD]: I'd like to pass along a message for the Chairman and committee members.
+
+    I'm calling to express my concern about the defunding of the Election Assistance Commission. The threat of Russia hacking our elections remains a serious problem, so we should be building up our voting technology and protections, not demolishing an agency that does so. I ask that the 2018 spending bill include sufficient  funding for the EAC.
+
+    Thank you for your time and attention.
+
+    [IF LEAVING A VOICEMAIL: please leave your full street address to ensure your call is tallied]
+  :action_type: phone
+  :targets:
+  - :organization: House Appropriations Committee
+    :phone_numbers:
+    - 202-225-2771
+- :origin_system: 5calls:recchHtFUvj5uzMtA
+  :title: Demand Trump, Jr. Testify About His Dealings with Russians
+  :description: "It is now clear that Donald Trump, Jr., Trump's campaign manager
+    Paul Manafort, and Trump's son-in-law Jared Kushner agreed to meet with a Russian
+    government attorney with the explicit purpose of discussing information that the
+    Russian goverment thought would help the Trump campaign. On June 9, 2016, they
+    met with Natalia Veselnitskaya, a Russian lawyer with long standing ties to the
+    Kremlin. \n\nPrior to the meeting, Trump, Jr. received an email (the text of which
+    he has now released) that stated that \"the Crown prosecutor of Russia\" had \"offered
+    to provide the Trump campaign with some official documents and information that
+    would incriminate Hillary and her dealings with Russia and would be very useful
+    to your [Trump, Jr.'s] father.\" Trump, Jr. expressed interest in meeting to discuss
+    this information immediately, writing, \"[I]f it's what you say I love it especially
+    later in the summer.\" Follow-up emails made it clear that the meeting would be
+    with a \"Russian government attorney\" and cc'ed Manafort and Kushner, meaning
+    all three men were aware that they were meeting with a Russian government lawyer
+    to try to hurt Clinton's campaign. These emails were sent right before the Wikileaks
+    dump publicly revealed Russia's potential meddling. Also of note: two weeks after
+    this meeting took place, Trump, Jr. went on CNN to deny claims of Russians helping
+    the Trump campaign as \"disgusting\" and \"phony\" and has been making similar
+    claims about the Russian election interference ever since.\n\nThe New York Times
+    calls this incident \"the first public indication that at least some in the campaign
+    were willing to accept Russian help.\" Trump, Jr.'s willingness to accept campaign-related
+    information from a hostile foreign source, as well as the presence of top campaign
+    officials Kushner and Manafort at the meeting are clear evidence of collusion
+    between Russia and the Trump campaign. Neither Trump, Jr. nor Kushner disclosed
+    the details of this meeting--in fact, the meeting was unearthed only after Kushner
+    quietly revised a security form to note that it had happened. Their secrecy raises
+    the question of how many more similar meetings took place unbeknownst to investigators,
+    national security officials, and the public. \n\nAs Trump, Jr.'s emails have now
+    revealed, Trump, Jr. deliberately sought out information obtained by a foreign
+    government to interfere with the United States presidential election, an act of
+    possible treason. Donald Trump, Jr., Jared Kushner, and Paul Manafort must publicly
+    testify under oath about the details of this meeting and any other similar meetings
+    they had with Russian nationals."
+  :template: "Hi, my name is [NAME] and I'm a constituent from [CITY, ZIP].\n\n[IF
+    COMMITTEE, ADD]: I'd like to pass along a message for the Chairman and committee
+    members.\n\nI'm calling to request that the committee call Donald Trump, Jr.,
+    Jared Kushner, and Paul Manafort to publicly testify about the details of their
+    June 9th meeting with a Russian lawyer, and any other similar meetings with Russian
+    officials they have failed to disclose. I am deeply concerned that Trump, Jr.'s
+    participation in this meeting reflects the Trump team's possible collusion with
+    Russia to interfere in the 2016 election. \n\nThank you for your time and attention.\n\n[IF
+    LEAVING A VOICEMAIL: please leave your full street address to ensure your call
+    is tallied]"
+  :action_type: phone
+  :targets:
+  - :organization: Senate Select Committee on Intelligence
+    :phone_numbers:
+    - 202-224-1700
+  - :organization: Senate Judiciary Committee
+    :phone_numbers:
+    - 202-224-5225
+  - :organization: House Select Committee on Intelligence - Minority Staff
+    :phone_numbers:
+    - 202-225-7690
+  - :organization: House Select Committee on Intelligence - Majority Staff
+    :phone_numbers:
+    - 202-225-4121
+- :origin_system: 5calls:recqt6iRWK3VyWkfH
+  :title: Keep Religious Organizations Out of Politics - Vote Thurs
+  :description: "Update (7/10): The House Appropriations Committee is scheduled to
+    vote on the 2018 Financial Services spending bill on Thursday, July 13th.\n\nOn
+    June 29th, the House Appropriations Subcommittee on Financial Services and General
+    Government passed a FY 2018 spending bill that includes a provision to bar the
+    Internal Revenue Service from enforcing the Johnson Amendment. The 1954 law currently
+    prohibits tax-exempt houses of worship from endorsing political candidates or
+    making campaign contributions. \n\nCurrently, the IRS revokes the tax-exempt status
+    of any church or religious institution that endorses or funds a political candidate.
+    If the IRS were to stop enforcing this rule, individuals and big donors could
+    skirt campaign finance laws by funneling tax-free donations to candidates by way
+    of churches (currently, no political campaign contributions are tax-exempt). The
+    change would allow religious institutions to become major money players in our
+    government by serving as channels for dark money donations to political campaigns.
+    It is clear that the Subcommittee's rule change is specifically designed with
+    right-wing evangelical groups in mind, as the proposed rule only mentions exempting
+    churches and not other places of worship (mosques, synagogues, etc.). \n\nThe
+    House's attack on the Johnson Amendment parallels the \"Religious Liberty\" executive
+    order Trump signed in May. While a President cannot repeal or change laws such
+    as the Johnson Amendment, Congress can, and is now doing so through the 2018 federal
+    budget. The Financial Services spending bill that contains this provision now
+    moves to the full House Appropriations Committee for further debate."
+  :template: |-
+    Hi, my name is [NAME] and I'm a constituent from [CITY, ZIP].
+
+    [IF COMMITTEE, ADD]: I'd like to pass along a message for the Chairman and committee members.
+
+    I'm calling to express my opposition to the provision in the Financial Services appropriations bill that allows churches to endorse or fund political candidates tax-free. It is vital that we maintain the separation of Church and State, and I ask that the 2018 spending bill sufficiently fund the IRS to allow them to enforce this law.
+
+    Thank you for your time and attention.
+
+    [IF LEAVING A VOICEMAIL: please leave your full street address to ensure your call is tallied]
+  :action_type: phone
+  :targets:
+  - :organization: House Appropriations Committee
+    :phone_numbers:
+    - 202-225-2771
+- :origin_system: 5calls:rec3q0qDDoP4c7yrH
+  :title: Block Lifetime Appointment of John K Bush to US Court of Appeals  - Vote
+    Thurs
+  :description: |-
+    Update (7/10): The  Senate Judiciary Committee is scheduled to vote on Thursday, July 13 to advance John K. Bush for a full Senate vote.
+
+    On Wednesday, June 14th, the Senate Judiciary Committee held a hearing on the nomination of John K. Bush for a lifetime appointment to the U.S. Court of Appeals for the Sixth Circuit. The Civil and Human Rights Coalition urges the Senate to reject Bush, as "John K. Bush is unworthy of a lifetime appointment as a federal judge. His extreme ideology and record show a hostility to women and LGBT people, campaign finance reform, and Democrats. Federal judges should be able to rule with impartiality and fairness, which are two qualities it's clear Bush lacks. We urge the Senate to reject this nominee."
+
+    John K. Bush has zero experience as a judge. He is a commercial litigator and the president of a chapter of The Federalist Society, a group of conservatives and libertarians that promotes “originalism” - the view that the words of the Constitution should be interpreted as intended or understood by the authors. This interpretation results in deeply conservative interpretations of a broad range of issues. For example, from this perspective, Bush criticizes a Supreme Court ruling (NYT vs Sullivan) that protects freedom of the press from libel accusations. This willingness to suppress and punish freedom of the press is especially alarming in the context of Trump’s statement last year: “I’m going to open up our libel laws so when they write purposely negative and horrible and false articles, we can sue them and win lots of money.”
+
+    In addition to signaling a willingness to shield Trump from media scrutiny, Bush has made a number of deeply concerning statements and actions. He opposes public financing of political campaigns, the Affordable Care Act, and said abortion was one of the “two greatest tragedies in our country” (slavery being the other). He also wrote after the 2016 Republican National Convention that “the Democrats are trying to win with the same game plan as in 2008, only substitute woman for Black”.
+
+    The Senate will ultimately decide on Bush’s appointment, and Senators needs to hear from their constituents about their opposition to this highly problematic candidate.
+  :template: |-
+    Hi, my name is [NAME] and I’m a constituent from [CITY, ZIP]
+
+    [IF COMMITTEE, ADD]: I'd like to leave a message for the Chairman and committee members.
+
+    I’m calling today because I’m highly concerned about the appointment of John K. Bush to the US Court of Appeals. Bush has extreme ideology and I am concerned about the quality of his decisions. I ask that the Senator(s) vote against his appointment.
+
+    Thank you for your hard work answering the phones.
+
+    [IF LEAVING A VOICEMAIL: please leave your full street address to ensure your call is tallied]
+  :action_type: phone
+  :targets:
+  - :organization: Senate Judiciary Committee
+    :phone_numbers:
+    - 202-224-5225
+- :origin_system: 5calls:recgHtWhnP7P6tdTM
+  :title: Preserve IRS Enforcement of the Insurance Mandate - Vote Thurs
+  :description: "While Senate Republicans scramble to develop an Affordable Care Act
+    (ACA) repeal bill, House Republicans are working in parallel to undermine the
+    ACA through the federal budget appropriations process. The Republican-controlled
+    House Appropriations subommittee has proposed a 2018 Financial Services spending
+    bill that would prohibit the Internal Revenue Service from enforcing the ACA's
+    individual insurance mandate, which requires individuals to purchase insurance
+    or pay a tax penalty that is either a set dollar amount or a percentage of their
+    household income. \n\nThe ACA's insurance mandate is an essential element of the
+    law. The mandate ensures that healthy people purchase insurance, thus defraying
+    costs for sicker people and lowering premiums for everyone. In fact, the nonpartisan
+    Congressional Budget Office concluded that repealing this mandate alone could
+    be enough to drive up premiums. Insurers have also used uncertainty about the
+    mandate's enforcement to justify premium rate increases in 2018. Republicans must
+    not be allowed to sabotage the ACA. The individual mandate is a critical component
+    of the ACA and in fact promotes lower costs by ensuring a healthy pool of insured
+    Americans.\n\nThe House Appropriations Committee will amend and vote on the 2018
+    Financial Services spending bill on July 13th."
+  :template: "Hi, my name is [NAME] and I'm a constituent from [CITY, ZIP].\n\nI'm
+    calling to express my opposition to the provision in the Financial Services appropriations
+    bill that would block the IRS from enforcing the Affordable Care Act's individual
+    insurance mandate. This mandate is essential for keeping premiums down because
+    it ensures a healthy pool of insured Americans. Recent uncertainty about whether
+    the mandate will be enforced is already causing insurers to seek higher premium
+    rates in 2018. \n\nThank you for your time and attention.\n\n[IF LEAVING A VOICEMAIL:
+    please leave your full street address to ensure your call is tallied]"
+  :action_type: phone
+  :targets:
+  - :organization: House Appropriations Committee
+    :phone_numbers:
+    - 202-225-2771
+- :origin_system: 5calls:recQw2GwWXarN99gs
+  :title: Advocate for a Bipartisan Effort to Repair the ACA
+  :description: |-
+    The delayed vote on Senate GOP's new ACA-repeal bill, the Better Care Reconciliation Act (BCRA), represents an opportunity for Republicans to abandon their partisan obsession with dismantling the ACA and instead partner with Democrats to shore up the law. One major Republican critique of the ACA has been that the individual insurance markets are unstable and have increasingly high premiums. However, all analyses of these markets have shown that the markets are stable overall and that consumers have largely been shielded from premium increases thanks to tax subsidies. In fact, most of the instability of the insurance markets have stemmed from insurance company uncertainty about whether Republicans will continue paying the cost-sharing reductions that allow them to insure sicker people at lower cost. Healthcare spending has also slowed under the ACA, and people have objectively benefitted from increased access to healthcare, especially preventive services.
+
+    The Senate repeal bill actually maintains much of the ACA's structure while cruelly cutting things like premium subsidies and funding for Medicaid expansion. Instead of trying to adopt a worse version of the ACA, Republicans should work with Democrats to implement a package of ACA fixes, from insurance market stabilization to negotiation of lower pharmaceutical costs, that would preserve (and even increase) access to affordable health insurance while still containing healthcare spending. Senate Minority Leader Chuck Schumer (D-NY) has already called on Trump to meet with Democrats to find a bipartisan way forward. Now, it's on Republicans to do the right thing and shift their focus from repealing the ACA to fixing the ACA.
+  :template: "Hi, my name is [NAME] and I'm a constituent from [CITY, ZIP].   \n\n[IF
+    REPUBLICAN]: I'm calling to encourage [REP/SEN NAME] to abandon their ACA repeal
+    efforts and instead advocate for a bipartisan approach to healthcare reform. The
+    majority of Americans want the ACA repaired, not replaced, and it makes far more
+    sense to repair the existing bill than to replace it with a law that introduces
+    a host of new problems while fixing none of the current problems.\n\n[IF DEMOCRAT]:
+    I'm calling to encourage [REP/SEN NAME] to pursue a bipartisan effort to repair
+    the ACA. The Republican plan to repeal the ACA is cruel and unacceptable, and
+    the best way forward for the American people is to find a way to fix the ACA's
+    problems than introduce new ones.\n\nThank you for your hard work answering the
+    phones. \n\n[IF LEAVING A VOICEMAIL: please leave your full street address to
+    ensure your call is tallied] "
+  :action_type: phone
+  :targets: []
+- :origin_system: 5calls:recOy7I82l5NqBw8Y
+  :title: Block Damien Schiff from the U.S. Court - Vote Thurs
+  :description: "Update (7/10): The  Senate Judiciary Committee is scheduled to vote
+    on Thursday, July 13 to advance Damien Schiff for a full Senate vote.\n\nDamien
+    Schiff, Trump's nominee to the U.S. Court of Federal Claims, is infamous for his
+    extremist opinions both in and out of the courtroom. On his anonymous blog, Schiff
+    called Supreme Court Justice Kennedy a \"judicial prostitute,\" accused a California
+    school district of \"teaching 'gayness' in public schools,\" and opposed both
+    Lawrence v. Texas (the landmark Supreme Court ruling that decriminalized homosexual
+    sex) and the legalization of adoptions by same-sex couples. During his time as
+    a lawyer at the conservative Pacific Legal Foundation, Schiff argued for allowing
+    unlimited corporate donations to political campaigns and argued against environmental
+    protection laws including the Endangered Species Act. In a 2011 interview, Schiff
+    claimed that the EPA treated American citizens \"as if they were just slaves.\"
+    At the time, Schiff was representing an Idaho family that was suing the EPA for
+    denying them a permit to build a house on a protected wetland.\n\nSchiff's extremist
+    views suggest there is no place for him in one of the highest courts in our country,
+    and his own words demonstrate that he lacks the gravitas and restraint to serve
+    on the Court of Federal Claims. "
+  :template: |-
+    Hi, my name is [NAME] and I’m a constituent from [CITY, ZIP].
+
+    [IF COMMITTEE, ADD]: I'd like to leave a message for the Chairman and committee members.
+
+    I'm calling to express my concern about Damien Schiff's nomination to the US Court of Federal Claims. Schiff has publicly espoused extremist views that are at odds with judicial precedent, and has consistently proved that he lacks the judgment and temperament to serve on a federal court. I ask that the Senator(s) vote against his nomination.
+
+    Thank you for all your hard work answering the phones.
+
+    [IF LEAVING A VOICEMAIL: please leave your full street address to ensure your call is tallied]
+  :action_type: phone
+  :targets:
+  - :organization: Senate Judiciary Committee
+    :phone_numbers:
+    - 202-224-5225
+- :origin_system: 5calls:receePJu6MS30pEUP
+  :title: Protect America’s Rivers, Lakes and Wetlands
+  :description: "In June, the Environmental Protection Agency (EPA) published a proposal
+    to roll back the Waters of the United States Rule, a 2015 rule that expanded the
+    bodies of water covered by federal environmental protection laws under the Clean
+    Water Act. The rule extended the environmental protections already provided to
+    large, navigable bodies of water to the smaller waters that flow into them, like
+    rivers, streams, and wetlands.  The Obama-era rule was designed to clarify conflicting
+    court rulings. Repealing the rule was a Trump campaign promise.\n\nEnding the
+    Waters of the United States Rule removes Clean Water Act protections from water
+    sources that supply drinking water to one in three Americans to provide regulatory
+    breaks to big corporations.  As the Environmental Law and Policy Center noted,
+    “Rollback of clean water standards rejects years of work building stakeholder
+    input and scientific data support, and it imperils the progress for safe clean
+    drinking water in the Midwest.” Supporters of the Waters of the United States
+    Rule also worry that this is the first step in a broader attempt to gut the Clean
+    Water Act as part of the Trump Administration’s pro-business, anti-environment
+    agenda.\n\nAs we have too frequently seen, state and local jurisdictions do not
+    always adequately protect and maintain water sources, and federal protection is
+    needed to ensure that the water that families, communities, and businesses depend
+    on remains clean and safe from pollution. "
+  :template: "Hi, my name is [NAME] and I’m a constituent from [CITY, ZIP].  \n\nI’m
+    calling to oppose the EPA's planned rollback of the Waters of the United States
+    Rule. Ensuring clean water for all Americans is a national priority that requires
+    federal support, and it is irresponsible to end a rule that protects 1 in 3 Americans'
+    drinking water sources. I urge [SEN/REP NAME] to fight against the elimination
+    of the Waters of the United States Rule.\n\nThank you for your work answering
+    the phones. \n\n[IF LEAVING A VOICEMAIL: please leave your full street address
+    to ensure your call is tallied] "
+  :action_type: phone
+  :targets: []
+- :origin_system: 5calls:recgJ9hzeJ68f1unI
+  :title: Support Congressional Oversight for Any Lifting of Russian Sanctions
+  :description: "Update (6/29): The Senate has fast-tracked changes to S.722 so that
+    the \"blue slip\" issue is no longer in play. The bill has been handed back to
+    the House with no procedural issues in the way. It is now up to the House to swiftly
+    act on this bipartisan legislation. \n\nOn June 15th the Senate found common ground
+    and passed a new sanctions bill targeting Russia and Iran with an overwhelming
+    majority (98-2). The bill (S.722) codifies into law sanctions the Obama Administration
+    imposed by executive order at the end of last year, it extends sanctions to Russian
+    individuals engaged in malicious cyber activity or selling weapons to the Assad
+    regime in Syria, and it defines new sanctions to be enforced against Iran for
+    violations of human rights and continuing weapons program activities. Critically,
+    the bill gives Congress the ability to review and reject any proposed lifting
+    of sanctions against Russia by the Trump Administration.\n\nDespite the overwhelming
+    bipartisan support, President Trump opposes this bill and is rumored to be pressuring
+    House Republicans to “slow and block” the legislation. This is specifically concerning
+    given the ongoing investigations into the administration’s dealings with Russia
+    and the Russian interference in the US election.\n\nThe House is not yet considering
+    the bill as it has been flagged by the House parliamentarian for a “blue slip”
+    issue. Congressional Republicans say that this is simply an administrative issue,
+    but Democrats are concerned that this is the first in a series of blocking tactics
+    designed to appease President Trump and lose the momentum behind the legislation.
+    Your calls keep visibility and momentum on this critical check on the Administration’s
+    power in dealing with Russia."
+  :template: |-
+    Hi, my name is [NAME] and I’m a constituent from [CITY, ZIP].
+
+    [IF COMMITTEE, ADD: I'd like to leave a message for the Chairman and Committee Members.]
+
+    I’m calling to urge [COMMITTEE NAME/REP NAME] to support limiting the removal of Russian Sanctions as proposed in S.722. The ongoing investigations into the Trump administration's relationship with Russia make congressional oversight on any changes to the sanctions absolutely critical.
+
+    Thank you for all your hard work answering the phones.
+
+    [IF LEAVING A VOICEMAIL: please leave your full street address to ensure your call is tallied]
+  :action_type: phone
+  :targets:
+  - :organization: 'House Committee on Foreign Affairs '
+    :phone_numbers:
+    - 202-225-5021

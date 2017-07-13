@@ -14,6 +14,7 @@ gem 'jsonapi-resources', '0.9.0'
 gem 'knock'
 gem 'bcrypt'
 gem 'rack-cors'
+gem 'rest-client'
 
 group :development, :test do
   gem 'factory_girl_rails'
