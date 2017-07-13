@@ -8,20 +8,29 @@
 
 # FactoryGirl.create_list(:event, 25) if Target.count <= 25
 
-path = Rails.root.join('db','seeds','5calls_advocacy_campaigns.yaml')
+# Import 5calls data
+# path = Rails.root.join('db','seeds','5calls_advocacy_campaigns.yaml')
+#
+# File.open(path) do |file|
+#   YAML.load_documents(file) do |doc|
+#     doc.each{ |cta|
+#       cta[:target_list].map!{ |t|
+#         Target.find_or_create_by!(t)
+#       }
+#       campaign = AdvocacyCampaign.find_or_create_by(:origin_system => cta[:origin_system])
+#       campaign.update!(cta)
+#     }
+#   end
+# end
+
+# Import Emily's List data
+path = Rails.root.join('db','seeds','emilys_list_events.yaml')
 
 File.open(path) do |file|
   YAML.load_documents(file) do |doc|
-    doc.each{ |cta|
-      # skip if there's nobody to call (this is the location-indepent data)
-      next if cta[:target_list].empty?
-      cta[:target_list].map!{ |t|
-        puts "target phone numbers: #{t[:phone_numbers]}"
-        Target.find_or_create_by!(t)
-      }
-      puts "find or create cta by #{cta}"
-      campaign = AdvocacyCampaign.find_or_create_by(:origin_system => cta[:origin_system])
-      campaign.update!(cta)
+    doc.each{ |e|
+      event = AdvocacyCampaign.find_or_create_by(:origin_system => e[:origin_system])
+      event.update!(e)
     }
   end
 end

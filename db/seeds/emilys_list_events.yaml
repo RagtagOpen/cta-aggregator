@@ -1,0 +1,94 @@
+---
+- title: Cocktails for Change Washington, D.C.
+  browser_url: https://secure.emilyslist.org/page/contribute/cocktails-for-change-reception-dc
+  start_date: 2017-07-20
+  location:
+    :locality: Washington
+    :region: D.C.
+  origin_system: emilyslist:cocktails-for-change-reception-dc
+- title: Reception
+  browser_url: https://secure.emilyslist.org/page/contribute/Events_Test
+  start_date: 2017-07-27
+  location:
+    :locality: Santa Fe
+    :region: NM
+  origin_system: emilyslist:Events_Test
+- title: Briefing and Luncheon 
+  browser_url: https://secure.emilyslist.org/page/contribute/NYC_Ignite_Change_Luncheon
+  start_date: 2017-09-18
+  location:
+    :locality: New York
+    :region: NY
+  origin_system: emilyslist:NYC_Ignite_Change_Luncheon
+- title: Luncheon
+  browser_url: https://secure.emilyslist.org/page/contribute/western-regional-luncheon
+  start_date: 2017-10-13
+  location:
+    :locality: San Francisco
+    :region: CA
+  origin_system: emilyslist:western-regional-luncheon
+- title: We Are EMILY National Conference &Gala
+  browser_url: https://www.flickr.com/photos/emilyslist/albums/72157680519659093
+  start_date: 2017-05-03
+  location:
+    :locality: Washington
+    :region: DC
+  origin_system: emilyslist:https://www.flickr.com/photos/emilyslist/albums/72157680519659093
+- title: Ignite Change Reception
+  browser_url: http://www.flickr.com/photos/emilyslist/sets/72157679761839052
+  start_date: 2017-03-31
+  location:
+    :locality: Boston
+    :region: MA
+  origin_system: emilyslist:http://www.flickr.com/photos/emilyslist/sets/72157679761839052
+- title: |-
+    We Are EMILY: Breaking Through 2016
+    National Conference & Gala
+  browser_url: https://www.flickr.com/photos/emilyslist/albums/72157667331009666
+  start_date: 2016-04-12
+  location:
+    :locality: Washington
+    :region: DC
+  origin_system: emilyslist:https://www.flickr.com/photos/emilyslist/albums/72157667331009666
+- title: Conference & Luncheon
+  browser_url: https://www.flickr.com/photos/emilyslist/albums/72157667112206284
+  start_date: 2016-06-06
+  location:
+    :locality: Chicago
+    :region: IL
+  origin_system: emilyslist:https://www.flickr.com/photos/emilyslist/albums/72157667112206284
+- title: Breaking Through 2016 at the Democratic National Convention
+  browser_url: https://www.flickr.com/photos/emilyslist/sets/72157670874413362
+  start_date: 2016-07-27
+  location:
+    :locality: Philadelphia
+    :region: PA
+  origin_system: emilyslist:https://www.flickr.com/photos/emilyslist/sets/72157670874413362
+- title: Young Professionals Ignite Change Reception
+  browser_url: https://www.flickr.com/photos/emilyslist/sets/72157672813874795
+  start_date: 2016-08-18
+  location:
+    :locality: San Francisco
+    :region: CA
+  origin_system: emilyslist:https://www.flickr.com/photos/emilyslist/sets/72157672813874795
+- title: Conference & Luncheon
+  browser_url: https://www.flickr.com/photos/emilyslist/albums/72157672814442545
+  start_date: 2016-08-19
+  location:
+    :locality: San Francisco
+    :region: CA
+  origin_system: emilyslist:https://www.flickr.com/photos/emilyslist/albums/72157672814442545
+- title: Conference & Luncheon
+  browser_url: https://www.flickr.com/photos/emilyslist/albums/72157674242496355
+  start_date: 2016-09-19
+  location:
+    :locality: New York
+    :region: NY
+  origin_system: emilyslist:https://www.flickr.com/photos/emilyslist/albums/72157674242496355
+- title: Reception 
+  browser_url: https://www.flickr.com/photos/emilyslist/albums/72157673711133812
+  start_date: 2016-10-07
+  location:
+    :locality: Houston
+    :region: TX
+  origin_system: emilyslist:https://www.flickr.com/photos/emilyslist/albums/72157673711133812
