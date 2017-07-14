@@ -47,6 +47,23 @@ RSpec.describe "AdvocacyCampaigns", type: :request do
       expect(attributes).to eq(json['data']['attributes'].except('target_list'))
       expect(json['data']['attributes']['target_list']).to_not be_empty
     end
+
+    it "redirects on duplicate create" do
+      attributes = create(:advocacy_campaign).attributes.except('created_at', 'updated_at')
+      existing_id = attributes.delete('id')
+
+      params = {
+        data: {
+          type: 'advocacy_campaigns',
+          attributes: attributes,
+        }
+      }.to_json
+
+      post v1_advocacy_campaigns_path, params: params, headers: json_api_headers_with_auth
+
+      expect(response).to have_http_status(302)
+      expect(response.headers['Location']).to match(existing_id)
+    end
   end
 
 end
