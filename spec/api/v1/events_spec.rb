@@ -18,6 +18,19 @@ RSpec.describe "Events", type: :request do
       end
 
     end
+
+    it "filters for future events" do
+      past_event = create(:event, title: 'past event', start_date: 5.days.ago)
+      future_event = create(:event, title: 'welcome to the future', start_date: DateTime.now + 2.days)
+      serialized_future_event = json_resource(V1::EventResource, future_event)[:data].deep_symbolize_keys.except(:links, :relationships)
+
+      get v1_events_path, { filter: { upcoming: true } }
+
+      response_data = JSON.parse(response.body)['data']
+
+      expect(response_data.length).to eq(1)
+      expect(response_data[0].deep_symbolize_keys.except(:links, :relationships)).to eq(serialized_future_event)
+    end
   end
 
   describe "POST /v1/events" do
