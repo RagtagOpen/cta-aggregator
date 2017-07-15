@@ -9,7 +9,7 @@ class Target < ApplicationRecord
   has_many :advocacy_campaign_targets
   has_many :advocacy_campaigns, through: :advocacy_campaign_targets
 
-  validates :organization, :given_name, :family_name, :ocdid,
+  validates :organization, :given_name, :family_name,
     presence: true
 
   validate :unique_target, on: [:create, :update]
@@ -22,8 +22,7 @@ class Target < ApplicationRecord
       existing_target = Target.where(
         organization: organization,
         given_name:  given_name,
-        family_name:  family_name,
-        ocdid: ocdid
+        family_name:  family_name
       ).first
 
       errors.add(:target, 'already exists') if existing_target
