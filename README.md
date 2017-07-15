@@ -64,7 +64,7 @@ This app uses Rspec for unit and integration tests.
 * How to run seed script on heroku review app?
 * Authentication
 * AdvocacyCampaign: endpoint for AdvocacyCampaign data in iCal format
-* AdvocacyCampaigns: Change `upcoming` query to be flexible, allowing querying for upcoming and past AdvocacyCampaigns
+* Events: Change `upcoming` query to be flexible, allowing querying for upcoming and past Events
 * Location: get list of AdvocacyCampaigns associated with location
 * Contacts: get list of AdvocacyCampaigns associated with contact
 * Contact: Phone number validation
