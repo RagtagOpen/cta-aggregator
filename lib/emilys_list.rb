@@ -27,6 +27,8 @@ class EmilysList
       event_url = p.xpath('./a[1]/@href').first.content
       event['browser_url'] = event_url
 
+      event['origin_system'] = "emilyslist:#{event_url.split('/').last}"
+
       # past events link to flickr sets, not event pages
       if /secure\.emilyslist\.org/ =~ event_url
         events << event

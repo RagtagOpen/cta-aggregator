@@ -9,19 +9,19 @@
 # FactoryGirl.create_list(:event, 25) if Target.count <= 25
 
 # Import 5calls data
-# path = Rails.root.join('db','seeds','5calls_advocacy_campaigns.yaml')
-#
-# File.open(path) do |file|
-#   YAML.load_documents(file) do |doc|
-#     doc.each{ |cta|
-#       cta[:target_list].map!{ |t|
-#         Target.find_or_create_by!(t)
-#       }
-#       campaign = AdvocacyCampaign.find_or_create_by(:origin_system => cta[:origin_system])
-#       campaign.update!(cta)
-#     }
-#   end
-# end
+path = Rails.root.join('db','seeds','5calls_advocacy_campaigns.yaml')
+
+File.open(path) do |file|
+  YAML.load_documents(file) do |doc|
+    doc.each{ |cta|
+      cta[:target_list].map!{ |t|
+        Target.find_or_create_by!(t)
+      }
+      campaign = AdvocacyCampaign.find_or_create_by(:origin_system => cta[:origin_system])
+      campaign.update!(cta)
+    }
+  end
+end
 
 # Import Emily's List data
 path = Rails.root.join('db','seeds','emilys_list_events.yaml')
@@ -29,7 +29,8 @@ path = Rails.root.join('db','seeds','emilys_list_events.yaml')
 File.open(path) do |file|
   YAML.load_documents(file) do |doc|
     doc.each{ |e|
-      event = AdvocacyCampaign.find_or_create_by(:origin_system => e[:origin_system])
+      event = Event.find_or_create_by(:origin_system => e[:origin_system])
+      e[:location] = Location.create(e[:location])
       event.update!(e)
     }
   end
