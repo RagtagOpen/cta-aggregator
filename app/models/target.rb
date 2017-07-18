@@ -22,8 +22,7 @@ class Target < ApplicationRecord
       existing_target = Target.where(
         organization: organization,
         given_name:  given_name,
-        family_name:  family_name,
-        ocdid: ocdid
+        family_name:  family_name
       ).first
 
       errors.add(:target, 'already exists') if existing_target

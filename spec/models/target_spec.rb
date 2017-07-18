@@ -8,7 +8,6 @@ RSpec.describe Target, type: :model do
     expect(target.errors[:organization]).to_not be_empty
     expect(target.errors[:given_name]).to_not be_empty
     expect(target.errors[:family_name]).to_not be_empty
-    expect(target.errors[:ocdid]).to_not be_empty
   end
 
   it "does not allow duplicate objects" do

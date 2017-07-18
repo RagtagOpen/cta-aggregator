@@ -10,5 +10,9 @@ module V1
       @model.user_id = context[:current_user].id if @model.new_record?
     end
 
+    filter :upcoming, apply: -> (records, value, _options) {
+      records.upcoming if value[0] == "true"
+    }
+
   end
 end
