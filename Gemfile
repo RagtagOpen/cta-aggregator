@@ -15,7 +15,7 @@ gem 'knock'
 gem 'bcrypt'
 gem 'rack-cors'
 gem 'rest-client'
-gem 'wombat'
+gem 'httparty'
 
 group :development, :test do
   gem 'factory_girl_rails'
