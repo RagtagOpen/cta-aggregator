@@ -1,12 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Location, type: :model do
-  it "invalid when missing address" do
-    loc = described_class.new()
-    loc.valid?
-    expect(loc.errors[:address_lines]).to be_present
-  end
-
   it "invalid when missing locality, region and postal_code" do
     loc = described_class.new(address_lines: "123 Fake St.")
     loc.valid?

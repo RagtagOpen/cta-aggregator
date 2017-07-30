@@ -7,7 +7,6 @@ RSpec.describe AdvocacyCampaign, type: :model do
     advocacy_campaign.valid?
     expect(advocacy_campaign.errors[:title]).to_not be_empty
     expect(advocacy_campaign.errors[:description]).to_not be_empty
-    expect(advocacy_campaign.errors[:browser_url]).to_not be_empty
     expect(advocacy_campaign.errors[:origin_system]).to_not be_empty
     expect(advocacy_campaign.errors[:action_type]).to_not be_empty
   end
