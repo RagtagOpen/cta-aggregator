@@ -5,4 +5,4 @@ WORKDIR /cta-aggregator
 COPY Gemfile.lock Gemfile /cta-aggregator/
 RUN gem install bundler
 RUN bundle install
-COPY . /cta-aggregator
+# COPY . /cta-aggregator

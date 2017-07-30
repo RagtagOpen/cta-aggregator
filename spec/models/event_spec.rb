@@ -5,11 +5,9 @@ RSpec.describe Event, type: :model do
     event = described_class.new()
     event.valid?
     expect(event.errors[:title]).to_not be_empty
-    expect(event.errors[:description]).to_not be_empty
     expect(event.errors[:browser_url]).to_not be_empty
     expect(event.errors[:origin_system]).to_not be_empty
     expect(event.errors[:start_date]).to_not be_empty
-    expect(event.errors[:end_date]).to_not be_empty
     expect(event.errors[:free]).to_not be_empty
     expect(event.errors[:location_id]).to_not be_empty
   end

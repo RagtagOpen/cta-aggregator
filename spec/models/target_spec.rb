@@ -6,8 +6,6 @@ RSpec.describe Target, type: :model do
     target = described_class.new()
     target.valid?
     expect(target.errors[:organization]).to_not be_empty
-    expect(target.errors[:given_name]).to_not be_empty
-    expect(target.errors[:family_name]).to_not be_empty
   end
 
   it "does not allow duplicate objects" do

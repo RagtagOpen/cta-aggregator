@@ -7,7 +7,7 @@ class AdvocacyCampaign < ApplicationRecord
 
   validate :validate_uniqueness, on: [:create, :update]
 
-  validates :title, :description, :browser_url, :origin_system, :action_type,
+  validates :title, :description, :origin_system, :action_type,
     presence: true
 
   def target_ids=(ids)

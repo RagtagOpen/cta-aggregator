@@ -53,6 +53,18 @@ Install [Docker](https://store.docker.com/search?type=edition&offering=community
 
 Open http://localhost:3000
 
+## Seed data
+
+To refresh the seed data from 5calls and Emily's list, run
+
+    rake emilys_list:download
+    rake five_calls:download`
+
+or, with Docker:
+
+    docker-compose run web rake emilys_list:download
+    docker-compose run web rake five_calls:download
+
 ## Tests
 
 This app uses Rspec for unit and integration tests.

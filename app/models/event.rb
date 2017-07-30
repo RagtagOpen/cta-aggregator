@@ -7,8 +7,8 @@ class Event < ApplicationRecord
 
   validate :validate_uniqueness, on: [:create, :update]
 
-  validates :title, :description, :browser_url, :origin_system,
-    :start_date, :end_date, :location_id,
+  validates :title, :browser_url, :origin_system,
+    :start_date, :location_id,
     presence: true
 
   validates :free,

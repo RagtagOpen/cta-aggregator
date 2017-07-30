@@ -9,7 +9,7 @@ class Target < ApplicationRecord
   has_many :advocacy_campaign_targets
   has_many :advocacy_campaigns, through: :advocacy_campaign_targets
 
-  validates :organization, :given_name, :family_name,
+  validates :organization,
     presence: true
 
   validate :unique_target, on: [:create, :update]
