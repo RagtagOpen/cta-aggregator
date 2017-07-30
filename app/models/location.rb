@@ -3,7 +3,6 @@ class Location < ApplicationRecord
 
   belongs_to :user, optional: true
 
-  validates_presence_of :address_lines
   validate :unique_location, :sufficient_location_data_present
   validates_length_of :region, is: 2, if: -> { self.region }
 
