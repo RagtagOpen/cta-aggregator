@@ -1,11 +1,4 @@
 ---
-- start_date: 2017-07-20
-  location:
-    :locality: Washington
-    :region: D.C.
-  title: Cocktails for Change Washington, D.C.
-  browser_url: https://secure.emilyslist.org/page/contribute/cocktails-for-change-reception-dc
-  origin_system: emilyslist:cocktails-for-change-reception-dc
 - start_date: 2017-07-27
   location:
     :locality: Santa Fe
