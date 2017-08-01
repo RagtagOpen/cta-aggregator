@@ -58,12 +58,14 @@ Open http://localhost:3000
 To refresh the seed data from 5calls and Emily's list, run
 
     rake emilys_list:download
-    rake five_calls:download`
+    rake five_calls:download
+    rake resistance_calendar:download
 
 or, with Docker:
 
     docker-compose run web rake emilys_list:download
     docker-compose run web rake five_calls:download
+    docker-compose run web rake resistance_calendar:download
 
 ## Tests
 
