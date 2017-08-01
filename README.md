@@ -66,6 +66,7 @@ or, with Docker:
     docker-compose run web rake emilys_list:download
     docker-compose run web rake five_calls:download
     docker-compose run web rake resistance_calendar:download
+    docker-compose run web rake db:seed
 
 ## Tests
 

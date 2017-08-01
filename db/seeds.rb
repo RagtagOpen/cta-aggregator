@@ -21,7 +21,11 @@ File.open(path) do |file|
             given_name: t[:given_name],
             family_name: t[:family_name],
             ocdid: t[:ocdid]
-          ).first_or_create!
+          ).first_or_create!(
+            postal_addresses: t[:postal_addresses],
+            email_addresses: t[:email_addresses],
+            phone_numbers: [t[:phone_numbers]]
+          )
         end
       end
 
