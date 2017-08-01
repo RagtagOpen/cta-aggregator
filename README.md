@@ -51,6 +51,13 @@ Install [Docker](https://store.docker.com/search?type=edition&offering=community
     docker-compose run web rake
     docker-compose up
 
+If `docker-compose run web rake` fails, try running `docker-compose up --build` in one tab, then run
+
+    docker-compose run web bin/setup
+    docker-compose run web rake
+    
+in another.
+
 Open http://localhost:3000
 
 ## Seed data
@@ -67,6 +74,16 @@ or, with Docker:
     docker-compose run web rake five_calls:download
     docker-compose run web rake resistance_calendar:download
     docker-compose run web rake db:seed
+    
+## Getting an API key
+
+If you want to POST to the API, you will need API credentials, which are associated with an email address. If you're running natively:
+
+    rake user:create[user@example.com]
+    
+If you're running within Docker:
+
+    docker-compose run web rake user:create[user@example.com]
 
 ## Tests
 
