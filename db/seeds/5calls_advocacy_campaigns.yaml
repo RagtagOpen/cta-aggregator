@@ -1,0 +1,111 @@
+---
+- :origin_system: 5calls:rec5i3b5mezyY0PhH
+  :title: Stop Trump from Sabotaging the ACA
+  :description: "Senate Majority Leader Mitch McConnell's plan to repeal the ACA (the
+    \"Skinny Repeal\") failed on the Senate floor, 49-51, on July 27th. While he called
+    the downfall of his ongoing efforts to dismantle the ACA \"disappointing\" and
+    stated that it was time to \"move on.\" McConnell continued to denounce the ACA
+    and its effectiveness, repeating myths of its instability. The Congressional Republicans'
+    ability to repeal the ACA may be over, but now the threat of Republican sabotage
+    of the law by undermining its enforcement is still a real possibility. Indeed,
+    Trump has called on Republicans to  \"let Obamacare fail, it will be a lot easier,\"
+    stating, \"We're not going to own it. I'm not going to own it.\" \n\nAnalyses
+    of the ACA have repeatedly shown that the individual markets are largely functioning
+    well, with cost-sharing subsidies shielding buyers from premium cost increases.
+    However, Trump and the Department of Health and Human Services, led by Tom Price,
+    are taking steps to destabilize these markets. Trump is threatening to withhold
+    insurance payments known as cost-sharing reductions (CSRs), which allow insurers
+    to offer lower-cost individual market plans with lower out-of-pocket costs to
+    low-income consumers. If these payments are discontinued, experts predict, it
+    could collapse the individual insurance market and dissuade insurers from offering
+    plans in the individual marketplace. \n\nThe administration could also stop the
+    enforcement of the ACA individual mandate, a provision that ensures younger and
+    healthier people buy insurance. Without this provision, insurance companies would
+    be forced to consider major premium increases, affecting the affordability of
+    insurance for the sick and elderly. Trump issued an executive order discouraging
+    IRS enforcement of this mandate, and the Republican-controlled House Appropriations
+    Committee has included a draft provision in a spending bill to defund the IRS's
+    mandate enforcement. \n\nInsurance experts and the Congressional Budget Office
+    have all stated that the ACA is stable and not in a so-called death spiral. However,
+    the Trump Administration and Republicans in Congress now appear committed to creating
+    instability for political gain, creating turmoil in the national insurance market
+    and putting the lives of millions of Americans at risk."
+  :template: |-
+    Hi, my name is [NAME] and I’m a constituent from [CITY, ZIP].
+
+    [IF HHS]: I'm calling to express my serious concern about Trump's intention to let Obamacare fail and put the lives of millions of Americans at risk. I urge Secretary Price to continue cost-sharing reduction payments and enforcement of the individual mandate in order to maintain stability in our national insurance market. The American people want to see the insurance market fixed, not sabotaged for political gain.
+
+    [IF REP or SEN]: I'm calling to express my serious concern about Trump's intention to let Obamacare fail and put the lives of millions of Americans at risk. I urge [REP/SEN NAME] to immediately pass legislation to stabilize the insurance market and ensure the ACA's cost-sharing subsidies are fully funded. The American people want to see the insurance market fixed, not sabotaged for political gain.
+
+    Thank you for your hard work answering the phones.
+
+    [IF LEAVING A VOICEMAIL: please leave your full street address to ensure your call is tallied]
+  :action_type: phone
+  :target_list:
+  - :organization: Department of Health and Human Services, Tom Price
+    :phone_numbers:
+    - :primary: true
+      :number: 202-205-5445
+      :number_type: work
+- :origin_system: 5calls:recchHtFUvj5uzMtA
+  :title: 'Demand Trump Jr, Manafort, and Kushner Testify Publicly '
+  :description: "UPDATE (7/24): After initially agreeing to public hearings under
+    oath, both Donald Trump Jr and Paul Manafort have changed their minds. Instead,
+    Trump Jr. and Manaford have agreed to closed-door sessions not under oath. Jared
+    Kushner testified behind closed doors on July 24th and 25th, but from what is
+    known from his public statement, he has flimsy reasons for his mistakes and blames
+    his assistant. All three of these men need to answer for their behavior with a
+    public hearing under oath. \n\nIt is now clear that Donald Trump, Jr., Trump's
+    campaign manager Paul Manafort, and Trump's son-in-law Jared Kushner agreed to
+    meet with a Russian government attorney with the explicit purpose of discussing
+    information that the Russian government thought would help the Trump campaign.
+    On June 9, 2016, they met with Natalia Veselnitskaya, a Russian lawyer with long
+    standing ties to the Kremlin. \n\nPrior to the meeting, Trump, Jr. received an
+    email that stated \"the Crown prosecutor of Russia\" had \"offered to provide
+    the Trump campaign with some official documents and information that would incriminate
+    Clinton and her dealings with Russia and would be very useful to your [Trump,
+    Jr.'s] father.\" Trump, Jr. expressed interest in meeting to discuss this information
+    immediately, writing, \"[I]f it's what you say I love it especially later in the
+    summer.\" Follow-up emails made it clear that the meeting would be with a \"Russian
+    government attorney\" and cc'ed Manafort and Kushner, meaning all three men were
+    aware that they were meeting with a Russian government lawyer to try to hurt Clinton's
+    campaign. \n\nTrump, Jr.'s willingness to accept campaign-related information
+    from a hostile foreign source, as well as the presence of top campaign officials
+    Kushner and Manafort at the meeting are clear signs of collusion between Russia
+    and the Trump campaign. Neither Trump, Jr. nor Kushner disclosed the details of
+    this meeting--in fact, the meeting was unearthed only after Kushner quietly revised
+    a security form to note that it had happened. Their secrecy raises the question
+    of how many more similar meetings took place unbeknownst to investigators, national
+    security officials, and the public."
+  :template: |-
+    Hi, my name is [NAME] and I'm a constituent from [CITY, ZIP].
+
+    [IF COMMITTEE, ADD]: I'd like to pass along a message for the Chairman and committee members.
+
+    I'm calling to request that the committee call Donald Trump, Jr., Jared Kushner, and Paul Manafort to publicly testify about the details of their June 9th meeting with a Russian lawyer, and any other similar meetings with Russian officials. The American public deserves to hear directly from these men while they are under oath to explain their interactions with Russian government officials.
+
+    Thank you for your time and attention.
+
+    [IF LEAVING A VOICEMAIL: please leave your full street address to ensure your call is tallied]
+  :action_type: phone
+  :target_list:
+  - :organization: Senate Select Committee on Intelligence
+    :phone_numbers:
+    - :primary: true
+      :number: 202-224-1700
+      :number_type: work
+  - :organization: Senate Judiciary Committee
+    :phone_numbers:
+    - :primary: true
+      :number: 202-224-5225
+      :number_type: work
+  - :organization: House Select Committee on Intelligence - Minority Staff
+    :phone_numbers:
+    - :primary: true
+      :number: 202-225-7690
+      :number_type: work
+  - :organization: House Select Committee on Intelligence - Majority Staff
+    :phone_numbers:
+    - :primary: true
+      :number: 202-225-4121
+      :number_type: work

@@ -1,0 +1,22 @@
+---
+- start_date: 2017-07-27
+  location:
+    :locality: Santa Fe
+    :region: NM
+  title: Reception
+  browser_url: https://secure.emilyslist.org/page/contribute/Events_Test
+  origin_system: emilyslist:Events_Test
+- start_date: 2017-09-18
+  location:
+    :locality: New York
+    :region: NY
+  title: Briefing and Luncheon 
+  browser_url: https://secure.emilyslist.org/page/contribute/NYC_Ignite_Change_Luncheon
+  origin_system: emilyslist:NYC_Ignite_Change_Luncheon
+- start_date: 2017-10-13
+  location:
+    :locality: San Francisco
+    :region: CA
+  title: Luncheon
+  browser_url: https://secure.emilyslist.org/page/contribute/western-regional-luncheon
+  origin_system: emilyslist:western-regional-luncheon

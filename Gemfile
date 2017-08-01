@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.3.1'
+ruby File.read('.ruby-version').chomp
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -11,10 +11,18 @@ gem 'rails', '5.0.2'
 gem 'pg', '0.19.0'
 gem 'puma', '3.7.1'
 gem 'jsonapi-resources', '0.9.0'
+gem 'knock'
+gem 'bcrypt'
+gem 'rack-cors'
+gem 'rest-client'
+gem 'httparty'
 
 group :development, :test do
-  gem 'pry', '0.10.4', require: true
+  gem 'factory_girl_rails'
+  gem 'faker'
+  gem 'pry-rails', '~> 0.3.6'
   gem 'dotenv-rails', '2.2.0'
+  gem 'pry-byebug'
 end
 
 group :development do
@@ -25,8 +33,8 @@ group :development do
 end
 
 group :test do
+  gem 'timecop'
   gem 'rspec-rails', '3.5.2'
-  gem 'cucumber-rails', '1.4.5', require: false
   gem 'database_cleaner', '1.5.3'
   gem 'simplecov', '0.14.1', require: false
 end

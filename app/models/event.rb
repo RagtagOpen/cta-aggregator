@@ -1,35 +1,29 @@
 class Event < ApplicationRecord
-  CTA_TYPES = { onsite: 1, phone: 2 }
 
-  belongs_to :contact, optional: true #maybe it shuldn't be opeiontal?
-  belongs_to :location, optional: true
+  belongs_to :location
+  belongs_to :user, optional: true
 
-  validates_presence_of :title, :description, :website, :start_at, :end_at, :event_type
-  validate :validate_unique_event, on: :create
+  scope :upcoming, -> { where("start_date >= ?", Date.today).order("start_date")  }
 
-  scope :upcoming, -> { where("start_at >= ?", Date.today).order("start_at") }
+  validate :validate_uniqueness, on: [:create, :update]
 
-  attr_accessor :event_type
+  validates :title, :browser_url, :origin_system,
+    :start_date, :location_id,
+    presence: true
 
-  def event_type=(event)
-    self.action_type = CTA_TYPES[event.to_sym]
-  end
-
-  def event_type
-    CTA_TYPES.invert[action_type]
-  end
+  validates :free,
+    inclusion: { in: [true, false] }
 
   private
 
-  def validate_unique_event
-    preexisting_event = self.class.where(
-      title: self.title,
-      description: self.description,
-      website: self.website,
-      action_type: self.action_type,
-      start_at: self.start_at,
-      end_at: self.end_at
-    ).first
-    errors.add(:event, 'already exists') if preexisting_event
-  end
+    def validate_uniqueness
+      preexisting_event = Event.where(
+        title: title,
+        browser_url: browser_url,
+        location_id: location_id
+      ).first
+
+      errors.add(:event, 'already exists') if preexisting_event
+    end
+
 end
