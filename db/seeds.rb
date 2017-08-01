@@ -43,30 +43,41 @@ File.open(path) do |file|
   end
 end
 
-# Import Emily's List data
-path = Rails.root.join('db','seeds','emilys_list_events.yaml')
+def import_events(filename)
+  path = Rails.root.join('db','seeds',filename)
 
-File.open(path) do |file|
-  YAML.load_documents(file) do |doc|
-    doc.each{ |e|
-      e.deep_symbolize_keys!
+  File.open(path) do |file|
+    YAML.load_documents(file) do |doc|
+      doc.each{ |e|
+        e.deep_symbolize_keys!
 
-      location = Location.where(
-        address_lines: e[:location][:address_lines],
-        locality: e[:location][:locality],
-        region: e[:location][:region].to_s.gsub('.', ''),
-        postal_code: e[:location][:postal_code]
-      ).first_or_create!
+        # ignore events without locations
+        next if e[:location].blank?
 
-      event = Event.where(
-        start_date: e[:start_date],
-        title: e[:title],
-        origin_system: e[:origin_system],
-        browser_url: e[:browser_url],
-        free: !! e[:free]
-      ).first_or_create!(
-        location: location
-      )
-    }
+        location = Location.where(
+          address_lines: e[:location][:address_lines],
+          locality: e[:location][:locality],
+          region: e[:location][:region].to_s.gsub('.', ''),
+          postal_code: e[:location][:postal_code]
+        ).first_or_create!
+
+        event = Event.where(
+          start_date: e[:start_date],
+          title: e[:title],
+          origin_system: e[:origin_system],
+          browser_url: e[:browser_url],
+          free: !! e[:free]
+        ).first_or_create!(
+          location: location
+        )
+      }
+    end
   end
 end
+
+# import Emily's List data
+import_events('emilys_list_events.yaml')
+
+# import Resistance Calendar events
+import_events('resistance_calendar_events.yaml')
+
