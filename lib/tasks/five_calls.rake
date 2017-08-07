@@ -25,7 +25,8 @@ namespace :five_calls do
         }
       end
       cta = {
-        origin_system: "5calls:#{call['id']}",
+        identifier: "5calls:#{call['id']}",
+        origin_system: "5calls",
         title: call['name'],
         description: call['reason'],
         template: call['script'],
