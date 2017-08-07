@@ -1,5 +1,9 @@
 class AdvocacyCampaign < ApplicationRecord
 
+  attr_accessor :identifier
+
+  serialize :identifiers, Array
+
   belongs_to :user, optional: true
 
   has_many :advocacy_campaign_targets
@@ -9,6 +13,8 @@ class AdvocacyCampaign < ApplicationRecord
 
   validates :title, :description, :origin_system, :action_type,
     presence: true
+
+  before_create :set_identifiers
 
   def target_ids=(ids)
     self.target_list_ids = ids
@@ -27,6 +33,10 @@ class AdvocacyCampaign < ApplicationRecord
       ).first
 
       errors.add(:advocacy_campaign, 'already exists') if preexisting_advocacy_campaign
+    end
+
+    def set_identifiers
+      self.identifiers = [identifier] if identifier.present?
     end
 
 end

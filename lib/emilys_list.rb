@@ -1,9 +1,9 @@
 require 'nokogiri'
-require 'httparty'
+require 'open-uri'
 
 class EmilysList
   def events
-    raw_page = HTTParty.get("http://www.emilyslist.org/pages/entry/events")
+    raw_page = open("http://www.emilyslist.org/pages/entry/events").read
     page = Nokogiri::HTML(raw_page)
     events = []
     page.xpath('//h2[text()="Upcoming Events"]/following-sibling::p').each do |p|
@@ -26,8 +26,9 @@ class EmilysList
       event['title'] = links.first.content
       event_url = p.xpath('./a[1]/@href').first.content
       event['browser_url'] = event_url
+      event['identifier'] = "emilyslist:#{event_url.split('/').last}"
 
-      event['origin_system'] = "emilyslist:#{event_url.split('/').last}"
+      event['origin_system'] = "Emily's List"
 
       # past events link to flickr sets, not event pages
       if /secure\.emilyslist\.org/ =~ event_url
