@@ -1,5 +1,41 @@
 ---
-- :identifier: 5calls:rec5Yx1yWXJS1iSVz
+- :identifiers:
+  - 5calls:reclk123ddZOOdyp1
+  :origin_system: 5calls
+  :title: 'Support the College for All Act   '
+  :description: "Thanks to skyrocketing college tuition costs, student debt in the
+    US amounts to $1.3 trillion. Eighty-three percent of all students attending US
+    public universities graduate with debt, and some of them will remain in debt for
+    their entire lives. \n\nA coalition of Representatives and Senators have introduced
+    a bill to end the crushing burden of high college tuition. The College for All
+    Act would provide free public university tuition for families earning up to $125,000
+    per year, covering about 80% of all US college students. The bill would also reduce
+    student loan interest rates for new borrowers, allow existing borrowers to refinance
+    at lower rates, and eliminate tuitions and fees at two-year community colleges.
+    \n\nStudent loan debt prevents people from buying homes, starting families, saving
+    for retirement, and working in lower-paying but crucial fields like social work
+    and early childhood education. It is time to end the student debt crisis and make
+    an affordable college education a reality for all.     "
+  :template: "Hi, my name is [NAME] and I'm a constituent from [CITY, ZIP]. \n\nI'm
+    calling in support of [HR 1880 for House/S 806 for Senate], the College for All
+    Act. This bill would alleviate the economic and social burden of student debt
+    and give everyone access to an affordable college education. \n\nThank you for
+    your time and attention.\n\n[IF LEAVING A VOICEMAIL: please leave your full street
+    address to ensure your call is tallied]        "
+  :action_type: phone
+  :target_list:
+  - :organization: Senate Committee on Health, Education, Labor and Pensions
+    :phone_numbers:
+    - :primary: true
+      :number: 202-224-5375
+      :number_type: work
+  - :organization: House Committee on Education and the Workforce
+    :phone_numbers:
+    - :primary: true
+      :number: 202-225-4527
+      :number_type: work
+- :identifiers:
+  - 5calls:rec5Yx1yWXJS1iSVz
   :origin_system: 5calls
   :title: Defend Title IX Guidelines for Campus Sexual Assault
   :description: |-
@@ -29,50 +65,8 @@
     - :primary: true
       :number: 202-401-3000
       :number_type: work
-- :identifier: 5calls:recxdBa3iAqAKHMBU
-  :origin_system: 5calls
-  :title: Defend University Affirmative Action Admissions Policy
-  :description: "On August 1st, the New York Times revealed details of an internal
-    Department of Justice document they obtained that describes plans by the Civil
-    Rights Division to crack down on university 'affirmative action' policies. In
-    the document, the department is seeking lawyers to investigate and potentially
-    sue universities for discriminating against white applicants (\"intentional race-based
-    discrimination\") in their admissions processes. Typically, the Educational Opportunities
-    Section of the DoJ handles university matters, but due to reported unwillingness
-    by these career civil servants/education experts to reverse course on civil rights,
-    the political appointee staffed Civil Rights Division will handle this project.\n\nThis
-    new affirmative action project falls in line with other actions taken by Jeff
-    Sessions and the DoJ that attack civil rights and equal opportunity for minority
-    American populations. The continuing systemic racial discrimination and oppression
-    in our society often makes it harder for young people of color to obtain the same
-    educational resources as their white counterparts. Affirmative action admissions
-    programs allow students from these disadvantaged backgrounds more balanced access
-    to higher education. The Supreme Court has also ruled that a diverse student body
-    has its own educational benefits, allowing universities to use race as an admission
-    factor.    \n\nWhile many white students have criticized and waged lawsuits against
-    affirmative action, claiming unfair rejections in favor of \"less qualified\"
-    students, the statistics simply don't line up. In fact, white women are the primary
-    beneficiaries of affirmative action policies. University 'legacy' policies also
-    grant admission to students from predominantly white families, regardless of their
-    performance level. A glaring example of this practice is Jared Kushner’s acceptance
-    into Harvard to the surprise of many of his teachers who thought he was not qualified.
-    (His father also donated $2.5M to the school.) "
-  :template: |-
-    Hi, my name is [NAME] and I’m a constituent from [CITY, ZIP].
-
-    I'm calling to express my serious disapproval of the Department's plans to investigate and sue universities because of their affirmative action admissions policy. This is clearly another attempt by this Department to deny equal opportunity to minority Americans in order to perpetuate white privilege, and I demand this project be shut down immediately.
-
-    Thank you for your time and attention.
-
-    [IF LEAVING A VOICEMAIL: please leave your full street address to ensure your call is tallied]
-  :action_type: phone
-  :target_list:
-  - :organization: Department of Justice
-    :phone_numbers:
-    - :primary: true
-      :number: 202-353-1555
-      :number_type: work
-- :identifier: 5calls:recX4tGPF6RQsgd41
+- :identifiers:
+  - 5calls:recX4tGPF6RQsgd41
   :origin_system: 5calls
   :title: Preserve Federal Civil Rights Protections for Transgender People
   :description: "Nine Republican House Representatives are currently sponsoring HR
@@ -109,53 +103,4 @@
     :phone_numbers:
     - :primary: true
       :number: 202-225-3951
-      :number_type: work
-- :identifier: 5calls:rec5i3b5mezyY0PhH
-  :origin_system: 5calls
-  :title: Stop Trump from Sabotaging the ACA
-  :description: "Senate Majority Leader Mitch McConnell's plan to repeal the ACA (the
-    \"Skinny Repeal\") failed on the Senate floor, 49-51, on July 27th. While he called
-    the downfall of his ongoing efforts to dismantle the ACA \"disappointing\" and
-    stated that it was time to \"move on.\" McConnell continued to denounce the ACA
-    and its effectiveness, repeating myths of its instability. The Congressional Republicans'
-    ability to repeal the ACA may be over, but now the threat of Republican sabotage
-    of the law by undermining its enforcement is still a real possibility. Indeed,
-    Trump has called on Republicans to  \"let Obamacare fail, it will be a lot easier,\"
-    stating, \"We're not going to own it. I'm not going to own it.\" \n\nAnalyses
-    of the ACA have repeatedly shown that the individual markets are largely functioning
-    well, with cost-sharing subsidies shielding buyers from premium cost increases.
-    However, Trump and the Department of Health and Human Services, led by Tom Price,
-    are taking steps to destabilize these markets. Trump is threatening to withhold
-    insurance payments known as cost-sharing reductions (CSRs), which allow insurers
-    to offer lower-cost individual market plans with lower out-of-pocket costs to
-    low-income consumers. If these payments are discontinued, experts predict, it
-    could collapse the individual insurance market and dissuade insurers from offering
-    plans in the individual marketplace. \n\nThe administration could also stop the
-    enforcement of the ACA individual mandate, a provision that ensures younger and
-    healthier people buy insurance. Without this provision, insurance companies would
-    be forced to consider major premium increases, affecting the affordability of
-    insurance for the sick and elderly. Trump issued an executive order discouraging
-    IRS enforcement of this mandate, and the Republican-controlled House Appropriations
-    Committee has included a draft provision in a spending bill to defund the IRS's
-    mandate enforcement. \n\nInsurance experts and the Congressional Budget Office
-    have all stated that the ACA is stable and not in a so-called death spiral. However,
-    the Trump Administration and Republicans in Congress now appear committed to creating
-    instability for political gain, creating turmoil in the national insurance market
-    and putting the lives of millions of Americans at risk."
-  :template: |-
-    Hi, my name is [NAME] and I’m a constituent from [CITY, ZIP].
-
-    [IF HHS]: I'm calling to express my serious concern about Trump's intention to let Obamacare fail and put the lives of millions of Americans at risk. I urge Secretary Price to continue cost-sharing reduction payments and enforcement of the individual mandate in order to maintain stability in our national insurance market. The American people want to see the insurance market fixed, not sabotaged for political gain.
-
-    [IF REP or SEN]: I'm calling to express my serious concern about Trump's intention to let Obamacare fail and put the lives of millions of Americans at risk. I urge [REP/SEN NAME] to immediately pass legislation to stabilize the insurance market and ensure the ACA's cost-sharing subsidies are fully funded. The American people want to see the insurance market fixed, not sabotaged for political gain.
-
-    Thank you for your hard work answering the phones.
-
-    [IF LEAVING A VOICEMAIL: please leave your full street address to ensure your call is tallied]
-  :action_type: phone
-  :target_list:
-  - :organization: Department of Health and Human Services, Tom Price
-    :phone_numbers:
-    - :primary: true
-      :number: 202-205-5445
       :number_type: work

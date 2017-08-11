@@ -1,7 +1,5 @@
 class AdvocacyCampaign < ApplicationRecord
 
-  attr_accessor :identifier
-
   serialize :identifiers, Array
 
   belongs_to :user, optional: true
@@ -14,7 +12,7 @@ class AdvocacyCampaign < ApplicationRecord
   validates :title, :description, :origin_system, :action_type,
     presence: true
 
-  before_create :set_identifiers
+  after_create :set_identifiers
 
   def target_ids=(ids)
     self.target_list_ids = ids
@@ -36,7 +34,8 @@ class AdvocacyCampaign < ApplicationRecord
     end
 
     def set_identifiers
-      self.identifiers = [identifier] if identifier.present?
+      self.identifiers << "cta-aggregator:#{id}"
+      self.save(validate: false)
     end
 
 end

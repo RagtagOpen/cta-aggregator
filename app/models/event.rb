@@ -18,7 +18,7 @@ class Event < ApplicationRecord
   validates :free,
     inclusion: { in: [true, false] }
 
-  before_create :set_identifiers
+  after_create :set_identifiers
 
   private
 
@@ -33,7 +33,8 @@ class Event < ApplicationRecord
     end
 
     def set_identifiers
-      self.identifiers = [identifier] if identifier.present?
+      self.identifiers << "cta-aggregator:#{id}"
+      self.save(validate: false)
     end
 
 end
