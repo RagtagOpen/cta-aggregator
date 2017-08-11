@@ -26,7 +26,7 @@ class EmilysList
       event['title'] = links.first.content
       event_url = p.xpath('./a[1]/@href').first.content
       event['browser_url'] = event_url
-      event['identifier'] = "emilyslist:#{event_url.split('/').last}"
+      event['identifiers'] = ["emilyslist:#{event_url.split('/').last}"]
 
       event['origin_system'] = "Emily's List"
 

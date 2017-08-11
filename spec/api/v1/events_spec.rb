@@ -57,6 +57,8 @@ RSpec.describe "Events", type: :request do
 
       post v1_events_path, params: params, headers: json_api_headers_with_auth
 
+      attributes['identifiers'] << "cta-aggregator:#{json['data']['id']}"
+
       attributes['start_date'] = attributes['start_date'].strftime('%Y-%m-%dT%H:%M:%S.%LZ')
       attributes['end_date'] = attributes['end_date'].strftime('%Y-%m-%dT%H:%M:%S.%LZ')
 

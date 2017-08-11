@@ -13,7 +13,6 @@ RSpec.describe "AdvocacyCampaigns", type: :request do
         # NOTE: if I can figure out how to pass in the base_url I can remove the #except calls below
         api_advocacy_campaign = json['data'][idx].deep_symbolize_keys.except(:links, :relationships)
         serialized_advocacy_campaign = json_resource(V1::AdvocacyCampaignResource, advocacy_campaign)[:data].deep_symbolize_keys.except(:links, :relationships)
-        serialized_advocacy_campaign[:attributes][:identifier] = nil
 
         expect(api_advocacy_campaign).to eq(serialized_advocacy_campaign)
       end
@@ -26,7 +25,6 @@ RSpec.describe "AdvocacyCampaigns", type: :request do
       advocacy_campaign = build(:advocacy_campaign)
 
       attributes = advocacy_campaign.attributes.except('id', 'user_id', 'created_at', 'updated_at')
-      attributes['identifier'] = advocacy_campaign.identifier
 
       targets = create_list(:target, 2)
 
@@ -46,6 +44,8 @@ RSpec.describe "AdvocacyCampaigns", type: :request do
       }.to_json
 
       post v1_advocacy_campaigns_path, params: params, headers: json_api_headers_with_auth
+
+      attributes['identifiers'] << "cta-aggregator:#{json['data']['id']}"
 
       expect(response).to have_http_status(201)
       expect(attributes).to eq(json['data']['attributes'].except('target_list'))
