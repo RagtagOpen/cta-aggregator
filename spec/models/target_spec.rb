@@ -2,10 +2,23 @@ require 'rails_helper'
 
 RSpec.describe Target, type: :model do
 
-  it "requires certain data attributes" do
+  it "requires either organization or name" do
     target = described_class.new()
     target.valid?
-    expect(target.errors[:organization]).to_not be_empty
+    expect(target.errors[:base]).to_not be_empty
+
+    target.organization = "foobar.org"
+    target.valid?
+    expect(target.errors[:base]).to be_empty
+
+    target.organization = nil
+    target.valid?
+    expect(target.errors[:base]).to_not be_empty
+
+    target.given_name = "Foo"
+    target.family_name = "Bar"
+    target.valid?
+    expect(target.errors[:base]).to be_empty
   end
 
   it "does not allow duplicate objects" do
