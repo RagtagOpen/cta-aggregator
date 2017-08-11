@@ -13,7 +13,6 @@ RSpec.describe "Events", type: :request do
         # NOTE: if I can figure out how to pass in the base_url I can remove the #except calls below
         api_event = json['data'][idx].deep_symbolize_keys.except(:links, :relationships)
         serialized_event = json_resource(V1::EventResource, event)[:data].deep_symbolize_keys.except(:links, :relationships)
-        serialized_event[:attributes][:identifier] = nil
 
         expect(api_event).to eq(serialized_event)
       end
@@ -24,7 +23,6 @@ RSpec.describe "Events", type: :request do
       past_event = create(:event, title: 'past event', start_date: 5.days.ago)
       future_event = create(:event, title: 'welcome to the future', start_date: DateTime.now + 2.days)
       serialized_future_event = json_resource(V1::EventResource, future_event)[:data].deep_symbolize_keys.except(:links, :relationships)
-      serialized_future_event[:attributes][:identifier] = nil
 
       get v1_events_path, params: { filter: { upcoming: true } }
 
@@ -39,7 +37,6 @@ RSpec.describe "Events", type: :request do
     it "creates an event" do
       event = build(:event)
       attributes = event.attributes.except('id', 'user_id', 'location_id', 'created_at', 'updated_at')
-      attributes['identifier'] = event.identifier
 
       location = create(:location)
 
