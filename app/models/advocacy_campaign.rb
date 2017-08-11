@@ -2,7 +2,7 @@ class AdvocacyCampaign < ApplicationRecord
 
   belongs_to :user, optional: true
 
-  has_many :advocacy_campaign_targets
+  has_many :advocacy_campaign_targets, dependent: :destroy
   has_many :target_list, through: :advocacy_campaign_targets, source: :target
 
   validate :validate_uniqueness, on: [:create, :update]
