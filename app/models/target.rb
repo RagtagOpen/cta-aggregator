@@ -6,7 +6,7 @@ class Target < ApplicationRecord
 
   belongs_to :user, optional: true
 
-  has_many :advocacy_campaign_targets
+  has_many :advocacy_campaign_targets, dependent: :destroy
   has_many :advocacy_campaigns, through: :advocacy_campaign_targets
 
   validate :organization_or_name
