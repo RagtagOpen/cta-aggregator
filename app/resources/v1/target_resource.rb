@@ -1,6 +1,6 @@
 module V1
   class TargetResource < JSONAPI::Resource
-    attributes :organization, :given_name, :family_name, :ocdid,
+    attributes :organization, :given_name, :family_name, :title, :ocdid,
       :postal_addresses, :email_addresses, :phone_numbers
 
     has_one :user
