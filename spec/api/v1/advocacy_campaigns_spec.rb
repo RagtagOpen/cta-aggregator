@@ -22,7 +22,9 @@ RSpec.describe "AdvocacyCampaigns", type: :request do
 
   describe "POST /v1/advocacy_campaigns" do
     it "creates an advocacy campaign" do
-      attributes = build(:advocacy_campaign).attributes.except('id', 'user_id', 'created_at', 'updated_at')
+      advocacy_campaign = build(:advocacy_campaign)
+
+      attributes = advocacy_campaign.attributes.except('id', 'user_id', 'created_at', 'updated_at')
 
       targets = create_list(:target, 2)
 
@@ -42,6 +44,8 @@ RSpec.describe "AdvocacyCampaigns", type: :request do
       }.to_json
 
       post v1_advocacy_campaigns_path, params: params, headers: json_api_headers_with_auth
+
+      attributes['identifiers'] << "cta-aggregator:#{json['data']['id']}"
 
       expect(response).to have_http_status(201)
       expect(attributes).to eq(json['data']['attributes'].except('target_list'))

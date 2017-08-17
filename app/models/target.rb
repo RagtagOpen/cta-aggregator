@@ -6,15 +6,21 @@ class Target < ApplicationRecord
 
   belongs_to :user, optional: true
 
-  has_many :advocacy_campaign_targets
+  has_many :advocacy_campaign_targets, dependent: :destroy
   has_many :advocacy_campaigns, through: :advocacy_campaign_targets
 
-  validates :organization,
-    presence: true
+  validate :organization_or_name
 
   validate :unique_target, on: [:create, :update]
 
   private
+
+    def organization_or_name
+      unless organization || (given_name && family_name)
+        errors.add(:base, 'organization or combo of given and family name required')
+      end
+
+    end
 
     def unique_target
       return if changes.empty?

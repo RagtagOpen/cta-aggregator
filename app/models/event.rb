@@ -1,5 +1,9 @@
 class Event < ApplicationRecord
 
+  attr_accessor :identifier
+
+  serialize :identifiers, Array
+
   belongs_to :location
   belongs_to :user, optional: true
 
@@ -14,6 +18,8 @@ class Event < ApplicationRecord
   validates :free,
     inclusion: { in: [true, false] }
 
+  after_create :set_identifiers
+
   private
 
     def validate_uniqueness
@@ -24,6 +30,11 @@ class Event < ApplicationRecord
       ).first
 
       errors.add(:event, 'already exists') if preexisting_event
+    end
+
+    def set_identifiers
+      self.identifiers << "cta-aggregator:#{id}"
+      self.save(validate: false)
     end
 
 end

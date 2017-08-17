@@ -33,6 +33,7 @@ File.open(path) do |file|
         title: cta[:title],
         browser_url: cta[:browser_url]
       ).first_or_create!(
+        identifiers: cta[:identifiers],
         origin_system: cta[:origin_system],
         description: cta[:description],
         action_type: cta[:action_type],
@@ -68,6 +69,7 @@ def import_events(filename)
           browser_url: e[:browser_url],
           free: !! e[:free]
         ).first_or_create!(
+          identifiers: e[:identifiers],
           location: location
         )
       }

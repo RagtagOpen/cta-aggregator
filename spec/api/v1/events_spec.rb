@@ -35,7 +35,8 @@ RSpec.describe "Events", type: :request do
 
   describe "POST /v1/events" do
     it "creates an event" do
-      attributes = build(:event).attributes.except('id', 'user_id', 'location_id', 'created_at', 'updated_at')
+      event = build(:event)
+      attributes = event.attributes.except('id', 'user_id', 'location_id', 'created_at', 'updated_at')
 
       location = create(:location)
 
@@ -52,6 +53,8 @@ RSpec.describe "Events", type: :request do
       }.to_json
 
       post v1_events_path, params: params, headers: json_api_headers_with_auth
+
+      attributes['identifiers'] << "cta-aggregator:#{json['data']['id']}"
 
       attributes['start_date'] = attributes['start_date'].strftime('%Y-%m-%dT%H:%M:%S.%LZ')
       attributes['end_date'] = attributes['end_date'].strftime('%Y-%m-%dT%H:%M:%S.%LZ')

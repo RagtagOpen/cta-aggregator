@@ -5,18 +5,24 @@
     :region: NM
   title: Reception
   browser_url: https://secure.emilyslist.org/page/contribute/Events_Test
-  origin_system: emilyslist:Events_Test
+  identifiers:
+  - emilyslist:Events_Test
+  origin_system: Emily's List
 - start_date: 2017-09-18
   location:
     :locality: New York
     :region: NY
   title: Briefing and Luncheon 
   browser_url: https://secure.emilyslist.org/page/contribute/NYC_Ignite_Change_Luncheon
-  origin_system: emilyslist:NYC_Ignite_Change_Luncheon
+  identifiers:
+  - emilyslist:NYC_Ignite_Change_Luncheon
+  origin_system: Emily's List
 - start_date: 2017-10-13
   location:
     :locality: San Francisco
     :region: CA
   title: Luncheon
   browser_url: https://secure.emilyslist.org/page/contribute/western-regional-luncheon
-  origin_system: emilyslist:western-regional-luncheon
+  identifiers:
+  - emilyslist:western-regional-luncheon
+  origin_system: Emily's List

@@ -1,7 +1,7 @@
 module V1
   class AdvocacyCampaignResource < JSONAPI::Resource
     attributes :title, :description, :browser_url, :origin_system,
-      :featured_image_url, :action_type, :template, :target_list
+      :featured_image_url, :action_type, :template, :target_list, :identifiers
 
     has_one :user
     has_many :targets

@@ -5,6 +5,7 @@ FactoryGirl.define do
     description { Faker::Lorem.sentence }
     browser_url { Faker::Internet.url('example.com') }
     origin_system '5Calls'
+    identifiers { [ "5calls:rec#{SecureRandom.hex(7)}" ] }
     featured_image_url { Faker::LoremPixel.image }
     action_type { ['email', 'in-person', 'phone', 'postal mail'].sample }
     template { Faker::Lorem.paragraphs.join("\n") }
