@@ -15,6 +15,8 @@ gem 'knock'
 gem 'bcrypt'
 gem 'rack-cors'
 gem 'rest-client'
+gem 'exception_notification', '4.2.2'
+gem 'slack-notifier', '2.3.1'
 
 group :development, :test do
   gem 'factory_girl_rails'
