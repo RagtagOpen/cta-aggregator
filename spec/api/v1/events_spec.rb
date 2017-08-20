@@ -31,6 +31,20 @@ RSpec.describe "Events", type: :request do
       expect(response_data.length).to eq(1)
       expect(response_data[0].deep_symbolize_keys.except(:links, :relationships)).to eq(serialized_future_event)
     end
+
+    describe 'GET /v1/events/UUID' do
+      it 'provides an event' do
+        event = create(:event)
+
+        get v1_events_path(id: event.id)
+
+        expect(response).to have_http_status(200)
+
+        api_event = JSON.parse(response.body)['data'][0].deep_symbolize_keys.except(:links, :relationships)
+        serialized_event = json_resource(V1::EventResource, event)[:data].deep_symbolize_keys.except(:links, :relationships)
+        expect(api_event).to eq(serialized_event)
+      end
+    end
   end
 
   describe "POST /v1/events" do
