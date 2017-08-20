@@ -34,59 +34,70 @@ RSpec.describe "Events", type: :request do
   end
 
   describe "POST /v1/events" do
-    it "creates an event" do
-      event = build(:event)
-      attributes = event.attributes.except('id', 'user_id', 'location_id', 'created_at', 'updated_at')
 
-      location = create(:location)
+    context 'with no authentication' do
+      it 'returns as unauthorized' do
+        post v1_events_path, params: {}, headers: {}
 
-      params = {
-        data: {
-          type: 'events',
-          attributes: attributes,
-          relationships: {
-            location: {
-              data: { type: 'locations', id: location.id }
-            }
-          }
-        }
-      }.to_json
-
-      post v1_events_path, params: params, headers: json_api_headers_with_auth
-
-      attributes['identifiers'] << "cta-aggregator:#{json['data']['id']}"
-
-      attributes['start_date'] = attributes['start_date'].strftime('%Y-%m-%dT%H:%M:%S.%LZ')
-      attributes['end_date'] = attributes['end_date'].strftime('%Y-%m-%dT%H:%M:%S.%LZ')
-
-      expect(response).to have_http_status(201)
-      expect(attributes).to eq(json['data']['attributes'])
-
+        expect(response).to have_http_status(401)
+      end
     end
 
-    it "redirects on duplicate create" do
-      attributes = create(:event).attributes.except('created_at', 'updated_at')
-      existing_id = attributes.delete('id')
-      location_id = attributes.delete('location_id')
+    context 'with authentication' do
 
-      params = {
-        data: {
-          type: 'events',
-          attributes: attributes,
-          relationships: {
-            location: {
-              data: { type: 'locations', id: location_id }
+      it "creates an event" do
+        event = build(:event)
+        attributes = event.attributes.except('id', 'user_id', 'location_id', 'created_at', 'updated_at')
+
+        location = create(:location)
+
+        params = {
+          data: {
+            type: 'events',
+            attributes: attributes,
+            relationships: {
+              location: {
+                data: { type: 'locations', id: location.id }
+              }
             }
           }
-        }
-      }.to_json
+        }.to_json
 
-      post v1_events_path, params: params, headers: json_api_headers_with_auth
+        post v1_events_path, params: params, headers: json_api_headers_with_auth
 
-      expect(response).to have_http_status(302)
-      expect(response.headers['Location']).to match(existing_id)
+        attributes['identifiers'] << "cta-aggregator:#{json['data']['id']}"
+
+        attributes['start_date'] = attributes['start_date'].strftime('%Y-%m-%dT%H:%M:%S.%LZ')
+        attributes['end_date'] = attributes['end_date'].strftime('%Y-%m-%dT%H:%M:%S.%LZ')
+
+        expect(response).to have_http_status(201)
+        expect(attributes).to eq(json['data']['attributes'])
+
+      end
+
+      it "redirects on duplicate create" do
+        attributes = create(:event).attributes.except('created_at', 'updated_at')
+        existing_id = attributes.delete('id')
+        location_id = attributes.delete('location_id')
+
+        params = {
+          data: {
+            type: 'events',
+            attributes: attributes,
+            relationships: {
+              location: {
+                data: { type: 'locations', id: location_id }
+              }
+            }
+          }
+        }.to_json
+
+        post v1_events_path, params: params, headers: json_api_headers_with_auth
+
+        expect(response).to have_http_status(302)
+        expect(response.headers['Location']).to match(existing_id)
+      end
     end
-
   end
 
 end

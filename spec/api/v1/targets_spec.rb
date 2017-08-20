@@ -24,39 +24,48 @@ RSpec.describe "Targets", type: :request do
   end
 
   describe "POST /v1/targets" do
-    it "creates a target" do
-      attributes = build(:target).attributes.except('id', 'user_id', 'created_at', 'updated_at')
+    context 'with no authentication' do
+      it 'returns as unauthorized' do
+        post v1_targets_path, params: {}, headers: {}
 
-      params = {
-        data: {
-          type: 'targets',
-          attributes: attributes
-        }
-      }.to_json
-
-      post v1_targets_path, params: params, headers: json_api_headers_with_auth
-
-      expect(response).to have_http_status(201)
-      expect(attributes.deep_stringify_keys).to eq(json['data']['attributes'])
+        expect(response).to have_http_status(401)
+      end
     end
 
-    it "redirects on duplicate create" do
-      attributes = create(:target).attributes.except('user_id', 'created_at', 'updated_at')
-      existing_id = attributes.delete('id')
+    context 'with authentication' do
+      it "creates a target" do
+        attributes = build(:target).attributes.except('id', 'user_id', 'created_at', 'updated_at')
 
-      params = {
-        data: {
-          type: 'targets',
-          attributes: attributes
-        }
-      }.to_json
+        params = {
+          data: {
+            type: 'targets',
+            attributes: attributes
+          }
+        }.to_json
 
-      post v1_targets_path, params: params, headers: json_api_headers_with_auth
+        post v1_targets_path, params: params, headers: json_api_headers_with_auth
 
-      expect(response).to have_http_status(302)
-      expect(response.headers['Location']).to match(existing_id)
+        expect(response).to have_http_status(201)
+        expect(attributes.deep_stringify_keys).to eq(json['data']['attributes'])
+      end
+
+      it "redirects on duplicate create" do
+        attributes = create(:target).attributes.except('user_id', 'created_at', 'updated_at')
+        existing_id = attributes.delete('id')
+
+        params = {
+          data: {
+            type: 'targets',
+            attributes: attributes
+          }
+        }.to_json
+
+        post v1_targets_path, params: params, headers: json_api_headers_with_auth
+
+        expect(response).to have_http_status(302)
+        expect(response.headers['Location']).to match(existing_id)
+      end
     end
-
   end
 
 end

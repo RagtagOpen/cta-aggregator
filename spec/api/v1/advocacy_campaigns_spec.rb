@@ -21,52 +21,62 @@ RSpec.describe "AdvocacyCampaigns", type: :request do
   end
 
   describe "POST /v1/advocacy_campaigns" do
-    it "creates an advocacy campaign" do
-      advocacy_campaign = build(:advocacy_campaign)
+    context 'with no authentication' do
+      it 'returns as unauthorized' do
+        post v1_advocacy_campaigns_path, params: {}, headers: {}
 
-      attributes = advocacy_campaign.attributes.except('id', 'user_id', 'created_at', 'updated_at')
-
-      targets = create_list(:target, 2)
-
-      params = {
-        data: {
-          type: 'advocacy_campaigns',
-          attributes: attributes,
-          relationships: {
-            targets: {
-              data: [
-                { type: 'targets', id: targets.first.id },
-                { type: 'targets', id: targets.last.id }
-              ]
-            }
-          }
-        }
-      }.to_json
-
-      post v1_advocacy_campaigns_path, params: params, headers: json_api_headers_with_auth
-
-      attributes['identifiers'] << "cta-aggregator:#{json['data']['id']}"
-
-      expect(response).to have_http_status(201)
-      expect(attributes).to eq(json['data']['attributes'].except('target_list'))
-      expect(json['data']['attributes']['target_list']).to_not be_empty
+        expect(response).to have_http_status(401)
+      end
     end
 
-    it "redirects on duplicate create" do
-      attributes = create(:advocacy_campaign).attributes.except('created_at', 'updated_at')
-      existing_id = attributes.delete('id')
+    context 'with authentication' do
+      it "creates an advocacy campaign" do
+        advocacy_campaign = build(:advocacy_campaign)
 
-      params = {
-        data: {
-          type: 'advocacy_campaigns',
-          attributes: attributes,
-        }
-      }.to_json
+        attributes = advocacy_campaign.attributes.except('id', 'user_id', 'created_at', 'updated_at')
 
-      post v1_advocacy_campaigns_path, params: params, headers: json_api_headers_with_auth
+        targets = create_list(:target, 2)
 
-      expect(response).to have_http_status(302)
-      expect(response.headers['Location']).to match(existing_id)
+        params = {
+          data: {
+            type: 'advocacy_campaigns',
+            attributes: attributes,
+            relationships: {
+              targets: {
+                data: [
+                  { type: 'targets', id: targets.first.id },
+                  { type: 'targets', id: targets.last.id }
+                ]
+              }
+            }
+          }
+        }.to_json
+
+        post v1_advocacy_campaigns_path, params: params, headers: json_api_headers_with_auth
+
+        attributes['identifiers'] << "cta-aggregator:#{json['data']['id']}"
+
+        expect(response).to have_http_status(201)
+        expect(attributes).to eq(json['data']['attributes'].except('target_list'))
+        expect(json['data']['attributes']['target_list']).to_not be_empty
+      end
+
+      it "redirects on duplicate create" do
+        attributes = create(:advocacy_campaign).attributes.except('created_at', 'updated_at')
+        existing_id = attributes.delete('id')
+
+        params = {
+          data: {
+            type: 'advocacy_campaigns',
+            attributes: attributes,
+          }
+        }.to_json
+
+        post v1_advocacy_campaigns_path, params: params, headers: json_api_headers_with_auth
+
+        expect(response).to have_http_status(302)
+        expect(response.headers['Location']).to match(existing_id)
+      end
     end
   end
 
