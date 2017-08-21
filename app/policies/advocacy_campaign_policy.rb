@@ -1,0 +1,3 @@
+class AdvocacyCampaignPolicy < ApplicationPolicy
+
+end

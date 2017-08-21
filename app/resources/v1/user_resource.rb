@@ -1,5 +1,5 @@
 module V1
-  class UserResource < JSONAPI::Resource
+  class UserResource < BaseResource
     attribute :email
     relationship :advocacy_campaigns, to: :many
     relationship :targets, to: :many
