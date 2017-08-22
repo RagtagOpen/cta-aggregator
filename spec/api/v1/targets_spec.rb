@@ -38,7 +38,7 @@ RSpec.describe "Targets", type: :request do
 
   describe "POST /v1/targets" do
     context 'with no authentication' do
-      it 'returns as unauthorized' do
+      it 'returns as unauthenticated' do
         post v1_targets_path, params: {}, headers: {}
 
         expect(response).to have_http_status(401)

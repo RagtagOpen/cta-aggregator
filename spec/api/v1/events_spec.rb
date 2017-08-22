@@ -50,7 +50,7 @@ RSpec.describe "Events", type: :request do
   describe "POST /v1/events" do
 
     context 'with no authentication' do
-      it 'returns as unauthorized' do
+      it 'returns as unauthenticated' do
         post v1_events_path, params: {}, headers: {}
 
         expect(response).to have_http_status(401)
@@ -58,12 +58,13 @@ RSpec.describe "Events", type: :request do
     end
 
     context 'with authentication' do
+      let(:user) { create(:user) }
 
       it "creates an event" do
-        event = build(:event)
+        event = build(:event, user_id: user.id)
         attributes = event.attributes.except('id', 'user_id', 'location_id', 'created_at', 'updated_at')
 
-        location = create(:location)
+        location = create(:location, user_id: user.id)
 
         params = {
           data: {
@@ -77,7 +78,7 @@ RSpec.describe "Events", type: :request do
           }
         }.to_json
 
-        post v1_events_path, params: params, headers: json_api_headers_with_auth
+        post v1_events_path, params: params, headers: json_api_headers_with_auth(user)
 
         expect(response).to have_http_status(201)
 

@@ -35,7 +35,7 @@ RSpec.describe "Locations", type: :request do
 
   describe "POST /v1/locations" do
     context 'with no authentication' do
-      it 'returns as unauthorized' do
+      it 'returns as authenticated' do
         post v1_locations_path, params: {}, headers: {}
 
         expect(response).to have_http_status(401)

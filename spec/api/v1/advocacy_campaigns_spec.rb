@@ -41,13 +41,15 @@ RSpec.describe "AdvocacyCampaigns", type: :request do
       end
     end
 
-    context 'with authentication' do
+    context 'with authenticated user' do
+      let(:user) { create(:user) }
+
       it "creates an advocacy campaign" do
-        advocacy_campaign = build(:advocacy_campaign)
+        advocacy_campaign = build(:advocacy_campaign, user_id: user.id)
 
         attributes = advocacy_campaign.attributes.except('id', 'user_id', 'created_at', 'updated_at')
 
-        targets = create_list(:target, 2)
+        targets = create_list(:target, 2, user_id: user.id)
 
         params = {
           data: {
@@ -64,7 +66,7 @@ RSpec.describe "AdvocacyCampaigns", type: :request do
           }
         }.to_json
 
-        post v1_advocacy_campaigns_path, params: params, headers: json_api_headers_with_auth
+        post v1_advocacy_campaigns_path, params: params, headers: json_api_headers_with_auth(user)
 
         expect(response).to have_http_status(201)
         attributes['identifiers'] << "cta-aggregator:#{json['data']['id']}"
@@ -84,7 +86,7 @@ RSpec.describe "AdvocacyCampaigns", type: :request do
           }
         }.to_json
 
-        post v1_advocacy_campaigns_path, params: params, headers: json_api_headers_with_auth
+        post v1_advocacy_campaigns_path, params: params, headers: json_api_headers_with_auth(user)
 
         expect(response).to have_http_status(302)
         expect(response.headers['Location']).to match(existing_id)
@@ -92,4 +94,101 @@ RSpec.describe "AdvocacyCampaigns", type: :request do
     end
   end
 
+  describe "PUT /v1/advocacy_campaigns/UUID" do
+    let(:user) { create(:user) }
+    let(:advocacy_campaign) { create(:advocacy_campaign, user_id: user.id) }
+    let(:params) do
+      {
+        "data": {
+          "id": advocacy_campaign.id,
+          "type": "advocacy_campaigns",
+          "attributes": {
+            "title": "foobar"
+          }
+        }
+      }.to_json
+    end
+
+    context 'with no authentication' do
+      it 'returns as unauthenticated' do
+        put v1_advocacy_campaign_path(advocacy_campaign.id), params: params, headers: {}
+
+        expect(response).to have_http_status(401)
+      end
+    end
+
+    context 'with authenticated user who did not create the record originally' do
+      it 'returns as unauthorized' do
+        another_user = create(:user)
+        put v1_advocacy_campaign_path(advocacy_campaign.id), params: params, headers: json_api_headers_with_auth(another_user)
+
+        expect(response).to have_http_status(403)
+      end
+    end
+
+    context 'with authenticated user who created the record originally' do
+      it 'updates the advocacy campaign' do
+        put v1_advocacy_campaign_path(advocacy_campaign.id), params: params, headers: json_api_headers_with_auth(user)
+
+        expect(response).to have_http_status(200)
+      end
+    end
+
+    context 'with authenticated admin' do
+      it 'updates the advocacy campaign' do
+        put v1_advocacy_campaign_path(advocacy_campaign.id), params: params, headers: json_api_headers_with_admin_auth
+
+        expect(response).to have_http_status(200)
+      end
+    end
+  end
+
+  describe "DELETE /v1/advocacy_campaigns/UUID" do
+    let(:user) { create(:user) }
+    let(:advocacy_campaign) { create(:advocacy_campaign, user_id: user.id) }
+    let(:params) do
+      {
+        "data": {
+          "id": advocacy_campaign.id,
+          "type": "advocacy_campaigns",
+          "attributes": {
+            "title": "foobar"
+          }
+        }
+      }.to_json
+    end
+
+    context 'with no authentication' do
+      it 'returns as unauthenticated' do
+        delete v1_advocacy_campaign_path(advocacy_campaign.id), headers: {}
+
+        expect(response).to have_http_status(401)
+      end
+    end
+
+    context 'with authenticated user who did not create the record originally' do
+      it 'returns as unauthorized' do
+        another_user = create(:user)
+        delete v1_advocacy_campaign_path(advocacy_campaign.id), headers: json_api_headers_with_auth(another_user)
+
+        expect(response).to have_http_status(403)
+      end
+    end
+
+    context 'with authenticated user who created the record originally' do
+      it 'updates the advocacy campaign' do
+        delete v1_advocacy_campaign_path(advocacy_campaign.id), headers: json_api_headers_with_auth(user)
+
+        expect(response).to have_http_status(403)
+      end
+    end
+
+    context 'with authenticated admin' do
+      it 'updates the advocacy campaign' do
+        delete v1_advocacy_campaign_path(advocacy_campaign.id), headers: json_api_headers_with_admin_auth
+
+        expect(response).to have_http_status(204)
+      end
+    end
+  end
 end

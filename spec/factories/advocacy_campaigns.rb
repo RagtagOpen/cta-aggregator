@@ -9,6 +9,7 @@ FactoryGirl.define do
     featured_image_url { Faker::LoremPixel.image }
     action_type { ['email', 'in-person', 'phone', 'postal mail'].sample }
     template { Faker::Lorem.paragraphs.join("\n") }
+    user_id { SecureRandom.uuid }
 
     transient do
       target_count 0

@@ -24,7 +24,7 @@ class ApplicationPolicy
   end
 
   def update?
-    user.present?
+    user.present? && ((user.id == record.user_id) || user.admin)
   end
 
   def edit?
@@ -32,7 +32,7 @@ class ApplicationPolicy
   end
 
   def destroy?
-    false
+    user.present? && user.admin
   end
 
   def readable?
