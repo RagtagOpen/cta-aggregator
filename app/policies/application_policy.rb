@@ -19,16 +19,8 @@ class ApplicationPolicy
     user.present?
   end
 
-  def new?
-    create?
-  end
-
   def update?
     user.present? && ((user.id == record.user_id) || user.admin)
-  end
-
-  def edit?
-    update?
   end
 
   def destroy?
