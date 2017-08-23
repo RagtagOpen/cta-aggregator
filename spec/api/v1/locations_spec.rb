@@ -78,4 +78,101 @@ RSpec.describe "Locations", type: :request do
     end
   end
 
+  describe "PUT /v1/locations/UUID" do
+    let(:user) { create(:user) }
+    let(:location) { create(:location, user_id: user.id) }
+    let(:params) do
+      {
+        "data": {
+          "id": location.id,
+          "type": "locations",
+          "attributes": {
+            "locality": "San Bernadino"
+          }
+        }
+      }.to_json
+    end
+
+    context 'with no authentication' do
+      it 'returns as unauthenticated' do
+        put v1_location_path(location.id), params: params, headers: {}
+
+        expect(response).to have_http_status(401)
+      end
+    end
+
+    context 'with authenticated user who did not create the record originally' do
+      it 'returns as unauthorized' do
+        another_user = create(:user)
+        put v1_location_path(location.id), params: params, headers: json_api_headers_with_auth(another_user)
+
+        expect(response).to have_http_status(403)
+      end
+    end
+
+    context 'with authenticated user who created the record originally' do
+      it 'updates the location' do
+        put v1_location_path(location.id), params: params, headers: json_api_headers_with_auth(user)
+
+        expect(response).to have_http_status(200)
+      end
+    end
+
+    context 'with authenticated admin' do
+      it 'updates the location' do
+        put v1_location_path(location.id), params: params, headers: json_api_headers_with_admin_auth
+
+        expect(response).to have_http_status(200)
+      end
+    end
+  end
+
+  describe "DELETE /v1/locations/UUID" do
+    let(:user) { create(:user) }
+    let(:location) { create(:location, user_id: user.id) }
+    let(:params) do
+      {
+        "data": {
+          "id": location.id,
+          "type": "locations",
+          "attributes": {
+            "title": "foobar"
+          }
+        }
+      }.to_json
+    end
+
+    context 'with no authentication' do
+      it 'returns as unauthenticated' do
+        delete v1_location_path(location.id), headers: {}
+
+        expect(response).to have_http_status(401)
+      end
+    end
+
+    context 'with authenticated user who did not create the record originally' do
+      it 'returns as unauthorized' do
+        another_user = create(:user)
+        delete v1_location_path(location.id), headers: json_api_headers_with_auth(another_user)
+
+        expect(response).to have_http_status(403)
+      end
+    end
+
+    context 'with authenticated user who created the record originally' do
+      it 'updates the location' do
+        delete v1_location_path(location.id), headers: json_api_headers_with_auth(user)
+
+        expect(response).to have_http_status(403)
+      end
+    end
+
+    context 'with authenticated admin' do
+      it 'updates the location' do
+        delete v1_location_path(location.id), headers: json_api_headers_with_admin_auth
+
+        expect(response).to have_http_status(204)
+      end
+    end
+  end
 end
