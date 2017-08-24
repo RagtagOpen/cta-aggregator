@@ -59,14 +59,10 @@ RSpec.describe "Events", type: :request do
 
     context 'with authenticated user' do
       let(:user) { create(:user) }
-
-      it "creates an event" do
-        event = build(:event, user_id: user.id)
-        attributes = event.attributes.except('id', 'user_id', 'location_id', 'created_at', 'updated_at')
-
-        location = create(:location, user_id: user.id)
-
-        params = {
+      let(:event) { build(:event, user_id: user.id) }
+      let(:attributes) { event.attributes.except('id', 'user_id', 'location_id', 'created_at', 'updated_at') }
+      def params(location)
+        {
           data: {
             type: 'events',
             attributes: attributes,
@@ -77,8 +73,26 @@ RSpec.describe "Events", type: :request do
             }
           }
         }.to_json
+      end
 
-        post v1_events_path, params: params, headers: json_api_headers_with_auth(user)
+      it "creates an event for user who also created related resources" do
+        location = create(:location, user_id: user.id)
+
+        post v1_events_path, params: params(location), headers: json_api_headers_with_auth(user)
+
+        expect(response).to have_http_status(201)
+
+        attributes['identifiers'] << "cta-aggregator:#{json['data']['id']}"
+        attributes['start_date'] = attributes['start_date'].strftime('%Y-%m-%dT%H:%M:%S.%LZ')
+        attributes['end_date'] = attributes['end_date'].strftime('%Y-%m-%dT%H:%M:%S.%LZ')
+
+        expect(attributes).to eq(json['data']['attributes'])
+      end
+
+      it "creates an event for user who did not create related resources" do
+        location = create(:location)
+
+        post v1_events_path, params: params(location), headers: json_api_headers_with_auth(user)
 
         expect(response).to have_http_status(201)
 

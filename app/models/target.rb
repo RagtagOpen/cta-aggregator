@@ -13,12 +13,6 @@ class Target < ApplicationRecord
 
   validate :unique_target, on: [:create, :update]
 
-  def self.update
-
-    binding.pry
-    super
-
-  end
   private
 
     def organization_or_name

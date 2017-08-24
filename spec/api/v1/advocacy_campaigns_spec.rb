@@ -43,15 +43,11 @@ RSpec.describe "AdvocacyCampaigns", type: :request do
 
     context 'with authenticated user' do
       let(:user) { create(:user) }
-
-      it "creates an advocacy campaign" do
-        advocacy_campaign = build(:advocacy_campaign, user_id: user.id)
-
-        attributes = advocacy_campaign.attributes.except('id', 'user_id', 'created_at', 'updated_at')
-
-        targets = create_list(:target, 2, user_id: user.id)
-
-        params = {
+      let(:advocacy_campaign) { build(:advocacy_campaign, user_id: user.id) }
+      let(:attributes) { advocacy_campaign.attributes.except('id', 'user_id', 'created_at', 'updated_at') }
+          
+      def params(targets)
+        {
           data: {
             type: 'advocacy_campaigns',
             attributes: attributes,
@@ -65,8 +61,25 @@ RSpec.describe "AdvocacyCampaigns", type: :request do
             }
           }
         }.to_json
+      end
 
-        post v1_advocacy_campaigns_path, params: params, headers: json_api_headers_with_auth(user)
+      it "creates an advocacy campaign for user who also created related resources" do
+
+        targets = create_list(:target, 2, user_id: user.id)
+
+        post v1_advocacy_campaigns_path, params: params(targets), headers: json_api_headers_with_auth(user)
+
+        expect(response).to have_http_status(201)
+        attributes['identifiers'] << "cta-aggregator:#{json['data']['id']}"
+
+        expect(attributes).to eq(json['data']['attributes'].except('target_list'))
+        expect(json['data']['attributes']['target_list']).to_not be_empty
+      end
+
+      it "creates an advocacy campaign for user who did not create related resources" do
+        targets = create_list(:target, 2)
+
+        post v1_advocacy_campaigns_path, params: params(targets), headers: json_api_headers_with_auth(user)
 
         expect(response).to have_http_status(201)
         attributes['identifiers'] << "cta-aggregator:#{json['data']['id']}"
