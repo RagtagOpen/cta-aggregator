@@ -36,11 +36,11 @@ RSpec.describe "Events", type: :request do
       it 'provides an event' do
         event = create(:event)
 
-        get v1_events_path(id: event.id)
+        get v1_event_path(id: event.id)
 
         expect(response).to have_http_status(200)
 
-        api_event = JSON.parse(response.body)['data'][0].deep_symbolize_keys.except(:links, :relationships)
+        api_event = JSON.parse(response.body)['data'].deep_symbolize_keys.except(:links, :relationships)
         serialized_event = json_resource(V1::EventResource, event)[:data].deep_symbolize_keys.except(:links, :relationships)
         expect(api_event).to eq(serialized_event)
       end

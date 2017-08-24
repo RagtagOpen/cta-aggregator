@@ -11,8 +11,7 @@ class ApplicationPolicy
   end
 
   def show?
-    user.present? &&
-    scope.where(:id => record.id).exists?
+    readable?
   end
 
   def create?

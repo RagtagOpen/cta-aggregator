@@ -22,11 +22,11 @@ RSpec.describe "Locations", type: :request do
       it 'provides a location' do
         location = create(:location)
 
-        get v1_locations_path(id: location.id)
+        get v1_location_path(id: location.id)
 
         expect(response).to have_http_status(200)
 
-        api_location = JSON.parse(response.body)['data'][0].deep_symbolize_keys.except(:links, :relationships)
+        api_location = JSON.parse(response.body)['data'].deep_symbolize_keys.except(:links, :relationships)
         serialized_location = json_resource(V1::LocationResource, location)[:data].deep_symbolize_keys.except(:links, :relationships)
         expect(api_location).to eq(serialized_location)
       end

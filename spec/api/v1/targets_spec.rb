@@ -25,11 +25,11 @@ RSpec.describe "Targets", type: :request do
       it 'provides a target' do
         target = create(:target)
 
-        get v1_targets_path(id: target.id)
+        get v1_target_path(id: target.id)
 
         expect(response).to have_http_status(200)
 
-        api_target = JSON.parse(response.body)['data'][0].deep_symbolize_keys.except(:links, :relationships)
+        api_target = JSON.parse(response.body)['data'].deep_symbolize_keys.except(:links, :relationships)
         serialized_target = json_resource(V1::TargetResource, target)[:data].deep_symbolize_keys.except(:links, :relationships)
         expect(api_target).to eq(serialized_target)
       end

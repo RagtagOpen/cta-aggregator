@@ -22,10 +22,10 @@ RSpec.describe "AdvocacyCampaigns", type: :request do
       it 'provides an advocacy campaign' do
         advocacy_campaign = create(:advocacy_campaign)
 
-        get v1_advocacy_campaigns_path(id: advocacy_campaign.id)
+        get v1_advocacy_campaign_path(id: advocacy_campaign.id)
         expect(response).to have_http_status(200)
 
-        api_advocacy_campaign = JSON.parse(response.body)['data'][0].deep_symbolize_keys.except(:links, :relationships)
+        api_advocacy_campaign = JSON.parse(response.body)['data'].deep_symbolize_keys.except(:links, :relationships)
         serialized_advocacy_campaign = json_resource(V1::AdvocacyCampaignResource, advocacy_campaign)[:data].deep_symbolize_keys.except(:links, :relationships)
         expect(api_advocacy_campaign).to eq(serialized_advocacy_campaign)
       end
