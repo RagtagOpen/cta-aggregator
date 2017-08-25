@@ -18,20 +18,20 @@ module V1
 
     before_save do
       @model.postal_addresses = Array(@model.postal_addresses).collect do |address|
-        if change_proposed?(address)
+        if params_present?(address)
           address[:address_lines] ||= []
           address.permit(:primary, :address_type, :venue, :locality, :region, :postal_code, :country, address_lines: []).to_h
         end
       end
 
       @model.email_addresses = Array(@model.email_addresses).collect do |address|
-        if change_proposed?(address)
+        if params_present?(address)
           address.permit(:primary, :address, :address_type, :status).to_h
         end
       end
 
       @model.phone_numbers = Array(@model.phone_numbers).collect do |phone|
-        if change_proposed?(phone)
+        if params_present?(phone)
           phone.permit(:primary, :number, :extension, :number_type).to_h
         end
       end
@@ -43,7 +43,7 @@ module V1
     # Happens when updating preexisting record where changes proposed,
     # but not to this particular attribute
     # e.g. changing given name but not postal_addresses
-    def change_proposed?(attribute)
+    def params_present?(attribute)
       attribute.is_a? ActionController::Parameters
     end
 
