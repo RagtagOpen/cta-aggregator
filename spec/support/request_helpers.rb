@@ -13,18 +13,11 @@ module Requests
       { 'ACCEPT' => "application/vnd.api+json", 'CONTENT_TYPE' => 'application/vnd.api+json' }
     end
 
-    def json_api_headers_with_auth(user = nil)
-      @user ||= user || User.create!(email: "foo@example.com", password: "password", password_confirmation: "password")
-      token = Knock::AuthToken.new(payload: { sub: @user.id }).token
+    def json_api_headers_with_auth(user_id)
+      token = Knock::AuthToken.new(payload: { sub: user_id }).token
 
       json_api_headers.merge('HTTP_AUTHORIZATION' => "Bearer #{token}")
     end
 
-    def json_api_headers_with_admin_auth
-      @user ||= User.create!(email: "foo@example.com", password: "password", password_confirmation: "password", admin: true)
-      token = Knock::AuthToken.new(payload: { sub: @user.id }).token
-
-      json_api_headers.merge('HTTP_AUTHORIZATION' => "Bearer #{token}")
-    end
   end
 end

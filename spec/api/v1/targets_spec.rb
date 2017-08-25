@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe "Targets", type: :request do
+  let(:user) { create(:user) }
+  let(:another_user) { create(:user) }
+  let(:admin) { create(:user, admin: true) }
 
   describe "GET /v1/targets" do
     it "provides a list of targets" do
@@ -56,7 +59,7 @@ RSpec.describe "Targets", type: :request do
           }
         }.to_json
 
-        post v1_targets_path, params: params, headers: json_api_headers_with_auth
+        post v1_targets_path, params: params, headers: json_api_headers_with_auth(user.id)
 
         expect(response).to have_http_status(201)
         expect(attributes.deep_stringify_keys).to eq(json['data']['attributes'])
@@ -73,7 +76,7 @@ RSpec.describe "Targets", type: :request do
           }
         }.to_json
 
-        post v1_targets_path, params: params, headers: json_api_headers_with_auth
+        post v1_targets_path, params: params, headers: json_api_headers_with_auth(user.id)
 
         expect(response).to have_http_status(302)
         expect(response.headers['Location']).to match(existing_id)
@@ -83,7 +86,6 @@ RSpec.describe "Targets", type: :request do
 
 
   describe "PUT /v1/targets/UUID" do
-    let(:user) { create(:user) }
     let(:target) { create(:target, user_id: user.id) }
     let(:params) do
       {
@@ -107,8 +109,7 @@ RSpec.describe "Targets", type: :request do
 
     context 'with authenticated user who did not create the record originally' do
       it 'returns as unauthorized' do
-        another_user = create(:user)
-        put v1_target_path(target.id), params: params, headers: json_api_headers_with_auth(another_user)
+        put v1_target_path(target.id), params: params, headers: json_api_headers_with_auth(another_user.id)
 
         expect(response).to have_http_status(403)
       end
@@ -116,7 +117,7 @@ RSpec.describe "Targets", type: :request do
 
     context 'with authenticated user who created the record originally' do
       it 'updates the advocacy campaign' do
-        put v1_target_path(target.id), params: params, headers: json_api_headers_with_auth(user)
+        put v1_target_path(target.id), params: params, headers: json_api_headers_with_auth(user.id)
 
         expect(response).to have_http_status(200)
       end
@@ -124,7 +125,7 @@ RSpec.describe "Targets", type: :request do
 
     context 'with authenticated admin' do
       it 'updates the advocacy campaign' do
-        put v1_target_path(target.id), params: params, headers: json_api_headers_with_admin_auth
+        put v1_target_path(target.id), params: params, headers: json_api_headers_with_auth(admin.id)
 
         expect(response).to have_http_status(200)
       end
@@ -132,7 +133,6 @@ RSpec.describe "Targets", type: :request do
   end
 
   describe "DELETE /v1/targets/UUID" do
-    let(:user) { create(:user) }
     let(:target) { create(:target, user_id: user.id) }
     let(:params) do
       {
@@ -156,8 +156,7 @@ RSpec.describe "Targets", type: :request do
 
     context 'with authenticated user who did not create the record originally' do
       it 'returns as unauthorized' do
-        another_user = create(:user)
-        delete v1_target_path(target.id), headers: json_api_headers_with_auth(another_user)
+        delete v1_target_path(target.id), headers: json_api_headers_with_auth(another_user.id)
 
         expect(response).to have_http_status(403)
       end
@@ -165,7 +164,7 @@ RSpec.describe "Targets", type: :request do
 
     context 'with authenticated user who created the record originally' do
       it 'updates the advocacy campaign' do
-        delete v1_target_path(target.id), headers: json_api_headers_with_auth(user)
+        delete v1_target_path(target.id), headers: json_api_headers_with_auth(user.id)
 
         expect(response).to have_http_status(403)
       end
@@ -173,7 +172,7 @@ RSpec.describe "Targets", type: :request do
 
     context 'with authenticated admin' do
       it 'updates the advocacy campaign' do
-        delete v1_target_path(target.id), headers: json_api_headers_with_admin_auth
+        delete v1_target_path(target.id), headers: json_api_headers_with_auth(admin.id)
 
         expect(response).to have_http_status(204)
       end

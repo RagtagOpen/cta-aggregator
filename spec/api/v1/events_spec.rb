@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe "Events", type: :request do
+  let(:user) { create(:user) }
+  let(:another_user) { create(:user) }
+  let(:admin) { create(:user, admin: true) }
 
   describe "GET /v1/events" do
     it "provides a list of events" do
@@ -58,7 +61,6 @@ RSpec.describe "Events", type: :request do
     end
 
     context 'with authenticated user' do
-      let(:user) { create(:user) }
       let(:event) { build(:event, user_id: user.id) }
       let(:attributes) { event.attributes.except('id', 'user_id', 'location_id', 'created_at', 'updated_at') }
       def params(location)
@@ -78,7 +80,7 @@ RSpec.describe "Events", type: :request do
       it "creates an event for user who also created related resources" do
         location = create(:location, user_id: user.id)
 
-        post v1_events_path, params: params(location), headers: json_api_headers_with_auth(user)
+        post v1_events_path, params: params(location), headers: json_api_headers_with_auth(user.id)
 
         expect(response).to have_http_status(201)
 
@@ -92,7 +94,7 @@ RSpec.describe "Events", type: :request do
       it "creates an event for user who did not create related resources" do
         location = create(:location)
 
-        post v1_events_path, params: params(location), headers: json_api_headers_with_auth(user)
+        post v1_events_path, params: params(location), headers: json_api_headers_with_auth(user.id)
 
         expect(response).to have_http_status(201)
 
@@ -120,7 +122,7 @@ RSpec.describe "Events", type: :request do
           }
         }.to_json
 
-        post v1_events_path, params: params, headers: json_api_headers_with_auth
+        post v1_events_path, params: params, headers: json_api_headers_with_auth(user.id)
 
         expect(response).to have_http_status(302)
         expect(response.headers['Location']).to match(existing_id)
@@ -129,7 +131,6 @@ RSpec.describe "Events", type: :request do
   end
 
   describe "PUT /v1/events/UUID" do
-    let(:user) { create(:user) }
     let(:event) { create(:event, user_id: user.id) }
     let(:params) do
       {
@@ -153,8 +154,7 @@ RSpec.describe "Events", type: :request do
 
     context 'with authenticated user who did not create the record originally' do
       it 'returns as unauthorized' do
-        another_user = create(:user)
-        put v1_event_path(event.id), params: params, headers: json_api_headers_with_auth(another_user)
+        put v1_event_path(event.id), params: params, headers: json_api_headers_with_auth(another_user.id)
 
         expect(response).to have_http_status(403)
       end
@@ -162,7 +162,7 @@ RSpec.describe "Events", type: :request do
 
     context 'with authenticated user who created the record originally' do
       it 'updates the event' do
-        put v1_event_path(event.id), params: params, headers: json_api_headers_with_auth(user)
+        put v1_event_path(event.id), params: params, headers: json_api_headers_with_auth(user.id)
 
         expect(response).to have_http_status(200)
       end
@@ -170,7 +170,7 @@ RSpec.describe "Events", type: :request do
 
     context 'with authenticated admin' do
       it 'updates the event' do
-        put v1_event_path(event.id), params: params, headers: json_api_headers_with_admin_auth
+        put v1_event_path(event.id), params: params, headers: json_api_headers_with_auth(admin.id)
 
         expect(response).to have_http_status(200)
       end
@@ -178,7 +178,6 @@ RSpec.describe "Events", type: :request do
   end
 
   describe "DELETE /v1/events/UUID" do
-    let(:user) { create(:user) }
     let(:event) { create(:event, user_id: user.id) }
     let(:params) do
       {
@@ -202,8 +201,7 @@ RSpec.describe "Events", type: :request do
 
     context 'with authenticated user who did not create the record originally' do
       it 'returns as unauthorized' do
-        another_user = create(:user)
-        delete v1_event_path(event.id), headers: json_api_headers_with_auth(another_user)
+        delete v1_event_path(event.id), headers: json_api_headers_with_auth(another_user.id)
 
         expect(response).to have_http_status(403)
       end
@@ -211,7 +209,7 @@ RSpec.describe "Events", type: :request do
 
     context 'with authenticated user who created the record originally' do
       it 'updates the event' do
-        delete v1_event_path(event.id), headers: json_api_headers_with_auth(user)
+        delete v1_event_path(event.id), headers: json_api_headers_with_auth(user.id)
 
         expect(response).to have_http_status(403)
       end
@@ -219,7 +217,7 @@ RSpec.describe "Events", type: :request do
 
     context 'with authenticated admin' do
       it 'updates the event' do
-        delete v1_event_path(event.id), headers: json_api_headers_with_admin_auth
+        delete v1_event_path(event.id), headers: json_api_headers_with_auth(admin.id)
 
         expect(response).to have_http_status(204)
       end
