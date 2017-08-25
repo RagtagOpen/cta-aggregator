@@ -15,7 +15,6 @@ module Requests
 
     def json_api_headers_with_auth(user_id)
       token = Knock::AuthToken.new(payload: { sub: user_id }).token
-
       json_api_headers.merge('HTTP_AUTHORIZATION' => "Bearer #{token}")
     end
 
