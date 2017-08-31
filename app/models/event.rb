@@ -7,7 +7,9 @@ class Event < ApplicationRecord
   belongs_to :location
   belongs_to :user, optional: true
 
-  scope :upcoming, -> { where("start_date >= ?", Date.today).order("start_date")  }
+  scope :upcoming, -> { where("start_date >= ?", Date.today).order("start_date") }
+
+  scope :past, -> { where("start_date <= ?", Date.today).order("start_date") }
 
   validate :validate_uniqueness, on: [:create, :update]
 

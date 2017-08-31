@@ -7,10 +7,12 @@ RSpec.describe "Events", type: :request do
 
   describe "GET /v1/events" do
     it "provides a list of events" do
+      past_event = create(:event, title: 'past event', start_date: 5.days.ago)
       events = create_list(:event, 2)
 
       get v1_events_path
       expect(response).to have_http_status(200)
+      expect(json['data'].size).to eq(2)
 
       events.each_with_index do |event, idx|
         # NOTE: if I can figure out how to pass in the base_url I can remove the #except calls below
@@ -22,17 +24,17 @@ RSpec.describe "Events", type: :request do
 
     end
 
-    it "filters for future events" do
+    it "filters for past events" do
       past_event = create(:event, title: 'past event', start_date: 5.days.ago)
       future_event = create(:event, title: 'welcome to the future', start_date: DateTime.now + 2.days)
-      serialized_future_event = json_resource(V1::EventResource, future_event)[:data].deep_symbolize_keys.except(:links, :relationships)
+      serialized_past_event = json_resource(V1::EventResource, past_event)[:data].deep_symbolize_keys.except(:links, :relationships)
 
-      get v1_events_path, params: { filter: { upcoming: true } }
+      get v1_events_path, params: { filter: { past: true } }
 
-      response_data = JSON.parse(response.body)['data']
+      response_data = json['data']
 
       expect(response_data.length).to eq(1)
-      expect(response_data[0].deep_symbolize_keys.except(:links, :relationships)).to eq(serialized_future_event)
+      expect(response_data[0].deep_symbolize_keys.except(:links, :relationships)).to eq(serialized_past_event)
     end
 
     describe 'GET /v1/events/UUID' do
@@ -43,7 +45,7 @@ RSpec.describe "Events", type: :request do
 
         expect(response).to have_http_status(200)
 
-        api_event = JSON.parse(response.body)['data'].deep_symbolize_keys.except(:links, :relationships)
+        api_event = json['data'].deep_symbolize_keys.except(:links, :relationships)
         serialized_event = json_resource(V1::EventResource, event)[:data].deep_symbolize_keys.except(:links, :relationships)
         expect(api_event).to eq(serialized_event)
       end

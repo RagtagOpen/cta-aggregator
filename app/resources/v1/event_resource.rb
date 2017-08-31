@@ -10,8 +10,12 @@ module V1
       @model.user_id = context[:current_user].id if @model.new_record?
     end
 
-    filter :upcoming, apply: -> (records, value, _options) {
+    filter :upcoming, default: 'true', apply: -> (records, value, _options) {
       records.upcoming if value[0] == "true"
+    }
+
+    filter :past, apply: -> (records, value, _options) {
+      records.unscope(:where).past if value[0] == "true"
     }
 
   end
