@@ -1,9 +1,11 @@
 FactoryGirl.define do
   factory :target do
     organization { Faker::Company.name }
+    title ["Mr.", "Mrs.", "Sentator", "Congresswoman", "Congressman"].sample
     given_name { Faker::Name.first_name }
     family_name { Faker::Name.last_name }
     ocdid { SecureRandom.uuid }
+    user_id { SecureRandom.uuid }
 
     postal_addresses do [{
         primary: true,

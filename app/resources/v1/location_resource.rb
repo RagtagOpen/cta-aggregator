@@ -1,5 +1,5 @@
 module V1
-  class LocationResource < JSONAPI::Resource
+  class LocationResource < BaseResource
     attributes :venue, :address_lines, :locality, :region, :postal_code
 
     filters :venue, :address_lines, :locality, :region, :postal_code

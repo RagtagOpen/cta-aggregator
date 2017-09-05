@@ -1,5 +1,5 @@
 module V1
-  class EventResource < JSONAPI::Resource
+  class EventResource < BaseResource
     attributes :title, :description, :browser_url, :origin_system,
       :featured_image_url, :start_date, :end_date, :free, :identifiers
 
@@ -10,8 +10,12 @@ module V1
       @model.user_id = context[:current_user].id if @model.new_record?
     end
 
-    filter :upcoming, apply: -> (records, value, _options) {
+    filter :upcoming, default: 'true', apply: -> (records, value, _options) {
       records.upcoming if value[0] == "true"
+    }
+
+    filter :past, apply: -> (records, value, _options) {
+      records.unscope(:where).past if value[0] == "true"
     }
 
   end
