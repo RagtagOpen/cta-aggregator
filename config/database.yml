@@ -2,9 +2,10 @@ default: &default
   adapter: postgresql
   pool: 5
   timeout: 5000
-  username: <%= ENV['DATABASE_USER'] %>
-  host: <%= ENV['DATABASE_HOST'] %>
-
+  username: <%= ENV['DATABASE_USER'] || 'postgres' %>
+  password: <%= ENV['DATABASE_PASS'] || 'admin' %>  
+  host: <%= ENV['DATABASE_HOST'] || 'localhost' %> 
+   
 development:
   <<: *default
   database: cta_aggregator_dev
