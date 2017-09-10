@@ -16,7 +16,7 @@ module V1
   private
 
     def location_lookup_params
-      params.require(:data).require(:attributes).permit(:locality, :region, :postal_code, :venue, :address_lines => [], :identifiers => [], :location => {})
+      params.require(:data).require(:attributes).permit(:address_lines, :locality, :region, :postal_code)
     end
 
   end
