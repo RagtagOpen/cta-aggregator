@@ -10,14 +10,15 @@ module V1
       else
         super
       end
-
     end
 
     private
 
       def event_lookup_params
         the_params = params.require(:data).require(:attributes).permit(:title, :browser_url)
-        the_params[:location_id] = params[:data].fetch(:relationships, {}).fetch(:location, {}).fetch(:data, {}).fetch(:id)
+        if params[:data].fetch(:relationships, {}).fetch(:location, {}).present?
+          the_params[:location_id] = params[:data].fetch(:relationships, {}).fetch(:location, {}).fetch(:data, {}).fetch(:id)
+        end
         the_params
       end
 
