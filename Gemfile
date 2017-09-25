@@ -16,6 +16,7 @@ gem 'knock'
 gem 'bcrypt'
 gem 'rack-cors'
 gem 'rest-client'
+gem 'google_drive', '~> 2.1.6'
 
 group :development, :test do
   gem 'factory_girl_rails'
