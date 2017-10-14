@@ -3,7 +3,7 @@ class Location < ApplicationRecord
 
   belongs_to :user, optional: true
 
-  validate :unique_location, :sufficient_location_data_present
+  validate :unique_location
   validates_length_of :region, is: 2, if: -> { self.region }
 
   private
@@ -17,12 +17,6 @@ class Location < ApplicationRecord
     ).first
 
     errors.add(:location, 'already exists') if preexisting_location
-  end
-
-  def sufficient_location_data_present
-    unless (locality && region) || postal_code
-      errors.add(:location, 'requires locality and region or postal_code')
-    end
   end
 
 end
