@@ -24,4 +24,19 @@ RSpec.describe AdvocacyCampaign, type: :model do
     expect { described_class.create!(advocacy_campaign_attrs) }.to raise_error(ActiveRecord::RecordInvalid)
   end
 
+  it "expects properly formatted share_urls" do
+    advocacy_campaign = FactoryGirl.build(:advocacy_campaign, share_url: 'foo')
+    expect(advocacy_campaign.valid?).to be false
+    advocacy_campaign.share_url = 'www.facebook.com/bleh'
+    expect(advocacy_campaign.valid?).to be false
+    advocacy_campaign.share_url = 'http://www.facebook.com/bleh'
+    expect(advocacy_campaign.valid?).to be true
+    advocacy_campaign.share_url = 'https://www.facebook.com/bleh'
+    expect(advocacy_campaign.valid?).to be true
+    advocacy_campaign.share_url = 'https://facebook.com/bleh'
+    expect(advocacy_campaign.valid?).to be true
+    advocacy_campaign.share_url = 'https://facebook.com/bleh?ping=pong'
+    expect(advocacy_campaign.valid?).to be true
+  end
+
 end

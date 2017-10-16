@@ -12,6 +12,8 @@ class AdvocacyCampaign < ApplicationRecord
   validates :title, :description, :origin_system, :action_type,
     presence: true
 
+  validate :share_url_valid?, on: [:create, :update]
+
   after_create :set_identifiers
 
   def target_ids=(ids)
@@ -38,4 +40,9 @@ class AdvocacyCampaign < ApplicationRecord
       self.save(validate: false)
     end
 
+    def share_url_valid?
+      return unless share_url
+      valid_url  = share_url.scan(URI.regexp).any?
+      errors.add(:advocacy_campaign, 'invalid share_url') unless valid_url
+    end
 end
