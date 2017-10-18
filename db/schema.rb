@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171014202558) do
+ActiveRecord::Schema.define(version: 20171018024140) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 20171014202558) do
     t.datetime "updated_at",         null: false
     t.uuid     "user_id"
     t.text     "identifiers"
+    t.string   "share_url"
   end
 
   create_table "locations", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
