@@ -17,4 +17,6 @@ RSpec.describe Event, type: :model do
 
     expect { described_class.create!(event_attrs) }.to raise_error(ActiveRecord::RecordInvalid)
   end
+
+  include_examples "share_url examples", FactoryGirl.build(:event)
 end

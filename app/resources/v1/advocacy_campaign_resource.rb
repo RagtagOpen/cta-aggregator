@@ -1,7 +1,7 @@
 module V1
   class AdvocacyCampaignResource < BaseResource
     attributes :title, :description, :browser_url, :origin_system,
-      :featured_image_url, :action_type, :template, :target_list, :identifiers
+      :featured_image_url, :action_type, :template, :target_list, :identifiers, :share_url
 
     has_one :user
     has_many :targets

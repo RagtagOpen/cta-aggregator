@@ -1,7 +1,7 @@
 module V1
   class EventResource < BaseResource
     attributes :title, :description, :browser_url, :origin_system,
-      :featured_image_url, :start_date, :end_date, :free, :identifiers
+      :featured_image_url, :start_date, :end_date, :free, :identifiers, :share_url
 
     has_one :location
     has_one :user

@@ -1,4 +1,5 @@
 class Event < ApplicationRecord
+  include Validatable
 
   attr_accessor :identifier
 

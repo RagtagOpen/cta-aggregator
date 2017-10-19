@@ -10,6 +10,7 @@ FactoryGirl.define do
     end_date { [4,5,6].sample.days.from_now }
     free { [true, false].sample }
     location { create(:location) }
+    share_url { Faker::Internet.url('shareablecontent.com') }
 
     trait :free do
       free true
