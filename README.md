@@ -118,3 +118,6 @@ This app uses Rspec for unit and integration tests.
 * Contacts: get list of AdvocacyCampaigns associated with contact
 * Contact: Phone number validation
 * Versioning: in header rather than url
+
+### Troubleshooting
+* When running setup script, if you encounter this error: `Error: does not translate host name ‘db’`, then update an environment variable that is set in your .env file.  Replace 'db' with 'localhost' (or the host for your PostgreSQL instance) on the .env file.
