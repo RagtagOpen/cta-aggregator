@@ -18,5 +18,8 @@ module V1
       records.unscope(:where).past if value[0] == "true"
     }
 
+    filter :origin_system # This enables: http://example.com/events?filter[origin_system]=5calls
+    # issue: events with and without filters do not appear when hosted locally (no issue for deployed version)
+
   end
 end
