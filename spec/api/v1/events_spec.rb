@@ -53,15 +53,15 @@ RSpec.describe "Events", type: :request do
 
     describe "GET /v1/events?filter[origin_system]" do
       it "filters events by origin_system" do
-        FiveCalls_event = create(:event, title: 'eventA', browser_url: "www.eventA.com", start_date: Time.new(2019,01,06, 11, 25, 00), origin_system: "5calls")
-        Slack_event = create(:event, title: 'eventB', browser_url: "www.eventB.com", start_date: Time.new(2019,01,06, 11, 25, 00), origin_system: "Slack")
-        serialized_FiveCalls_event = json_resource(V1::EventResource, FiveCalls_event)[:data].deep_symbolize_keys.except(:links, :relationships)
+        resistance_event = create(:event, title: 'Event1', browser_url: "www.Event1.com", start_date: Time.new(2019,01,06, 11, 25, 00), origin_system: "Resistance Calendar")
+        other_event = create(:event, title: 'Event2', browser_url: "www.Event2.com", start_date: Time.new(2019,01,06, 11, 25, 00), origin_system: "Other")
+        serialized_resistance_event = json_resource(V1::EventResource, resistance_event)[:data].deep_symbolize_keys.except(:links, :relationships)
 
-        get v1_events_path, params: { filter: { origin_system: "5calls" } }
+        get v1_events_path, params: { filter: { origin_system: "Resistance Calendar" } }
         response_data = json['data']
 
         expect(response_data.length).to eq(1)
-        expect(response_data[0].deep_symbolize_keys.except(:links, :relationships)).to eq(serialized_FiveCalls_event)
+        expect(response_data[0].deep_symbolize_keys.except(:links, :relationships)).to eq(serialized_resistance_event)
       end
     end
 
