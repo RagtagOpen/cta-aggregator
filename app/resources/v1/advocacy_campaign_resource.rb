@@ -15,7 +15,7 @@ module V1
       records.where(action_type: value[0].to_s)
     }
 
-    filter :origin_system  # This enables: http://example.com/advocacy_campaigns?filter[origin_system]=5calls
+    filter :origin_system
 
     before_create do
       @model.user_id = context[:current_user].id if @model.new_record?
