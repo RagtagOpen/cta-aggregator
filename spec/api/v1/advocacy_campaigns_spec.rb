@@ -36,15 +36,15 @@ RSpec.describe "AdvocacyCampaigns", type: :request do
 
     describe "GET /v1/advocacy_campaigns?filter[origin_system]" do
       it "filters advocacy campaigns by origin_system" do
-        FiveCalls_event = create(:advocacy_campaign, title: "Event1", description: "Description1" , origin_system: "5calls", action_type: "phone")
-        Facebook_event = create(:advocacy_campaign, title: "Event2", description: "Description2" , origin_system: "Facebook", action_type: "in-person")
-        serialized_fivecalls_event = json_resource(V1::AdvocacyCampaignResource, FiveCalls_event)[:data].deep_symbolize_keys.except(:links, :relationships)
+        fiveCalls_campaign = create(:advocacy_campaign, title: "Campaign1", description: "Description1" , origin_system: "5calls", action_type: "phone")
+        resistance_campaign = create(:advocacy_campaign, title: "Campaign2", description: "Description2" , origin_system: "Resistance Calendar", action_type: "in-person")
+        serialized_fiveCalls_campaign = json_resource(V1::AdvocacyCampaignResource, fiveCalls_campaign)[:data].deep_symbolize_keys.except(:links, :relationships)
 
         get v1_advocacy_campaigns_path, params: { filter: { origin_system: "5calls" } }
         response_data = json['data']
 
         expect(response_data.length).to eq(1)
-        expect(response_data[0].deep_symbolize_keys.except(:links, :relationships)).to eq(serialized_fivecalls_event)
+        expect(response_data[0].deep_symbolize_keys.except(:links, :relationships)).to eq(serialized_fiveCalls_campaign)
       end
     end
 
