@@ -18,5 +18,7 @@ module V1
       records.unscope(:where).past if value[0] == "true"
     }
 
+    filter :origin_system
+
   end
 end
