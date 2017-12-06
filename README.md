@@ -4,11 +4,28 @@ The CTA Aggregator is a project to provide a platform-neutral source of truth fo
 
 There are several related projects.
 * The API: A main app is a Rails app that facilitates CRUD-ing of calls to action and their related resources.
-* [Documentation site](https://github.com/Ragtagteam/cta-aggregator-docs): a small site that shows visitors how to interact with the API.
-* [Ruby Gem](https://github.com/Ragtagteam/cta-aggregator-client-ruby): A lightweight gem that will take care of adding the appropriate headers and coercing data into the appropriate JSON structure.
-* Web Scrapers: apps that import data from websites and API endpoints.
+* [Documentation site](https://github.com/RagtagOpen/cta-aggregator-docs): a small site that shows visitors how to interact with the API.
+* [Ruby Gem](https://github.com/RagtagOpen/cta-aggregator-client-ruby): A lightweight gem that will take care of adding the appropriate headers and coercing data into the appropriate JSON structure.
+* [Ruby-based web scraper](https://github.com/RagtagOpen/cta-scraper): A Rails app that houses various scrapers that import data from websites, API endpoints, spreadsheets, etc.
 
-The goal is for CTA Aggregator to serves as a backend to other sites, permitting them access to a broader range of action data without competing for their clicks, eyeballs, likes, follows, etc.
+This particular repo contains the API and nothing else. We wanted to give
+contributors the freedom to write scrapers in any language they wanted to, not
+just Ruby. We're open to having Python scrapers, JS scrapers, etc. if that's
+how people are most comfortable contributing.
+
+If you're working on extracting data from an online source (website, API,
+Google doc, etc.) so that it can be part of the CTA Aggregator, then your
+code belongs in the [cta-scraper](https://github.com/RagtagOpen/cta-scraper)] app
+(or another scraping app).
+
+The distinction between the API and related repos can get confusing,
+especially since the `cta-aggregator` repo hosts the
+issues for the entire project. We do this because we want a single place we
+can look to to find all issues accross the project.
+
+The goal is for CTA Aggregator to serves as a backend to other sites,
+permitting them access to a broader range of action data without competing for
+their clicks, eyeballs, likes, follows, etc.
 
 ## Technology
 
@@ -101,3 +118,6 @@ This app uses Rspec for unit and integration tests.
 * Contacts: get list of AdvocacyCampaigns associated with contact
 * Contact: Phone number validation
 * Versioning: in header rather than url
+
+### Troubleshooting
+* When running setup script, if you encounter this error: `Error: does not translate host name ‘db’`, then update an environment variable that is set in your .env file.  Replace 'db' with 'localhost' (or the host for your PostgreSQL instance) on the .env file.

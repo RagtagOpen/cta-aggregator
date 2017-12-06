@@ -50,6 +50,21 @@ RSpec.describe "Events", type: :request do
         expect(api_event).to eq(serialized_event)
       end
     end
+
+    describe "GET /v1/events?filter[origin_system]" do
+      it "filters events by origin_system" do
+        resistance_event = create(:event, title: 'Event1', browser_url: "www.Event1.com", start_date: Time.new(2019,01,06, 11, 25, 00), origin_system: "Resistance Calendar")
+        other_event = create(:event, title: 'Event2', browser_url: "www.Event2.com", start_date: Time.new(2019,01,06, 11, 25, 00), origin_system: "Other")
+        serialized_resistance_event = json_resource(V1::EventResource, resistance_event)[:data].deep_symbolize_keys.except(:links, :relationships)
+
+        get v1_events_path, params: { filter: { origin_system: "Resistance Calendar" } }
+        response_data = json['data']
+
+        expect(response_data.length).to eq(1)
+        expect(response_data[0].deep_symbolize_keys.except(:links, :relationships)).to eq(serialized_resistance_event)
+      end
+    end
+
   end
 
   describe "POST /v1/events" do

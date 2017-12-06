@@ -27,12 +27,26 @@ RSpec.describe "AdvocacyCampaigns", type: :request do
 
         get v1_advocacy_campaign_path(id: advocacy_campaign.id)
         expect(response).to have_http_status(200)
-
         api_advocacy_campaign = JSON.parse(response.body)['data'].deep_symbolize_keys.except(:links, :relationships)
         serialized_advocacy_campaign = json_resource(V1::AdvocacyCampaignResource, advocacy_campaign)[:data].deep_symbolize_keys.except(:links, :relationships)
         expect(api_advocacy_campaign).to eq(serialized_advocacy_campaign)
       end
     end
+
+    describe "GET /v1/advocacy_campaigns?filter[origin_system]" do
+      it "filters advocacy campaigns by origin_system" do
+        fiveCalls_campaign = create(:advocacy_campaign, title: "Campaign1", description: "Description1" , origin_system: "5calls", action_type: "phone")
+        other_advocacy_campaign = create(:advocacy_campaign, title: "Campaign2", description: "Description2" , origin_system: "Other", action_type: "in-person")
+        serialized_fiveCalls_campaign = json_resource(V1::AdvocacyCampaignResource, fiveCalls_campaign)[:data].deep_symbolize_keys.except(:links, :relationships)
+
+        get v1_advocacy_campaigns_path, params: { filter: { origin_system: "5calls" } }
+        response_data = json['data']
+
+        expect(response_data.length).to eq(1)
+        expect(response_data[0].deep_symbolize_keys.except(:links, :relationships)).to eq(serialized_fiveCalls_campaign)
+      end
+    end
+
   end
 
   describe "POST /v1/advocacy_campaigns" do
@@ -47,7 +61,7 @@ RSpec.describe "AdvocacyCampaigns", type: :request do
     context 'with authenticated user' do
       let(:advocacy_campaign) { build(:advocacy_campaign, user_id: user.id) }
       let(:attributes) { advocacy_campaign.attributes.except('id', 'user_id', 'created_at', 'updated_at') }
-          
+      
       def params(targets)
         {
           data: {

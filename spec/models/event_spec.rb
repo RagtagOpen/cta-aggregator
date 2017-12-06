@@ -8,8 +8,6 @@ RSpec.describe Event, type: :model do
     expect(event.errors[:browser_url]).to_not be_empty
     expect(event.errors[:origin_system]).to_not be_empty
     expect(event.errors[:start_date]).to_not be_empty
-    expect(event.errors[:free]).to_not be_empty
-    expect(event.errors[:location_id]).to_not be_empty
   end
 
   it "does not allow duplicate objects" do
@@ -19,4 +17,6 @@ RSpec.describe Event, type: :model do
 
     expect { described_class.create!(event_attrs) }.to raise_error(ActiveRecord::RecordInvalid)
   end
+
+  include_examples "share_url examples", FactoryGirl.build(:event)
 end

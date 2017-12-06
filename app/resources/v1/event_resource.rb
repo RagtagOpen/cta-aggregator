@@ -1,7 +1,7 @@
 module V1
   class EventResource < BaseResource
     attributes :title, :description, :browser_url, :origin_system,
-      :featured_image_url, :start_date, :end_date, :free, :identifiers
+      :featured_image_url, :start_date, :end_date, :free, :identifiers, :share_url
 
     has_one :location
     has_one :user
@@ -17,6 +17,8 @@ module V1
     filter :past, apply: -> (records, value, _options) {
       records.unscope(:where).past if value[0] == "true"
     }
+
+    filter :origin_system
 
   end
 end

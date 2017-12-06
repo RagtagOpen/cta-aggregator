@@ -21,6 +21,7 @@ require 'simplecov'
 SimpleCov.start 'rails'
 
 require 'support/request_helpers'
+require 'support/shared_examples/share_url_examples'
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate

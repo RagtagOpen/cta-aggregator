@@ -1,7 +1,7 @@
 module V1
   class AdvocacyCampaignResource < BaseResource
     attributes :title, :description, :browser_url, :origin_system,
-      :featured_image_url, :action_type, :template, :target_list, :identifiers
+      :featured_image_url, :action_type, :template, :target_list, :identifiers, :share_url
 
     has_one :user
     has_many :targets
@@ -14,6 +14,8 @@ module V1
     filter :advocacy_campaign_type, apply: ->(records, value, _options) {
       records.where(action_type: value[0].to_s)
     }
+
+    filter :origin_system
 
     before_create do
       @model.user_id = context[:current_user].id if @model.new_record?

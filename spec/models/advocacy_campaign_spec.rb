@@ -24,4 +24,6 @@ RSpec.describe AdvocacyCampaign, type: :model do
     expect { described_class.create!(advocacy_campaign_attrs) }.to raise_error(ActiveRecord::RecordInvalid)
   end
 
+  include_examples "share_url examples", FactoryGirl.build(:advocacy_campaign)
+
 end

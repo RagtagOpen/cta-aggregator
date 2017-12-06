@@ -10,6 +10,7 @@ FactoryGirl.define do
     action_type { ['email', 'in-person', 'phone', 'postal mail'].sample }
     template { Faker::Lorem.paragraphs.join("\n") }
     user_id { SecureRandom.uuid }
+    share_url { Faker::Internet.url('shareablecontent.com') }
 
     transient do
       target_count 0

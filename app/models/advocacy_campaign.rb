@@ -1,4 +1,5 @@
 class AdvocacyCampaign < ApplicationRecord
+  include Validatable
 
   serialize :identifiers, Array
 
