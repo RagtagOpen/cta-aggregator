@@ -47,6 +47,24 @@ RSpec.describe "AdvocacyCampaigns", type: :request do
       end
     end
 
+    describe "GET /v1/advocacy_campaigns?filter[target_list]" do
+      it "filters advocacy campaigns by target id" do
+        abc_target = create(:target, organization: "Abc")
+        def_target = create(:target, organization: "Def")
+
+        fiveCalls_campaign = create(:advocacy_campaign, title: "Campaign1", description: "Description1" , origin_system: "5calls", action_type: "phone", target_list: [abc_target])
+        other_advocacy_campaign = create(:advocacy_campaign, title: "Campaign2", description: "Description2" , origin_system: "Other", action_type: "phone", target_list: [def_target])
+        no_target_advocacy_campaign = create(:advocacy_campaign, title: "Campaign3", description: "Description3" , origin_system: "Other", action_type: "phone")
+
+        serialized_fiveCalls_campaign = json_resource(V1::AdvocacyCampaignResource, fiveCalls_campaign)[:data].deep_symbolize_keys.except(:links, :relationships)
+        get v1_advocacy_campaigns_path, params: { filter: { target_list: "#{abc_target.id}" } }
+        response_data = json['data']
+
+        expect(response_data.length).to eq(1)
+        expect(response_data[0].deep_symbolize_keys.except(:links, :relationships)).to eq(serialized_fiveCalls_campaign) #timestamp formats are the only difference making this test fail
+      end
+    end
+
   end
 
   describe "POST /v1/advocacy_campaigns" do
@@ -61,7 +79,7 @@ RSpec.describe "AdvocacyCampaigns", type: :request do
     context 'with authenticated user' do
       let(:advocacy_campaign) { build(:advocacy_campaign, user_id: user.id) }
       let(:attributes) { advocacy_campaign.attributes.except('id', 'user_id', 'created_at', 'updated_at') }
-      
+
       def params(targets)
         {
           data: {
