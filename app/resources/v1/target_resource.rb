@@ -9,6 +9,8 @@ module V1
       @model.user_id = context[:current_user].id if @model.new_record?
     end
 
+    filter :id #without this, console error appears 'failed to load resource' when filtering advocacy campaigns by target id
+
     # This callback might look like it's focused on formatting input data correctly
     # but it's actually necessary for formatting the *output* data.
     # It helps JSONAPI Resources to serialize arrays of hashes, specifically:
