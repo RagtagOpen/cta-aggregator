@@ -17,20 +17,9 @@ module V1
 
     filter :origin_system
 
-    filter :target_list, apply: ->(records, value, _options) {
-      target_campaigns = []
-
-      records.each do |campaign|
-        campaign.target_list.each do |target_object|
-          target_campaigns << campaign if target_object.id == value[0]
-        end
-      end
-
-      target_campaigns.uniq
+    filter :target_list_custom, apply: ->(records, value, _options) {
+      AdvocacyCampaign.joins(:advocacy_campaign_targets).where('advocacy_campaign_targets.target_id =  ?', value[0])
     }
-
-    #SQL query for finding targets by id
-    # SELECT  "targets".* FROM "targets" WHERE "targets"."id" = '98531f36-96b3-4083-ae6d-2fc07a399e71'
 
     before_create do
       @model.user_id = context[:current_user].id if @model.new_record?
