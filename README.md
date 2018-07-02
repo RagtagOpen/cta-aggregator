@@ -10,7 +10,7 @@ The CTA Aggregator project has several repositories:
 
 This particular repo contains the API and nothing else. We wanted to give
 contributors the freedom to write scrapers in any language they wanted to, not
-just Ruby. We're were open to having Python scrapers, JS scrapers, etc. if that's
+just Ruby. We were open to having Python scrapers, JS scrapers, etc. if that's
 how people are most comfortable contributing.
 
 The distinction between the API and related repos can get confusing,
