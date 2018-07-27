@@ -1,3 +1,7 @@
+:warning: App no longer active :warning:
+
+:warning: Consider the code in this app as sample code. :warning:
+
 # CTA Aggregator
 
 The CTA Aggregator is a project to provide a platform-neutral source of truth for activism action.  Sometimes a CTA (call to action) might be an event at a set location or it might involve contacting a member of congress or local politician.
