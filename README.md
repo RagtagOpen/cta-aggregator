@@ -1,3 +1,7 @@
+:warning: App no longer active :warning:
+
+:warning: Consider the code in this app as sample code. :warning:
+
 # CTA Aggregator
 
 The CTA Aggregator, also known as Resistr, was a project to provide a platform-neutral source of truth for activism action.  Examples of a CTA (call to action) include an event at a set location, contacting a Member of Congress, or calling a local politician. The project was discontinued in Spring of 2018, as the ecosystem for which the project had been spec'd out had shifted enough to make the product no longer fit the market. This repo remains up as a technical demonstration of Ragtag engineering and as a reference implementation for the OSDI spec.
